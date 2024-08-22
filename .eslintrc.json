@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    // 전역 변수를 정의
+    "browser": true, // 브라우저 전역 변수 (예: window, document 등)를 사용할 수 있음
+    "es2021": true, // ES2021에 도입된 ECMAScript 전역 변수와 문법을 사용할 수 있음
+    "node": true, // Node.js 전역 변수와 Node.js scoping을 사용할 수 있음
+    "jest": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
 }
