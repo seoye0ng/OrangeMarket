@@ -32,6 +32,8 @@
     // Hooks의 사용 규칙을 강제
     "react-hooks/exhaustive-deps": "warn",
     // Hooks의 의존성 배열이 완전하지 않을 때 경고를 표시
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-throw-literal": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
