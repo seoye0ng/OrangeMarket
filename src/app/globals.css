@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* HTML의 기본 스타일을 정의하는 곳. 주로 기본 요소에 대한 초기 스타일링에 사용 */
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  p {
+    @apply text-base;
+  }
+  ul {
+    @apply list-none;
+  }
+  a {
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -10,24 +31,32 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-size: 1rem; /* 기본 폰트 크기 */
+  line-height: 1.5; /* 기본 줄 간격 */
+  background-color: #fff; /* 배경색 */
+  margin: 0; /* 기본 여백 초기화 */
+  padding: 0; /* 기본 패딩 초기화 */
+  -webkit-font-smoothing: antialiased; /* 폰트 스무딩 */
+  -moz-osx-font-smoothing: grayscale; /* 폰트 스무딩 */
 }
 
+/* 재사용 가능한 UI 컴포넌트의 스타일을 정의하는 곳. 여러 곳에서 사용될 스타일을 여기서 정의 */
+@layer components {
+  .btn {
+    @apply px-4 py-2 bg-blue-500 text-white rounded;
+  }
+}
+
+/* 작은 스타일 단위(유틸리티 클래스)를 정의. 필요에 따라 여러 곳에서 조합하여 사용 */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .margin-auto {
+    margin: auto;
   }
 }
