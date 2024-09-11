@@ -1,10 +1,12 @@
 import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
 
+import tokens from './src/styles/token';
+
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/@nextui-org/theme/**/*.{js,ts,jsx,tsx}', // Next UI 컴포넌트 경로 추가
   ],
@@ -13,41 +15,17 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-sans)'],
       },
+      boxShadow: {
+        test1: 'inset 0 0 10px red',
+        test2: 'inset 0 0 10px blue',
+        test3: 'inset 0 0 10px royalblue',
+        test4: 'inset 0 0 10px orange',
+      },
       backgroundImage: {},
-      colors: {
-        primary: {
-          50: '#FFC7A7',
-          100: '#F26E22',
-        },
-        gray: {
-          50: '#F2F2F2',
-          100: '#DBDBDB',
-          200: '#C4C4C4',
-          300: '#767676',
-        },
-        black: '#000000',
-        white: '#FFFFFF',
-        success: '#17c964',
-        warning: '#EB5757',
-      },
-      fontSize: {
-        xxs: '0.625rem',
-        xs: '0.75rem',
-        sm: '0.875rem',
-        base: '1rem',
-        lg: '1.125rem',
-        xl: '1.25rem',
-        '2xl': '1.5rem',
-      },
-      zIndex: {
-        '-1': '-1',
-        '100': '100',
-      },
-      spacing: {
-        13: '0.8125rem',
-        16: '1rem',
-        34: '2.125rem',
-      },
+      colors: tokens.colors,
+      fontSize: tokens.fontSize,
+      zIndex: tokens.zIndex,
+      spacing: tokens.spacing,
     },
   },
   plugins: [nextui()],
