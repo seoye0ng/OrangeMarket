@@ -6,7 +6,7 @@ import Search from '@/components/icons/Search';
 
 import withHeader from './withHeader';
 
-interface HeaderProps {
+interface IHeaderProps {
   pageType: string;
 }
 
@@ -28,7 +28,7 @@ const FollowerHeader = withHeader(undefined, BackArrow, Search);
 const ProductHeader = withHeader(undefined, BackArrow, Search);
 const EditProfileHeader = withHeader(undefined, BackArrow, Search);
 
-export default function Header({ pageType = 'profile' }: HeaderProps) {
+export default function Header({ pageType = 'profile' }: IHeaderProps) {
   switch (pageType) {
     case 'home':
       return <HomeHeader />;

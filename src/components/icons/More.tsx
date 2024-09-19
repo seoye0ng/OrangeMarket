@@ -2,20 +2,9 @@
 
 import tokens from '@/styles/token';
 
-interface MoreProps {
-  width?: number;
-  color?:
-    | 'primary-50'
-    | 'primary-100'
-    | 'gray-50'
-    | 'gray-100'
-    | 'gray-200'
-    | 'gray-300'
-    | 'black';
-  onClick?: () => void;
-}
+import { IIconProps } from './types/iconType';
 
-function More({ width = 24, color = 'gray-300', onClick }: MoreProps) {
+function More({ width = 24, color = 'gray-300', onClick }: IIconProps) {
   return (
     <svg
       width={width}

@@ -2,20 +2,9 @@
 
 import tokens from '@/styles/token';
 
-interface BackProps {
-  width?: number;
-  color?:
-    | 'primary-50'
-    | 'primary-100'
-    | 'gray-50'
-    | 'gray-100'
-    | 'gray-200'
-    | 'gray-300'
-    | 'black';
-  onClick?: () => void;
-}
+import { IIconProps } from './types/iconType';
 
-function BackArrow({ width = 22, color = 'black', onClick }: BackProps) {
+function BackArrow({ width = 22, color = 'black', onClick }: IIconProps) {
   return (
     <svg
       width={width}

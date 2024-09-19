@@ -1,20 +1,21 @@
 import classNames from 'classnames';
 
+import { IIconProps } from '@/components/icons/types/iconType';
+
 export default function withHeader(
   title?: string,
-  LeftComponent?: React.ComponentType,
-  RightComponent?: React.ComponentType,
+  LeftIconComponent?: React.ComponentType<IIconProps>,
+  RighticonComponent?: React.ComponentType<IIconProps>,
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return function WrappedComponent(props: any) {
+  return function WrappedComponent(props: IIconProps) {
     return (
       <header className="flex justify-between p-4 text-24px border-b-1 shadow-test1">
         <div className="flex space-x-4 items-center">
-          {LeftComponent && <LeftComponent {...props} />}
+          {LeftIconComponent && <LeftIconComponent {...props} />}
           {title && (
             <span
               className={classNames(
-                LeftComponent ? 'text-14px' : 'text-18px',
+                LeftIconComponent ? 'text-14px' : 'text-18px',
                 'font-medium',
               )}
             >
@@ -22,7 +23,7 @@ export default function withHeader(
             </span>
           )}
         </div>
-        <div>{RightComponent && <RightComponent {...props} />}</div>
+        <div>{RighticonComponent && <RighticonComponent {...props} />}</div>
       </header>
     );
   };
