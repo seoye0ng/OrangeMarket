@@ -1,4 +1,4 @@
-const tokens = {
+export const tokens = {
   colors: {
     'primary-50': '#FFC7A7',
     'primary-100': '#F26E22',
@@ -6,7 +6,7 @@ const tokens = {
     'gray-100': '#DBDBDB',
     'gray-200': '#C4C4C4',
     'gray-300': '#767676',
-    black: '#000000',
+    black: '#121212',
     white: '#FFFFFF',
     success: '#17c964',
     warning: '#EB5757',
@@ -31,4 +31,4 @@ const tokens = {
   },
 };
 
-export default tokens;
+export type IconColor = keyof typeof tokens.colors;
