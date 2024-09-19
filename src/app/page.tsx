@@ -1,9 +1,12 @@
+import Header from '@/components/common/header/Header';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        orange-market!!
-      </div>
-    </main>
+    <>
+      <Header />
+      <main className="p-24">
+        <div className="text-sm">orange-market!!</div>
+      </main>
+    </>
   );
 }
