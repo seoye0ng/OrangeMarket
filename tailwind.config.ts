@@ -1,7 +1,7 @@
 import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
 
-import tokens from './src/styles/token';
+import { tokens } from './src/styles/token';
 
 const config: Config = {
   content: [

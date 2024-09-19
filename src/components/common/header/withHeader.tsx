@@ -23,7 +23,9 @@ export default function withHeader(
             </span>
           )}
         </div>
-        <div>{RighticonComponent && <RighticonComponent {...props} />}</div>
+        <div className="cursor-pointer">
+          {RighticonComponent && <RighticonComponent {...props} />}
+        </div>
       </header>
     );
   };

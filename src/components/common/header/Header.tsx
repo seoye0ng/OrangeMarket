@@ -15,7 +15,7 @@ const handleClick = () => {
 };
 
 const HomeHeader = withHeader('감귤마켓 피드', undefined, () => (
-  <Search onClick={handleClick} />
+  <Search activeColor="gray-200" onClick={handleClick} />
 ));
 const SearchHeader = withHeader(undefined, BackArrow, Search);
 const ProfileHeader = withHeader(undefined, BackArrow, () => (
