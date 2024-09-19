@@ -7,7 +7,7 @@ import Search from '@/components/icons/Search';
 import withHeader from './withHeader';
 
 interface IHeaderProps {
-  pageType: string;
+  pageType?: string;
 }
 
 const handleClick = () => {
@@ -17,18 +17,49 @@ const handleClick = () => {
 const HomeHeader = withHeader('감귤마켓 피드', undefined, () => (
   <Search activeColor="gray-200" onClick={handleClick} />
 ));
-const SearchHeader = withHeader(undefined, BackArrow, Search);
-const ProfileHeader = withHeader(undefined, BackArrow, () => (
-  <More onClick={handleClick} />
-));
-const ChatListHeader = withHeader(undefined, BackArrow, More);
-const PostHeader = withHeader(undefined, BackArrow, Search);
-const ChatHeader = withHeader(undefined, BackArrow, More);
-const FollowerHeader = withHeader(undefined, BackArrow, Search);
-const ProductHeader = withHeader(undefined, BackArrow, Search);
-const EditProfileHeader = withHeader(undefined, BackArrow, Search);
+const SearchHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <Search activeColor="gray-200" onClick={handleClick} />,
+);
+const ProfileHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
+const ChatListHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
+const PostHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
+const ChatHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
+const FollowerHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  undefined,
+);
+// TODO: More버튼 업로드 버튼으로 바꾸기
+const ProductHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
+const EditProfileHeader = withHeader(
+  undefined,
+  () => <BackArrow activeColor="gray-300" onClick={handleClick} />,
+  () => <More activeColor="gray-200" onClick={handleClick} />,
+);
 
-export default function Header({ pageType = 'profile' }: IHeaderProps) {
+export default function Header({ pageType = 'home' }: IHeaderProps) {
   switch (pageType) {
     case 'home':
       return <HomeHeader />;

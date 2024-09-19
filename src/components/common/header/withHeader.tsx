@@ -11,7 +11,11 @@ export default function withHeader(
     return (
       <header className="flex justify-between p-4 text-24px border-b-1 shadow-test1">
         <div className="flex space-x-4 items-center">
-          {LeftIconComponent && <LeftIconComponent {...props} />}
+          {LeftIconComponent && (
+            <div className="cursor-pointer">
+              <LeftIconComponent {...props} />
+            </div>
+          )}
           {title && (
             <span
               className={classNames(
