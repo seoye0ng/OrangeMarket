@@ -6,3 +6,10 @@ export interface IIconProps {
   activeColor?: IconColor;
   onClick?: () => void;
 }
+
+export interface IIconDefaultProps {
+  isActive: boolean;
+  width?: number;
+  color?: IconColor;
+  onClick?: () => void;
+}
