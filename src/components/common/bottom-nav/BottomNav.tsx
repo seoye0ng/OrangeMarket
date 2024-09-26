@@ -7,8 +7,13 @@ export default function BottomNav() {
     <nav className="px-9 pt-3 pb-2 border-t-1">
       <ul className="flex justify-between">
         {Object.entries(BOTTOM_NAV_ITEMS).map(
-          ([key, { label, href, bottomNavIcon: Icon }]) => (
-            <NavItem key={key} href={href} label={label} Icon={Icon} />
+          ([key, { label, href, bottomNavIcon }]) => (
+            <NavItem
+              key={key}
+              href={href}
+              label={label}
+              bottomNavIcon={bottomNavIcon}
+            />
           ),
         )}
       </ul>
