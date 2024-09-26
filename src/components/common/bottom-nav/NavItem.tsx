@@ -3,15 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { IIconDefaultProps } from '@components/icons/types/iconType';
+import { IBottomNavItem } from '@/constants/bottomNavItem';
 
-interface NavItemProps {
-  href: string;
-  label: string;
-  Icon: React.ComponentType<IIconDefaultProps>;
-}
-
-function NavItem({ href, label, Icon }: NavItemProps) {
+function NavItem({ href, label, bottomNavIcon: Icon }: IBottomNavItem) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
