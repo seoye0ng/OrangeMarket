@@ -21,9 +21,10 @@ export const tokens = {
     '24px': '1.5rem',
   },
   spacing: {
-    13: '0.8125rem',
-    16: '1rem',
-    34: '2.125rem',
+    '13px': '0.8125rem',
+    '16px': '1rem',
+    '30px': '1.875rem',
+    '34px': '2.125rem',
   },
   zIndex: {
     '-1': '-1',
