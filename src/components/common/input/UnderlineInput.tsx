@@ -1,5 +1,6 @@
 import { Input } from '@nextui-org/react';
 import classNames from 'classnames';
+import { useMemo } from 'react';
 
 interface UnderlineInputProps {
   type: string;
@@ -35,7 +36,8 @@ export default function UnderlineInput({
   isInvalid = false,
   errorMessage,
 }: UnderlineInputProps) {
-  const invalidStyles = getInvalidStyles(isInvalid);
+  // isInvalid가 변경될 때만 getDynamicStyles가 다시 계산됨
+  const invalidStyles = useMemo(() => getInvalidStyles(isInvalid), [isInvalid]);
 
   return (
     <Input

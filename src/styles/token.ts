@@ -23,6 +23,7 @@ export const tokens = {
   spacing: {
     '13px': '0.8125rem',
     '16px': '1rem',
+    '25px': '1.5625rem',
     '30px': '1.875rem',
     '34px': '2.125rem',
   },
