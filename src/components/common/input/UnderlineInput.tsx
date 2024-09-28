@@ -9,23 +9,23 @@ interface UnderlineInputProps {
   errorMessage?: string;
 }
 
-const styles = (isInvalid: boolean) => ({
-  label: classNames('pb-1 font-midium text-gray-300', {
-    'text-warning': isInvalid,
-  }),
-  input: classNames(
+const baseStyles = {
+  label: 'pb-1 font-midium text-gray-300',
+  input:
     'group-data-[has-value=true]:text-black font-normal text-14px placeholder:text-gray-100',
-    { 'text-warning': isInvalid },
-  ),
   innerWrapper: 'pb-2',
-  inputWrapper: classNames(
+  inputWrapper:
     'py-0 border-b-0 shadow-[0_1px_0px_0_#DBDBDB] hover:shadow-[0_1px_0px_0_#C4C4C4] after:h-[1px] after:bg-primary-100 group-data-[focus=true]:shadow-none',
-    {
-      'after:bg-warning hover:shadow-[0_1px_0px_0_#EB5757] shadow-[0_1px_0px_0_#EB5757]':
-        isInvalid,
-    },
-  ),
   errorMessage: 'text-12px text-warning',
+};
+
+const getInvalidStyles = (isInvalid: boolean) => ({
+  label: classNames({ 'text-warning': isInvalid }),
+  input: classNames({ 'text-warning': isInvalid }),
+  inputWrapper: classNames({
+    'after:bg-warning hover:shadow-[0_1px_0px_0_#EB5757] shadow-[0_1px_0px_0_#EB5757]':
+      isInvalid,
+  }),
 });
 
 export default function UnderlineInput({
@@ -35,6 +35,8 @@ export default function UnderlineInput({
   isInvalid = false,
   errorMessage,
 }: UnderlineInputProps) {
+  const invalidStyles = getInvalidStyles(isInvalid);
+
   return (
     <Input
       isClearable
@@ -46,7 +48,16 @@ export default function UnderlineInput({
       placeholder={placeholder}
       isInvalid={isInvalid}
       errorMessage={errorMessage}
-      classNames={styles(isInvalid)}
+      classNames={{
+        label: classNames(baseStyles.label, invalidStyles.label),
+        input: classNames(baseStyles.input, invalidStyles.input),
+        innerWrapper: baseStyles.innerWrapper,
+        inputWrapper: classNames(
+          baseStyles.inputWrapper,
+          invalidStyles.inputWrapper,
+        ),
+        errorMessage: baseStyles.errorMessage,
+      }}
     />
   );
 }
