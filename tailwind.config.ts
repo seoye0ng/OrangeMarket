@@ -53,11 +53,8 @@ const config: Config = {
       themes: {
         light: {
           colors: {
-            primary: {
-              50: tokens.colors['primary-50'],
-              100: tokens.colors['primary-100'],
-              DEFAULT: tokens.colors['primary-100'],
-            },
+            primary: tokens.colors['primary-100'],
+            secondary: tokens.colors['primary-50'],
             success: tokens.colors.success,
             warning: tokens.colors.warning,
             danger: tokens.colors.warning,
