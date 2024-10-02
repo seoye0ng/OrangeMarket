@@ -5,7 +5,7 @@ export default function page() {
   return (
     <div className="w-full px-34px">
       <Title padding="pt-30px pb-10" title="로그인" />
-      <AuthForm />
+      <AuthForm type="login" />
     </div>
   );
 }
