@@ -1,65 +1,40 @@
-import { Input } from '@nextui-org/react';
-import classNames from 'classnames';
-import { useMemo } from 'react';
+'use client';
 
-interface UnderlineInputProps {
-  type: string;
-  label: string;
-  placeholder: string;
-  isInvalid?: boolean;
-  errorMessage?: string;
-}
+import { extendVariants, Input } from '@nextui-org/react';
 
-const baseStyles = {
-  label: 'pb-1 font-midium text-gray-300',
-  input:
-    'group-data-[has-value=true]:text-black font-normal text-14px placeholder:text-gray-100',
-  innerWrapper: 'pb-2',
-  inputWrapper:
-    'py-0 border-b-0 shadow-[0_1px_0px_0_#DBDBDB] hover:shadow-[0_1px_0px_0_#C4C4C4] after:h-[1px] after:bg-primary-100 group-data-[focus=true]:shadow-none',
-  errorMessage: 'text-12px text-warning',
-};
-
-const getInvalidStyles = (isInvalid: boolean) => ({
-  label: classNames({ 'text-warning': isInvalid }),
-  input: classNames({ 'text-warning': isInvalid }),
-  inputWrapper: classNames({
-    'after:bg-warning hover:shadow-[0_1px_0px_0_#EB5757] shadow-[0_1px_0px_0_#EB5757]':
-      isInvalid,
-  }),
+export const UnderlineInput = extendVariants(Input, {
+  variants: {
+    color: {
+      stone: {
+        label: ['text-gray-300 group-data-[filled-within=true]:text-gray-300'],
+        inputWrapper: [
+          'shadow-[0_1px_0px_0_#DBDBDB] hover:shadow-[0_1px_0px_0_#C4C4C4] after:bg-primary-100 group-data-[focus=true]:shadow-none',
+        ],
+        input: [
+          'group-data-[has-value=true]:text-black placeholder:text-gray100',
+        ],
+      },
+      warning: {
+        inputWrapper: [
+          'shadow-[0_1px_0px_0_#EB5757] hover:shadow-[0_1px_0px_0_#EB5757] after:bg-warning group-data-[focus=true]:shadow-none',
+        ],
+        label: ['text-warning group-data-[filled-within=true]:text-warning'],
+        input: [
+          'group-data-[has-value=true]:text-black placeholder:text-gray100',
+        ],
+      },
+    },
+    size: {
+      full: {
+        inputWrapper: ['w-full h-auto border-b-0 after:h-[1px]'],
+        label: ['group-data-[filled-within=true]:scale-100 static mb-[10px]'],
+        innerWrapper: ['pb-2'],
+        input: ['text-small'],
+      },
+    },
+  },
+  defaultVariants: {
+    color: 'stone',
+    size: 'full',
+  },
 });
-
-export default function UnderlineInput({
-  type,
-  label,
-  placeholder,
-  isInvalid = false,
-  errorMessage,
-}: UnderlineInputProps) {
-  // isInvalid가 변경될 때만 getDynamicStyles가 다시 계산됨
-  const invalidStyles = useMemo(() => getInvalidStyles(isInvalid), [isInvalid]);
-
-  return (
-    <Input
-      isClearable
-      key="inside"
-      type={type}
-      label={label}
-      labelPlacement="inside"
-      variant="underlined"
-      placeholder={placeholder}
-      isInvalid={isInvalid}
-      errorMessage={errorMessage}
-      classNames={{
-        label: classNames(baseStyles.label, invalidStyles.label),
-        input: classNames(baseStyles.input, invalidStyles.input),
-        innerWrapper: baseStyles.innerWrapper,
-        inputWrapper: classNames(
-          baseStyles.inputWrapper,
-          invalidStyles.inputWrapper,
-        ),
-        errorMessage: baseStyles.errorMessage,
-      }}
-    />
-  );
-}

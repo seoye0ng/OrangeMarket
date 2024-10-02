@@ -28,6 +28,43 @@ const config: Config = {
       spacing: tokens.spacing,
     },
   },
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      layout: {
+        fontSize: {
+          tiny: tokens.fontSize['12px'],
+          small: tokens.fontSize['14px'],
+          medium: tokens.fontSize['16px'],
+          large: tokens.fontSize['18px'],
+        },
+        lineHeight: {
+          tiny: tokens.fontSize['14px'],
+          small: tokens.fontSize['14px'],
+          medium: tokens.fontSize['16px'],
+          large: tokens.fontSize['18px'],
+        },
+        borderWidth: {
+          small: '1px',
+          medium: '1px',
+          large: '2px',
+        },
+      },
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              50: tokens.colors['primary-50'],
+              100: tokens.colors['primary-100'],
+              DEFAULT: tokens.colors['primary-100'],
+            },
+            success: tokens.colors.success,
+            warning: tokens.colors.warning,
+            danger: tokens.colors.warning,
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;
