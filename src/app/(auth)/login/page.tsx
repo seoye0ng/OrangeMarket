@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import AuthForm from '@/components/common/form/auth-form/AuthForm';
 import Title from '@/components/common/title/Title';
-import { titleText } from '@/constants/titleText';
+import { TITLE_TEXT } from '@/constants/titleText';
 
 export default function page() {
   return (
     <>
       <Title
         padding="pt-30px pb-10"
-        title={titleText.login.title}
-        description={titleText.login.description}
+        title={TITLE_TEXT.login.title}
+        description={TITLE_TEXT.login.description}
       />
       <AuthForm type="login" />
       <Link href="/signup">
