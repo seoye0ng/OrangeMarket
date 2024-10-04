@@ -23,6 +23,7 @@ const config: Config = {
       },
       backgroundImage: {},
       colors: tokens.colors,
+      lineHeight: tokens.fontSize,
       fontSize: tokens.fontSize,
       zIndex: tokens.zIndex,
       spacing: tokens.spacing,

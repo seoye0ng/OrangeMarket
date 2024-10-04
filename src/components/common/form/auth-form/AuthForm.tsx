@@ -3,6 +3,7 @@ import { UnderlineInput } from '@/components/common/input/UnderlineInput';
 
 interface AuthFormProps {
   type: 'login' | 'signup';
+  onNext?: () => void; // 버튼 클릭 시 호출할 함수
 }
 
 const authFields = [
@@ -14,7 +15,7 @@ const authFields = [
   },
 ];
 
-export default function AuthForm({ type = 'signup' }: AuthFormProps) {
+export default function AuthForm({ type, onNext }: AuthFormProps) {
   return (
     <form className="flex-center gap-30px">
       <div className="flex-center gap-4">
@@ -30,7 +31,7 @@ export default function AuthForm({ type = 'signup' }: AuthFormProps) {
           />
         ))}
       </div>
-      <CustomButton color="primary" size="l" radius="full">
+      <CustomButton onClick={onNext} color="primary" size="l" radius="full">
         {type === 'signup' ? '다음' : '로그인'}
       </CustomButton>
     </form>
