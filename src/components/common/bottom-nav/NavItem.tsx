@@ -10,7 +10,7 @@ function NavItem({ href, label, bottomNavIcon: Icon }: IBottomNavItem) {
   const isActive = pathname === href;
 
   return (
-    <li className="cursor-pointer flex-shrink-0">
+    <li className="flex-shrink-0 cursor-pointer">
       <Link href={href} className="flex flex-col items-center gap-1">
         <Icon
           color={isActive ? 'primary-100' : 'gray-300'}
