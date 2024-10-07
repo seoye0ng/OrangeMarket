@@ -27,6 +27,7 @@ const config: Config = {
       fontSize: tokens.fontSize,
       zIndex: tokens.zIndex,
       spacing: tokens.spacing,
+      borderRadius: tokens.radius,
     },
   },
   plugins: [
