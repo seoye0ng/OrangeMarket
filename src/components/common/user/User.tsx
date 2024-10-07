@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IUserProfile } from '@/api/types/user';
 import { CustomButton } from '@/components/common/button/Button';
 import SMore from '@/components/icons/SMore';
+import UserImage from './UserImage';
 
 interface IUserProps {
   type: 'post' | 'search' | 'follow';
@@ -16,14 +17,7 @@ export default function User({ type, userProfile }: IUserProps) {
 
   return (
     <article className="flex items-center gap-3">
-      <Link href="/" className="relative h-[42px] w-[42px] shrink-0">
-        <Image
-          src={userProfile.image || '/assets/icons/basic-profile-img-.svg'}
-          alt={`${userProfile.username} 프로필 이미지`}
-          fill
-          style={{ objectFit: 'cover' }}
-        />
-      </Link>
+      <UserImage user={userProfile} size="[42px]" />
       <div className="flex flex-auto items-center justify-between">
         <div>
           <p
