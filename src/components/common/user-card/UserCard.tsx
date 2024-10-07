@@ -11,7 +11,7 @@ interface IUserProps {
   userProfile: IUserProfile;
 }
 
-export default function User({ type, userProfile }: IUserProps) {
+export default function UserCard({ type, userProfile }: IUserProps) {
   const isPostType = type === 'post';
   const isfollowType = type === 'follow';
 
