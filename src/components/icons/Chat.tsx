@@ -4,7 +4,7 @@ import { tokens } from '@/styles/token';
 
 import { IIconDefaultProps } from './types/iconType';
 
-function Post({
+function Chat({
   isActive = false,
   width = 24,
   color = 'gray-300',
@@ -33,4 +33,4 @@ function Post({
   );
 }
 
-export default Post;
+export default Chat;

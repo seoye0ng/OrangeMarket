@@ -8,7 +8,7 @@ export interface IIconProps {
 }
 
 export interface IIconDefaultProps {
-  isActive: boolean;
+  isActive?: boolean;
   width?: number;
   color?: IconColor;
   onClick?: () => void;

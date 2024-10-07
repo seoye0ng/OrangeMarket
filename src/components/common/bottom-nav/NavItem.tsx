@@ -11,13 +11,13 @@ function NavItem({ href, label, bottomNavIcon: Icon }: IBottomNavItem) {
 
   return (
     <li className="flex-shrink-0 cursor-pointer">
-      <Link href={href} className="flex flex-col items-center gap-1">
+      <Link href={href} className="flex-center gap-1">
         <Icon
           color={isActive ? 'primary-100' : 'gray-300'}
           isActive={isActive}
         />
         <p
-          className={`text-14px font-normal transition-colors ${
+          className={`text-10px font-normal leading-14px transition-colors ${
             isActive ? 'text-primary-100' : 'text-gray-300'
           }`}
         >

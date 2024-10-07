@@ -4,7 +4,7 @@ import NavItem from './NavItem';
 
 export default function BottomNav() {
   return (
-    <nav className="px-9 pt-3 pb-2 border-t-1">
+    <nav className="fixed bottom-0 z-100 w-full border-t-1 bg-white px-9 py-3">
       <ul className="flex justify-between">
         {Object.entries(BOTTOM_NAV_ITEMS).map(
           ([key, { label, href, bottomNavIcon }]) => (
