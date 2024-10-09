@@ -3,9 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { IBottomNavItem } from '@/constants/bottomNavItem';
+import { IBottomNavConfig } from '@/config/bottomNavConfig';
 
-function NavItem({ href, label, bottomNavIcon: Icon }: IBottomNavItem) {
+function NavItem({
+  href,
+  label,
+  bottomNavIcon: Icon,
+}: IBottomNavConfig & { href: string }) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
