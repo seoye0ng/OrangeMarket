@@ -2,34 +2,58 @@ import classNames from 'classnames';
 
 import { IIconProps } from '@/components/icons/types/iconType';
 
+import { ICustomButtonProps } from '../button/Button';
+import { ISearchFormProps } from '../form/search-form/SearchForm';
+
 export default function withHeader(
   title?: string,
-  LeftIconComponent?: React.ComponentType<IIconProps>,
-  RighticonComponent?: React.ComponentType<IIconProps>,
+  LeftIcon?: React.ComponentType<IIconProps>,
+  RightIcon?: React.ComponentType<IIconProps>,
+  RightButton?: React.ComponentType<ICustomButtonProps>,
+  RightSearchForm?: React.ComponentType<ISearchFormProps>,
+  rightButtonProps?: ICustomButtonProps,
+  rightSearchFormProps?: ISearchFormProps,
+  handleBackClick?: () => void,
+  handleRightClick?: () => void,
 ) {
   return function WrappedComponent(props: IIconProps) {
     return (
-      <header className="flex justify-between p-4 text-24px border-b-1 shadow-test1">
-        <div className="flex space-x-4 items-center">
-          {LeftIconComponent && (
-            <div className="cursor-pointer">
-              <LeftIconComponent {...props} />
-            </div>
+      <header className="flex items-center justify-between border-b-1 px-4 py-2 text-24px">
+        <div className="flex items-center space-x-4">
+          {LeftIcon && (
+            <button
+              type="button"
+              className="cursor-pointer"
+              onClick={handleBackClick}
+            >
+              <LeftIcon activeColor="gray-300" />
+            </button>
           )}
           {title && (
             <span
               className={classNames(
-                LeftIconComponent ? 'text-14px' : 'text-18px',
-                'font-medium',
+                LeftIcon ? 'text-14px' : 'leading-22px text-18px font-medium',
               )}
             >
               {title}
             </span>
           )}
         </div>
-        <div className="cursor-pointer">
-          {RighticonComponent && <RighticonComponent {...props} />}
-        </div>
+        {RightIcon && (
+          <button
+            type="button"
+            className="my-1 cursor-pointer"
+            onClick={handleRightClick}
+          >
+            <RightIcon activeColor="gray-200" />
+          </button>
+        )}
+        {RightButton && (
+          <RightButton {...(rightButtonProps as ICustomButtonProps)} />
+        )}
+        {RightSearchForm && (
+          <RightSearchForm {...(rightSearchFormProps as ISearchFormProps)} />
+        )}
       </header>
     );
   };

@@ -1,4 +1,4 @@
-import { CustomButton } from '@/components/common/button/Button';
+import CustomButton from '@/components/common/button/Button';
 import { UnderlineInput } from '@/components/common/input/UnderlineInput';
 
 interface AuthFormProps {
