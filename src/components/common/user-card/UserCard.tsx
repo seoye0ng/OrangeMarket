@@ -3,6 +3,7 @@ import CustomButton from '@/components/common/button/Button';
 import SMore from '@/components/icons/SMore';
 
 import UserImage from './UserImage';
+import classNames from 'classnames';
 
 interface IUserProps {
   type: 'post' | 'search' | 'follow';
@@ -15,11 +16,14 @@ export default function UserCard({ type, userProfile }: IUserProps) {
 
   return (
     <article className="flex items-center gap-3">
-      <UserImage user={userProfile} size="[42px]" />
+      <UserImage user={userProfile} size="42px" />
       <div className="flex flex-auto items-center justify-between">
         <div>
           <p
-            className={`text-14px font-medium leading-17px ${isPostType ? 'mb-2px' : 'mb-6px'}`}
+            className={classNames('text-14px font-medium leading-17px', {
+              'mb-2px': isPostType,
+              'mb-6px': !isPostType,
+            })}
           >
             {userProfile.username}
           </p>
