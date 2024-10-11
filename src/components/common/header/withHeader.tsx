@@ -6,30 +6,43 @@ export default function withHeader(
   title?: string,
   LeftIconComponent?: React.ComponentType<IIconProps>,
   RighticonComponent?: React.ComponentType<IIconProps>,
+  handleBackClick?: () => void,
+  handleRightIconClick?: () => void,
 ) {
   return function WrappedComponent(props: IIconProps) {
     return (
-      <header className="flex justify-between p-4 text-24px border-b-1 shadow-test1">
-        <div className="flex space-x-4 items-center">
+      <header className="flex items-center justify-between border-b-1 p-4 text-24px">
+        <div className="flex items-center space-x-4">
           {LeftIconComponent && (
-            <div className="cursor-pointer">
+            <button
+              type="button"
+              className="cursor-pointer"
+              onClick={handleBackClick}
+            >
               <LeftIconComponent {...props} />
-            </div>
+            </button>
           )}
           {title && (
             <span
               className={classNames(
-                LeftIconComponent ? 'text-14px' : 'text-18px',
-                'font-medium',
+                LeftIconComponent
+                  ? 'text-14px'
+                  : 'leading-22px text-18px font-medium',
               )}
             >
               {title}
             </span>
           )}
         </div>
-        <div className="cursor-pointer">
-          {RighticonComponent && <RighticonComponent {...props} />}
-        </div>
+        {RighticonComponent && (
+          <button
+            type="button"
+            className="cursor-pointer"
+            onClick={handleRightIconClick}
+          >
+            <RighticonComponent {...props} />
+          </button>
+        )}
       </header>
     );
   };
