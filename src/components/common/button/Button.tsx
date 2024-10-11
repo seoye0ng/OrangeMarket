@@ -2,7 +2,18 @@
 
 import { extendVariants, Button } from '@nextui-org/react';
 
-export const CustomButton = extendVariants(Button, {
+export interface ICustomButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  color?: 'primary' | 'white';
+  isDisabled?: boolean;
+  radius?: 'full';
+  size?: 's' | 'm' | 'ms' | 'l';
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const CustomButton = extendVariants(Button, {
   variants: {
     color: {
       primary: 'text-white bg-primary',
@@ -16,8 +27,8 @@ export const CustomButton = extendVariants(Button, {
     },
     size: {
       s: 'px-[11px] py-[7px] min-w-fit  h-auto text-tiny font-regular',
-      m: 'px-[32px] py-[7px] min-w-fit h-auto text-small font-medium',
-      ms: 'px-[40px] py-[8px] min-w-fit h-auto text-small font-medium',
+      ms: 'px-[32px] py-[7px] min-w-fit h-auto text-small font-medium',
+      m: 'px-[40px] py-[8px] min-w-fit h-auto text-small font-medium',
       l: 'py-[13px] w-full min-w-fit text-small font-medium',
     },
   },
@@ -33,3 +44,5 @@ export const CustomButton = extendVariants(Button, {
     },
   ],
 });
+
+export default CustomButton;

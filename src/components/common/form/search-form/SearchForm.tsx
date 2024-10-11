@@ -3,11 +3,11 @@
 import { Input } from '@nextui-org/react';
 import { useRef, FormEvent } from 'react';
 
-interface ISearchForm {
+export interface ISearchFormProps {
   onSearch: (searchTerm: string) => void;
 }
 
-export default function SearchForm({ onSearch }: ISearchForm) {
+export default function SearchForm({ onSearch }: ISearchFormProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {

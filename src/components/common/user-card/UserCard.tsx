@@ -1,9 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
 import { IUserProfile } from '@/api/types/user';
-import { CustomButton } from '@/components/common/button/Button';
+import CustomButton from '@/components/common/button/Button';
 import SMore from '@/components/icons/SMore';
+
 import UserImage from './UserImage';
 
 interface IUserProps {

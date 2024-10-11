@@ -1,5 +1,7 @@
-import { CustomButton } from '@/components/common/button/Button';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import CustomButton from '@/components/common/button/Button';
 import { UnderlineInput } from '@/components/common/input/UnderlineInput';
+import UserImage from '@/components/common/user-card/UserImage';
 
 const profileFields = [
   {
@@ -24,12 +26,7 @@ export default function ProfileForm() {
     <form className="flex-center gap-30px" onSubmit={() => '가입완!'}>
       <div>
         <label htmlFor="profile-upload" className="relative">
-          <img src="/assets/icons/basic-profile-img-.svg" alt="프로필 이미지" />
-          <img
-            src="/assets/icons/upload-file.svg"
-            alt="프로필 이미지"
-            className="absolute bottom-0 right-0 w-9"
-          />
+          <UserImage size="[42px]" />
         </label>
         <input
           type="file"
