@@ -18,7 +18,12 @@ export default function Header() {
     router.back();
   };
 
-  const handleRightIconClick = () => {
+  const handleSearch = (searchTerm: string) => {
+    console.log('ref 작동하심?', searchTerm);
+    // 검색 api 호출
+  };
+
+  const handleRightClick = () => {
     switch (pathname) {
       case '/':
         console.log('검색');
@@ -42,8 +47,12 @@ export default function Header() {
     config.title,
     config.LeftIcon,
     config.RightIcon,
+    config.RightButton,
+    config.RightSearchForm,
+    config.rightButtonProps,
+    { ...config.rightSearchFormProps, onSearch: handleSearch },
     handleBackClick,
-    handleRightIconClick,
+    handleRightClick,
   );
 
   return <DynamicHeader />;

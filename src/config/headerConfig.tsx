@@ -1,3 +1,9 @@
+import CustomButton, {
+  ICustomButtonProps,
+} from '@/components/common/button/Button';
+import SearchForm, {
+  ISearchFormProps,
+} from '@/components/common/form/search-form/SearchForm';
 import BackArrow from '@/components/icons/BackArrow';
 import More from '@/components/icons/More';
 import Search from '@/components/icons/Search';
@@ -7,6 +13,10 @@ interface IHeaderConfig {
   title?: string;
   LeftIcon?: React.ComponentType<IIconProps>;
   RightIcon?: React.ComponentType<IIconProps>;
+  RightButton?: React.ComponentType<ICustomButtonProps>;
+  RightSearchForm?: React.ComponentType<ISearchFormProps>;
+  rightButtonProps?: ICustomButtonProps;
+  rightSearchFormProps?: ISearchFormProps;
 }
 
 export const headerConfig: Record<string, IHeaderConfig> = {
@@ -16,52 +26,43 @@ export const headerConfig: Record<string, IHeaderConfig> = {
     RightIcon: Search,
   },
   '/chat': {
-    title: '',
     LeftIcon: BackArrow,
     RightIcon: More,
   },
   '/profile': {
-    title: '',
     LeftIcon: BackArrow,
     RightIcon: More,
   },
   '/search': {
-    title: '',
     LeftIcon: BackArrow,
-    RightIcon: Search,
+    RightSearchForm: SearchForm,
   },
   '/chat-list': {
-    title: '',
     LeftIcon: BackArrow,
-    RightIcon: undefined,
   },
   '/followers': {
     title: 'Followers',
     LeftIcon: BackArrow,
-    RightIcon: undefined,
   },
   '/followings': {
     title: 'Followings',
     LeftIcon: BackArrow,
-    RightIcon: undefined,
   },
-  '/upload': {
-    title: '',
+  '/post': {
     LeftIcon: BackArrow,
-    RightIcon: undefined,
+    RightButton: CustomButton,
+    rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
   },
   '/add-product': {
-    title: '',
     LeftIcon: BackArrow,
-    RightIcon: undefined,
+    RightButton: CustomButton,
+    rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
   },
   '/edit-product': {
-    title: '',
     LeftIcon: BackArrow,
     RightIcon: More,
   },
   '/edit-profile': {
-    title: '',
     LeftIcon: BackArrow,
     RightIcon: More,
   },
