@@ -13,6 +13,8 @@ export interface ICustomButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
+const commonStyle = 'min-w-fit h-fit';
+
 const CustomButton = extendVariants(Button, {
   variants: {
     color: {
@@ -26,10 +28,10 @@ const CustomButton = extendVariants(Button, {
       full: 'rounded-full',
     },
     size: {
-      s: 'px-[11px] py-[7px] min-w-fit  h-auto text-tiny font-regular',
-      ms: 'px-[32px] py-[7px] min-w-fit h-auto text-small font-medium',
-      m: 'px-[40px] py-[8px] min-w-fit h-auto text-small font-medium',
-      l: 'py-[13px] w-full min-w-fit text-small font-medium',
+      s: `${commonStyle} px-[11px] py-[7px] text-tiny font-regular`,
+      ms: `${commonStyle} px-[32px] py-[8px] text-small font-medium`,
+      m: `${commonStyle} px-[40px] py-[8px] text-small font-medium`,
+      l: `${commonStyle} w-full py-[13px] text-small font-medium`,
     },
   },
   defaultVariants: {

@@ -41,10 +41,10 @@ const config: Config = {
           large: tokens.fontSize['18px'],
         },
         lineHeight: {
-          tiny: tokens.fontSize['14px'],
-          small: tokens.fontSize['14px'],
-          medium: tokens.fontSize['16px'],
-          large: tokens.fontSize['18px'],
+          tiny: tokens.fontSize['17px'],
+          small: tokens.fontSize['17px'],
+          medium: tokens.fontSize['17px'],
+          large: tokens.fontSize['17px'],
         },
         borderWidth: {
           small: '1px',
