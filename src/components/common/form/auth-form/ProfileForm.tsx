@@ -1,34 +1,41 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import CustomButton from '@/components/common/button/Button';
+
+'use client';
+
+import { useFormContext } from 'react-hook-form';
+
 import { UnderlineInput } from '@/components/common/input/UnderlineInput';
 import UserImage from '@/components/common/user-card/UserImage';
 
-const profileFields = [
-  {
-    type: 'text',
+const profileFields = {
+  username: {
     label: '사용자 이름',
     placeholder: '2~10자 이내여야 합니다.',
   },
-  {
-    type: 'email',
+  accountname: {
     label: '계정 ID',
     placeholder: '영문, 숫자, 특수문자(.), (_)만 사용 가능합니다..',
   },
-  {
-    type: 'text',
+  intro: {
     label: '소개',
     placeholder: '자신과 판매할 상품에 대해 소개해 주세요!.',
   },
-];
+};
 
 export default function ProfileForm() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
-    <form className="flex-center gap-30px" onSubmit={() => '가입완!'}>
+    <fieldset className="flex-center gap-30px">
       <div>
         <label htmlFor="profile-upload" className="relative">
-          <UserImage size="[42px]" />
+          <UserImage size="110px" />
         </label>
         <input
+          {...register('image')}
           type="file"
           accept="image/*"
           className="hidden"
@@ -36,21 +43,19 @@ export default function ProfileForm() {
         />
       </div>
       <div className="flex-center gap-4">
-        {/* 에러 시 isInvalid  ture */}
-        {profileFields.map((field) => (
+        {Object.entries(profileFields).map(([name, field]) => (
           <UnderlineInput
-            key={field.type}
+            key={name}
+            {...register(name)}
             isClearable
             variant="underlined"
-            type={field.type}
             label={field.label}
             placeholder={field.placeholder}
+            isInvalid={!!errors[name]}
+            errorMessage={errors[name]?.message?.toString()}
           />
         ))}
       </div>
-      <CustomButton color="primary" size="l" radius="full">
-        감귤마켓 시작하기
-      </CustomButton>
-    </form>
+    </fieldset>
   );
 }
