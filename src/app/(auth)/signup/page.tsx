@@ -5,9 +5,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { ISignUpRequest } from '@/api/types/auth';
 import CustomButton from '@/components/common/button/Button';
-import AuthForm from '@/components/common/form/auth-form/AuthForm';
-import ProfileForm from '@/components/common/form/auth-form/ProfileForm';
+import FormTemplate from '@/components/common/form/auth-form/FormTemplate';
+import ImageField from '@/components/common/form/auth-form/ImageField';
 import Title from '@/components/common/title/Title';
+import { signupFields, profileFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
 
 export default function Signup() {
@@ -31,6 +32,9 @@ export default function Signup() {
       console.log('유효성 검사 실패');
       return;
     }
+    // email 중복 검증
+    // 중복시에 중복 에러메세지 넣어주기
+    // 성공시 다음스텝으로
     setStep((currentStep) => currentStep + 1);
     window.history.pushState(null, ''); // 히스토리 스택에 새로운 상태 추가
   };
@@ -73,7 +77,13 @@ export default function Signup() {
       />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {step === 1 ? <AuthForm type="signup" /> : <ProfileForm />}
+          {step === 1 ? (
+            <FormTemplate fields={signupFields} />
+          ) : (
+            <FormTemplate fields={profileFields}>
+              <ImageField />
+            </FormTemplate>
+          )}
           <CustomButton
             type={step === 1 ? 'button' : 'submit'}
             color="primary"
