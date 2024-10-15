@@ -1,29 +1,30 @@
-import { IUserProfile } from '@/api/types/user';
-import CustomButton from '@/components/common/button/Button';
-import SMore from '@/components/icons/SMore';
-
-import UserImage from './UserImage';
 import classNames from 'classnames';
 
+import { IUserProfile } from '@/api/types/user';
+
+import UserImage from './UserImage';
+
 interface IUserProps {
-  type: 'post' | 'search' | 'follow';
+  imageSize: '42px' | '50px';
   userProfile: IUserProfile;
+  children?: React.ReactNode;
 }
 
-export default function UserCard({ type, userProfile }: IUserProps) {
-  const isPostType = type === 'post';
-  const isfollowType = type === 'follow';
-
+export default function UserCard({
+  imageSize,
+  userProfile,
+  children,
+}: IUserProps) {
   return (
     <article className="flex items-center gap-3">
-      <UserImage user={userProfile} size="42px" />
+      <UserImage user={userProfile} size={imageSize} />
       <div className="flex flex-auto items-center justify-between">
         <div>
           <p
-            className={classNames('text-14px font-medium leading-17px', {
-              'mb-2px': isPostType,
-              'mb-6px': !isPostType,
-            })}
+            className={classNames(
+              'text-14px font-medium leading-17px',
+              imageSize === '42px' ? 'mb-2px' : 'mb-6px',
+            )}
           >
             {userProfile.username}
           </p>
@@ -31,16 +32,7 @@ export default function UserCard({ type, userProfile }: IUserProps) {
             {userProfile.accountname}
           </p>
         </div>
-        {isPostType && (
-          <button type="button" aria-label="더보기 버튼" className="self-start">
-            <SMore />
-          </button>
-        )}
-        {isfollowType && (
-          <CustomButton color="primary" size="s" radius="full">
-            팔로우
-          </CustomButton>
-        )}
+        {children}
       </div>
     </article>
   );
