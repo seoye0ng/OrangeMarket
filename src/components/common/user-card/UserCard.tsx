@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 
-import { IUserProfile } from '@/api/types/user';
+import { IUserProfile, IUserProfileBase } from '@/api/types/user';
 
 import UserImage from './UserImage';
 
 interface IUserProps {
   imageSize: '42px' | '50px';
-  userProfile: IUserProfile;
+  userProfile: IUserProfileBase | IUserProfile;
   children?: React.ReactNode;
 }
 

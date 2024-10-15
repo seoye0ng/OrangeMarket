@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IUserProfile } from '@/api/types/user';
+import { IUserProfile, IUserProfileBase } from '@/api/types/user';
 
 interface IUserProps {
-  user?: IUserProfile;
+  user?: IUserProfileBase | IUserProfile;
   size?: '42px' | '50px' | '110px' | '36px';
   type?: 'link' | 'disabled';
 }
@@ -19,7 +19,7 @@ export default function UserImage({
   return (
     <Link
       href={herf}
-      className={`relative inline-block h-[${size}] w-[${size}] shrink-0`}
+      className={`relative inline-block h-[${size}] w-[${size}] shrink-0 overflow-hidden rounded-full`}
     >
       <Image
         src={user?.image || '/assets/icons/basic-profile-img-.svg'}
