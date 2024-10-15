@@ -27,6 +27,7 @@ export const tokens = {
     '2px': '0.125rem',
     '6px': '0.375rem',
     '13px': '0.8125rem',
+    '15px': '0.9375rem',
     '16px': '1rem',
     '25px': '1.5625rem',
     '30px': '1.875rem',
@@ -37,6 +38,7 @@ export const tokens = {
     '100': '100',
   },
   radius: {
+    '8px': '0.5rem',
     '10px': '0.625rem',
   },
 };
