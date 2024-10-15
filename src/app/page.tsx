@@ -1,5 +1,7 @@
+import IconButton from '@/components/common/button/IconButton';
 import PostCard from '@/components/common/post-card/PostCard';
 import UserCard from '@/components/common/user-card/UserCard';
+import SMore from '@/components/icons/SMore';
 import { postList } from '@/mocks/post/post';
 
 export default function Home() {
@@ -7,7 +9,13 @@ export default function Home() {
     <main className="mt-5 px-4">
       {postList.map(({ author, ...post }) => (
         <section key={post.id} className="mb-5">
-          <UserCard type="post" userProfile={author} />
+          <UserCard imageSize="42px" userProfile={author}>
+            <IconButton
+              icon={SMore}
+              className="self-start"
+              label="더보기 버튼"
+            />
+          </UserCard>
           <PostCard post={post} postCardClassName="ml-[54px]" />
         </section>
       ))}
