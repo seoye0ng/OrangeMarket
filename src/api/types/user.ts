@@ -1,12 +1,17 @@
-export interface IUserProfile {
+export interface IUserProfileBase {
   _id: string;
   username: string;
   accountname: string;
-  intro: string;
   image: string;
-  isfollow: boolean;
   following: string[];
   follower: string[];
   followerCount: number;
   followingCount: number;
 }
+
+export interface IUserProfile extends IUserProfileBase {
+  intro: string;
+  isfollow: boolean;
+}
+
+export type ISearchUserList = IUserProfileBase[];
