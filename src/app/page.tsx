@@ -2,7 +2,7 @@ import IconButton from '@/components/common/button/IconButton';
 import PostCard from '@/components/common/post-card/PostCard';
 import UserCard from '@/components/common/user-card/UserCard';
 import SMore from '@/components/icons/SMore';
-import { postList } from '@/mocks/post/post';
+import { postList } from '@/mocks/postList';
 
 export default function Home() {
   return (
