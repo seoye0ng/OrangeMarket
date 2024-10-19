@@ -7,6 +7,16 @@ import axios from 'axios';
 describe('signup API Test', () => {
   let mock: MockAdapter;
 
+  // 공통 회원가입 요청 데이터
+  const requestData: ISignUpRequest = {
+    username: '알파카',
+    email: 'alpaca@naver.com',
+    password: 'alpaca01!',
+    accountname: 'alpaca_01',
+    intro: '안녕 난 알파카!',
+    image: '',
+  };
+
   // 각 테스트 전에 Mock Adapter 설정
   beforeEach(() => {
     mock = new MockAdapter(instance); // axios 인스턴스 모킹
@@ -31,15 +41,6 @@ describe('signup API Test', () => {
       },
     };
 
-    const requestData: ISignUpRequest = {
-      username: '알파카',
-      email: 'alpaca@naver.com',
-      password: 'alpaca01!',
-      accountname: 'alpaca_01',
-      intro: '안녕 난 알파카!',
-      image: '',
-    };
-
     // /user 경로에 대한 POST 요청 모킹, 200 응답과 함께 mock 데이터를 반환
     mock.onPost('/user').reply(200, responseData);
 
@@ -48,5 +49,24 @@ describe('signup API Test', () => {
 
     // 응답 데이터가 모킹한 데이터와 같은지 확인
     expect(response).toEqual(responseData);
+  });
+
+  /* -- 요청 실패 테스트 -- */
+  it('에러발생!', async () => {
+    // /user 경로에 대한 POST 요청 모킹, 500 에러 응답
+    mock.onPost('/user').reply(500);
+
+    // 에러 발생을 확인하는 try-catch 블록
+    try {
+      await signup(requestData);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        // 에러 상태 코드가 500인지 확인
+        expect(error.response?.status).toBe(500);
+      } else {
+        // AxiosError가 아닐 경우 처리
+        throw new Error('에러 발생!');
+      }
+    }
   });
 });
