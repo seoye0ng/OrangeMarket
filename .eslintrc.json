@@ -73,5 +73,5 @@
       }
     ]
   },
-  "ignorePatterns": ["postcss.config.mjs"] // 이 파일을 ESLint에서 무시하도록 설정
+  "ignorePatterns": ["postcss.config.mjs", "next.config.mjs"] // 이 파일을 ESLint에서 무시하도록 설정
 }
