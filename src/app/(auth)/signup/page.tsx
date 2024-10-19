@@ -10,6 +10,7 @@ import ImageField from '@/components/common/form/auth-form/ImageField';
 import Title from '@/components/common/title/Title';
 import { signupFields, profileFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
+import useSignup from '@/hooks/queries/auth/useSignup';
 
 export default function Signup() {
   const methods = useForm<ISignUpRequest>({
@@ -24,6 +25,7 @@ export default function Signup() {
     },
   });
   const [step, setStep] = useState(1);
+  const { mutate } = useSignup();
 
   // 구조변경으로 props로 하위컴포넌트에 넘겨주지 않기 때문에 useCallback 삭제
   const handleNext = async () => {
@@ -63,9 +65,8 @@ export default function Signup() {
   const padding = step === 1 ? 'pt-30px pb-10' : 'py-30px';
 
   const onSubmit = (data: ISignUpRequest) => {
-    console.log('성공');
-    console.log(data);
-    // 여기에 API 호출 로직 추가
+    console.log('성공', data);
+    mutate(data);
   };
 
   return (

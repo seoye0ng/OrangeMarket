@@ -1,8 +1,9 @@
-import MockAdapter from 'axios-mock-adapter';
-import { signup } from '@/api/apiRequests/auth';
-import { ISignUpRequest, ISignupResponse } from '@/api/types/auth';
-import instance from '@/api/index'; // axios 인스턴스 가져오기
 import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+import { signup } from '@/api/apiRequests/auth';
+import instance from '@/api/index'; // axios 인스턴스 가져오기
+import { ISignUpRequest, ISignupResponse } from '@/api/types/auth';
 
 describe('signup API Test', () => {
   let mock: MockAdapter;
