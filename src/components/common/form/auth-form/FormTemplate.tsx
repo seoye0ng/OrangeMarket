@@ -15,16 +15,13 @@ interface FormTemplateProps {
 export default function FormTemplate({ fields, children }: FormTemplateProps) {
   const {
     register,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useFormContext();
 
   return (
     <fieldset className="flex-center gap-4">
       {children}
       {Object.entries(fields).map(([name, field]) => {
-        // 필드가 터치되었을 때만 에러 표시
-        const hasError = touchedFields[name] && errors[name];
-
         return (
           <UnderlineInput
             key={name}
@@ -40,7 +37,7 @@ export default function FormTemplate({ fields, children }: FormTemplateProps) {
             }
             label={field.label}
             placeholder={field.placeholder}
-            isInvalid={!!hasError}
+            isInvalid={!!errors[name]}
             errorMessage={errors[name]?.message?.toString()}
           />
         );
