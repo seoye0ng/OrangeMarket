@@ -1,10 +1,10 @@
-import axios, { Axios } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 import { handleRequest, handleRequestError } from './helper/requestHandlers';
 import { handleResponse, handleResponseError } from './helper/responseHandlers';
 
 // axios 인스턴스 생성
-const instance: Axios = axios.create({
+const instance: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
 });
