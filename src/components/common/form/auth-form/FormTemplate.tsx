@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-
 'use client';
 
 import { useFormContext } from 'react-hook-form';
@@ -22,19 +20,19 @@ export default function FormTemplate({ fields, children }: FormTemplateProps) {
     <fieldset className="flex-center gap-4">
       {children}
       {Object.entries(fields).map(([name, field]) => {
+        const inputType =
+          {
+            email: 'email',
+            password: 'password',
+          }[name] || 'text';
+
         return (
           <UnderlineInput
             key={name}
             {...register(name, field.validation)}
             isClearable
             variant="underlined"
-            type={
-              name === 'email'
-                ? 'email'
-                : name === 'password'
-                  ? 'password'
-                  : 'text'
-            }
+            type={inputType}
             label={field.label}
             placeholder={field.placeholder}
             isInvalid={!!errors[name]}
