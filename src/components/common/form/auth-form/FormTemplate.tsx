@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-
 'use client';
 
 import { useFormContext } from 'react-hook-form';
@@ -15,15 +13,18 @@ interface FormTemplateProps {
 export default function FormTemplate({ fields, children }: FormTemplateProps) {
   const {
     register,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useFormContext();
 
   return (
     <fieldset className="flex-center gap-4">
       {children}
       {Object.entries(fields).map(([name, field]) => {
-        // 필드가 터치되었을 때만 에러 표시
-        const hasError = touchedFields[name] && errors[name];
+        const inputType =
+          {
+            email: 'email',
+            password: 'password',
+          }[name] || 'text';
 
         return (
           <UnderlineInput
@@ -31,16 +32,10 @@ export default function FormTemplate({ fields, children }: FormTemplateProps) {
             {...register(name, field.validation)}
             isClearable
             variant="underlined"
-            type={
-              name === 'email'
-                ? 'email'
-                : name === 'password'
-                  ? 'password'
-                  : 'text'
-            }
+            type={inputType}
             label={field.label}
             placeholder={field.placeholder}
-            isInvalid={!!hasError}
+            isInvalid={!!errors[name]}
             errorMessage={errors[name]?.message?.toString()}
           />
         );
