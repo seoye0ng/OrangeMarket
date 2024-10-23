@@ -1,4 +1,10 @@
+'use client';
+
+import PostSection from '@/components/profile/post/PostSection';
+import ProductListSection from '@/components/profile/product/ProductListSection';
 import UserInfoSection from '@/components/profile/user-info/UserInfoSection';
+import { productList } from '@/mocks/productList';
+import { postList } from '@/mocks/postList';
 
 const userProfile = {
   _id: '',
@@ -21,6 +27,8 @@ export default function Profile() {
         userProfile={userProfile}
         className="bg-white pb-26px pt-30px"
       />
+      <ProductListSection className="bg-white py-5" productList={productList} />
+      <PostSection className="bg-white" postList={postList} />
     </main>
   );
 }

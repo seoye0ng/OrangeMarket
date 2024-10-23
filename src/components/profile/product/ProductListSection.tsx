@@ -1,8 +1,8 @@
 import classNames from 'classnames';
+import { useCallback } from 'react';
 
 import ProductCard from './ProductCard';
 import { IProduct, IProductList } from '@/api/types/product';
-import { useCallback } from 'react';
 
 interface IProductListSectionProps {
   productList: IProductList;
