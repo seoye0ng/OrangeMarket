@@ -26,10 +26,12 @@ export const tokens = {
   spacing: {
     '2px': '0.125rem',
     '6px': '0.375rem',
+    '10px': '0.625rem',
     '13px': '0.8125rem',
     '15px': '0.9375rem',
     '16px': '1rem',
     '25px': '1.5625rem',
+    '26px': '1.625rem',
     '30px': '1.875rem',
     '34px': '2.125rem',
   },

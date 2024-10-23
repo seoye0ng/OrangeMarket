@@ -17,13 +17,8 @@ export default function UserInfoSection({
   className,
 }: IUserInfoSection) {
   return (
-    <section
-      className={classNames(
-        'flex flex-col items-center shadow-test1',
-        className,
-      )}
-    >
-      <div className="relative flex w-full items-center shadow-test2">
+    <section className={classNames('flex flex-col items-center', className)}>
+      <div className="relative flex w-full items-center">
         <UserImage
           size="110px"
           className="absolute left-1/2 -translate-x-1/2"
