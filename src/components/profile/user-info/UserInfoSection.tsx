@@ -6,7 +6,7 @@ import { FollowerFollowingButton } from './FollowerFollowButton';
 import { ActionButtons } from './ActionButtons';
 
 interface IUserInfoSection {
-  type: 'user' | 'otherUser';
+  type?: 'user' | 'otherUser';
   userProfile: IUserProfile;
   className?: string;
 }
