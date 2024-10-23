@@ -1,4 +1,5 @@
 'use client';
+
 import classNames from 'classnames';
 import { useState } from 'react';
 
@@ -28,13 +29,19 @@ export default function PostSection({ className }: IPostSection) {
 
   return (
     <section className={classNames('shadow-test1', className)}>
-      <div>
-        <IconButton label="리스트형 아이콘" onClick={handleListClick}>
-          <PostList color={getIconColor(postType, 'list')} />
-        </IconButton>
-        <IconButton label="앨범형 아이콘" onClick={handleAlbumClick}>
-          <PostAlbum color={getIconColor(postType, 'album')} />
-        </IconButton>
+      <div className="border-b-1 border-gray-100 px-4 pt-2 text-right">
+        <IconButton
+          className="ml-4"
+          label="리스트형 아이콘"
+          onClick={handleListClick}
+          icon={<PostList color={getIconColor(postType, 'list')} />}
+        />
+        <IconButton
+          className="ml-4"
+          label="앨범형 아이콘"
+          onClick={handleAlbumClick}
+          icon={<PostAlbum color={getIconColor(postType, 'album')} />}
+        />
       </div>
       {postType === 'list' && <div>list</div>}
       {postType === 'album' && <div>album</div>}
