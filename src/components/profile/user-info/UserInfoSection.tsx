@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { IUserProfile } from '@/api/types/user';
-import UserImage from '@/components/common/user-card/UserImage';
+import UserImage from '@/components/common/post-item/user-card/UserImage';
 import { FollowerFollowingButton } from './FollowerFollowButton';
 import { ActionButtons } from './ActionButtons';
 
@@ -23,7 +23,7 @@ export default function UserInfoSection({
           size="110px"
           className="absolute left-1/2 -translate-x-1/2"
         />
-        <div className="absolute flex w-full items-center justify-between px-[55px]">
+        <div className="absolute flex w-full items-center justify-between px-10">
           <FollowerFollowingButton count={userProfile.followerCount} />
           <FollowerFollowingButton count={userProfile.followingCount} />
         </div>

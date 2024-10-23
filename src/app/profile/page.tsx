@@ -14,7 +14,7 @@ const userProfile = {
   intro: '안녕 난 오렌지 알파카!',
   follower: [''],
   following: [''],
-  followerCount: 10234234230,
+  followerCount: 102345,
   followingCount: 50,
   isfollow: false,
 };
