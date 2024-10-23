@@ -4,11 +4,9 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import { IPostList } from '@/api/types/post';
-import IconButton from '@/components/common/button/IconButton';
-import { PostCard, PostContent } from '@/components/common/post-card';
-import UserCard from '@/components/common/user-card/UserCard';
-import SMore from '@/components/icons/SMore';
+import { PostContent } from '@/components/common/post-item/post-card';
 import { IconSwitcher } from './IconSwitcher';
+import PostItem from '@/components/common/post-item/PostItem';
 
 interface IPostSection {
   className?: string;
@@ -28,16 +26,7 @@ export default function PostSection({ className, postList }: IPostSection) {
       {postType === 'list' && (
         <div className="px-4 pb-20 pt-4">
           {postList.post.map(({ author, ...post }) => (
-            <article key={post.id} className="mb-5">
-              <UserCard imageSize="42px" userProfile={author}>
-                <IconButton
-                  icon={SMore}
-                  className="self-start"
-                  label="더보기 버튼"
-                />
-              </UserCard>
-              <PostCard post={post} postCardClassName="ml-[54px]" />
-            </article>
+            <PostItem author={author} post={post} />
           ))}
         </div>
       )}
