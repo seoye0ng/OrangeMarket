@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import ProductCard from './ProductCard';
 import { IProduct, IProductList } from '@/api/types/product';
+import { useCallback } from 'react';
 
 interface IProductListSectionProps {
   productList: IProductList;
@@ -14,10 +15,11 @@ export default function ProductListSection({
 }: IProductListSectionProps) {
   const { product } = productList;
 
-  // TODO: 상품 클릭시 상품 상세페이지 이동 or 상품 모달
-  const handleProductClick = (productData: IProduct) => {
+  // handleProductClick을 메모이제이션하여 리렌더링이 발생해도 새로운 함수가 생성되는 것을 방지
+  const handleProductClick = useCallback((productData: IProduct) => {
     console.log(`click: ${productData.itemName}`);
-  };
+    // TODO: 상품 클릭시 상품 상세페이지 이동 or 상품 모달
+  }, []);
 
   return (
     <section className={classNames(className)}>
