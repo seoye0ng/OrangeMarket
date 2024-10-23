@@ -1,4 +1,4 @@
-import { IUserProfileBase } from './user';
+import { IUserProfile } from './user';
 
 export interface IProduct {
   id: string;
@@ -6,7 +6,7 @@ export interface IProduct {
   price: number;
   link: string;
   itemImage: string;
-  author: IUserProfileBase;
+  author: IUserProfile;
 }
 
 export interface IProductList {

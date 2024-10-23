@@ -1,10 +1,12 @@
-export const productList = {
+import { IProductList } from '@/api/types/product';
+
+export const productList: IProductList = {
   data: 3,
   product: [
     {
       id: '1',
       itemName: '아에이오우 선글라스 블랙',
-      price: 200000,
+      price: 20000990,
       link: '#',
       itemImage: '/assets/video.png',
       author: {

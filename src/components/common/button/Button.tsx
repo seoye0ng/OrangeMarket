@@ -28,9 +28,10 @@ const CustomButton = extendVariants(Button, {
       full: 'rounded-full',
     },
     size: {
-      s: `${commonStyle} px-[11px] py-[7px] text-tiny font-regular`,
-      ms: `${commonStyle} px-[32px] py-[8px] text-small font-medium`,
-      m: `${commonStyle} px-[40px] py-[8px] text-small font-medium`,
+      s: `${commonStyle} w-[56px] py-[7px] text-tiny font-regular`,
+      ms: `${commonStyle} w-[90px] py-[8px] text-small font-medium`,
+      m: `${commonStyle} w-[100px] py-[8px] text-small font-medium`,
+      ml: `${commonStyle} w-[120px] py-[8px] text-small font-medium`,
       l: `${commonStyle} w-full py-[13px] text-small font-medium`,
     },
   },

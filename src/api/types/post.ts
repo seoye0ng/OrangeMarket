@@ -1,12 +1,12 @@
 import { IUserProfile } from './user';
 
 export interface IPost {
-  id: number;
+  id: string;
   content: string;
   image: string;
   createdAt: string;
   updatedAt: string;
-  hearted: false;
+  hearted: boolean;
   heartCount: number;
   commentCount: number;
   author: IUserProfile;
@@ -16,5 +16,5 @@ export interface IPost {
 export type IPostWithoutAuthor = Omit<IPost, 'author'>;
 
 export interface IPostList {
-  posts: IPost[];
+  post: IPost[];
 }
