@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -7,19 +8,24 @@ interface IUserProps {
   user?: IUserProfileBase | IUserProfile;
   size?: '42px' | '50px' | '110px' | '36px';
   type?: 'link' | 'disabled';
+  className?: string;
 }
 
 export default function UserImage({
   user,
   size = '42px',
   type = 'disabled',
+  className,
 }: IUserProps) {
   const herf = type === 'link' ? `/profile/:${user?.accountname}` : '#';
 
   return (
     <Link
       href={herf}
-      className="relative inline-block shrink-0 overflow-hidden rounded-full"
+      className={classNames(
+        'relative inline-block shrink-0 overflow-hidden rounded-full',
+        className,
+      )}
       style={{ height: size, width: size }} // 스타일로 동적으로 크기 설정
     >
       <Image

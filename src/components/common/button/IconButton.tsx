@@ -1,7 +1,7 @@
 interface IIconButtonProps {
   className?: string;
   label: string;
-  icon: React.ComponentType;
+  icon?: React.ComponentType;
   children?: React.ReactNode;
   onClick?: () => void;
 }
@@ -20,7 +20,7 @@ export default function IconButton({
       aria-label={label}
       onClick={onClick}
     >
-      <Icon />
+      {Icon && <Icon />}
       {children}
     </button>
   );
