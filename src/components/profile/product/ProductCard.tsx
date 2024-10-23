@@ -26,7 +26,7 @@ export default function ProductCard({ product }: IProductProps) {
       onClick={() => console.log(`click: ${product?.itemName}`)}
       onKeyDown={handleKeyDown} // 키보드 이벤트 추가
     >
-      <div className="rounded-8px w-inherit relative aspect-[14/9] h-[90px] w-full overflow-hidden">
+      <div className="w-inherit relative aspect-[14/9] h-[90px] w-full overflow-hidden rounded-8px">
         <Image
           src={product.itemImage}
           sizes="100vw"
