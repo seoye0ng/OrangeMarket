@@ -19,7 +19,8 @@ export default function UserImage({
   return (
     <Link
       href={herf}
-      className={`relative inline-block h-[${size}] w-[${size}] shrink-0 overflow-hidden rounded-full`}
+      className="relative inline-block shrink-0 overflow-hidden rounded-full"
+      style={{ height: size, width: size }} // 스타일로 동적으로 크기 설정
     >
       <Image
         src={user?.image || '/assets/icons/basic-profile-img-.svg'}
