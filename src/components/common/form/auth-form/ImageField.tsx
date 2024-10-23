@@ -2,7 +2,7 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import UserImage from '@/components/common/user-card/UserImage';
+import UserImage from '@/components/common/post-item/user-card/UserImage';
 
 export default function ImageField() {
   const { register } = useFormContext();

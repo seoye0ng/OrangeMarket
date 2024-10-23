@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import { IUserProfileBase } from '@/api/types/user';
-import UserCard from '@/components/common/user-card/UserCard';
+import UserCard from '@/components/common/post-item/user-card/UserCard';
 import { userList } from '@/mocks/userList';
 
 export default function Search() {
