@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import { IPostList } from '@/api/types/post';
+
 import { IconSwitcher } from './IconSwitcher';
 import { PostAlbumView, PostListView } from './PostView';
 

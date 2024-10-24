@@ -1,9 +1,10 @@
+import { IPostWithoutAuthor } from '@/api/types/post';
 import { IUserProfile } from '@/api/types/user';
+import SMore from '@/components/icons/SMore';
+
 import UserCard from './user-card/UserCard';
 import IconButton from '../button/IconButton';
 import PostCard from './post-card/PostCard';
-import { IPostWithoutAuthor } from '@/api/types/post';
-import SMore from '@/components/icons/SMore';
 
 interface IPostItemProps {
   author: IUserProfile;

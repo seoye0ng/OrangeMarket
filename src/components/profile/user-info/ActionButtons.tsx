@@ -1,11 +1,13 @@
 import Image from 'next/image';
+
 import CustomButton from '@/components/common/button/Button';
 import IconButton from '@/components/common/button/IconButton';
 
 interface IActionButtons {
   type: 'user' | 'otherUser';
 }
-export const ActionButtons = ({ type }: IActionButtons) => {
+
+export function ActionButtons({ type }: IActionButtons) {
   if (type === 'otherUser') {
     return (
       <div className="flex items-center gap-10px">
@@ -52,4 +54,4 @@ export const ActionButtons = ({ type }: IActionButtons) => {
   }
 
   return null;
-};
+}

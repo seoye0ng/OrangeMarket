@@ -5,14 +5,14 @@ interface IFollowerFollowingButtonProps {
   onClick?: () => void;
 }
 
-export const FollowerFollowingButton = ({
+export function FollowerFollowingButton({
   count,
   onClick,
-}: IFollowerFollowingButtonProps) => {
+}: IFollowerFollowingButtonProps) {
   return (
     <button type="button" className="text-center" onClick={onClick}>
       <p className="mb-6px font-bold">{formatFollowerCount(count)}</p>
       <p className="text-10px font-normal leading-3 text-gray-300">followers</p>
     </button>
   );
-};
+}

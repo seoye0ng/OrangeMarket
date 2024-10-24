@@ -12,7 +12,9 @@ export default function ProductCard({ product, onClick }: IProductProps) {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      onClick; // 클릭과 동일한 로직 처리
+      if (onClick) {
+        onClick(); // 클릭과 동일한 로직 처리
+      }
     }
   };
   return (

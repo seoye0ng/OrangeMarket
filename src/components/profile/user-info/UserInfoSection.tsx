@@ -2,8 +2,9 @@ import classNames from 'classnames';
 
 import { IUserProfile } from '@/api/types/user';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
-import { FollowerFollowingButton } from './FollowerFollowButton';
+
 import { ActionButtons } from './ActionButtons';
+import { FollowerFollowingButton } from './FollowerFollowButton';
 
 interface IUserInfoSection {
   type?: 'user' | 'otherUser';

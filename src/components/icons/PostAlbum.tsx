@@ -1,4 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import { tokens } from '@/styles/token';
+
 import { IIconDefaultProps } from './types/iconType';
 
 const paths = [

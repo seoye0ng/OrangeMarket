@@ -12,11 +12,11 @@ const getIconColor = (currentType: string, targetType: string) => {
   return currentType === targetType ? 'gray-300' : 'gray-100';
 };
 
-export const IconSwitcher = ({
+export function IconSwitcher({
   postType,
   onListClick,
   onAlbumClick,
-}: IconSwitcherProps) => {
+}: IconSwitcherProps) {
   const icons = [
     {
       label: '리스트형 아이콘',
@@ -45,4 +45,4 @@ export const IconSwitcher = ({
       ))}
     </div>
   );
-};
+}

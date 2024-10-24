@@ -40,8 +40,14 @@
     // 모듈에서 하나의 이름이 지정된 export만 있을 때, 기본 export를 사용하도록 하는 규칙을 비활성화
     "no-console": "off",
     // console.log, console.warn, console.error 허용
-    "namedComponents": "arrow-function", // 이름 있는 컴포넌트는 화살표 함수 허용
-    "unnamedComponents": "arrow-function", // 익명 컴포넌트도 화살표 함수 허용
+    // "namedComponents": "arrow-function", // 이름 있는 컴포넌트는 화살표 함수 허용
+    // "unnamedComponents": "arrow-function", // 익명 컴포넌트도 화살표 함수 허용
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "some": ["nesting", "id"] // 규칙이 하나 이상 만족되어야 함을 의미. nesting과 id 중 하나만 만족하면 됨
+      }
+    ],
     "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/no-throw-literal": "off",
     "import/extensions": [
