@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 
+import { userList } from '@/__mock__/userList';
 import { IUserProfileBase } from '@/api/types/user';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
-import { userList } from '@/mocks/userList';
 
 export default function Search() {
   return (

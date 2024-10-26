@@ -1,10 +1,10 @@
 'use client';
 
+import { postList } from '@/__mock__/postList';
+import { productList } from '@/__mock__/productList';
 import PostSection from '@/components/profile/post/PostSection';
 import ProductListSection from '@/components/profile/product/ProductListSection';
 import UserInfoSection from '@/components/profile/user-info/UserInfoSection';
-import { productList } from '@/mocks/productList';
-import { postList } from '@/mocks/postList';
 
 const userProfile = {
   _id: '',
