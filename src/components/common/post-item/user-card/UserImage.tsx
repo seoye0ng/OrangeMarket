@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { IUserProfile, IUserProfileBase } from '@/api/types/user';
 
-interface IUserProps {
+interface IUserImageProps {
   user?: IUserProfileBase | IUserProfile;
   size?: '42px' | '50px' | '110px' | '36px';
   type?: 'link' | 'disabled';
@@ -16,7 +16,7 @@ export default function UserImage({
   size = '42px',
   type = 'disabled',
   className,
-}: IUserProps) {
+}: IUserImageProps) {
   const herf = type === 'link' ? `/profile/:${user?.accountname}` : '#';
 
   return (
