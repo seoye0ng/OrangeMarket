@@ -9,7 +9,7 @@ import More from '@/components/icons/More';
 import Search from '@/components/icons/Search';
 import { IIconProps } from '@/components/icons/types/iconType';
 
-interface IHeaderConfig {
+export interface IHeaderConfig {
   title?: string;
   LeftIcon?: React.ComponentType<IIconProps>;
   RightIcon?: React.ComponentType<IIconProps>;
@@ -49,6 +49,10 @@ export const headerConfig: Record<string, IHeaderConfig> = {
     LeftIcon: BackArrow,
   },
   '/post': {
+    LeftIcon: BackArrow,
+    RightIcon: More,
+  },
+  '/upload': {
     LeftIcon: BackArrow,
     RightButton: CustomButton,
     rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
