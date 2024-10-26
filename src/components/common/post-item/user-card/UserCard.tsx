@@ -8,15 +8,17 @@ interface IUserProps {
   imageSize: '42px' | '50px';
   userProfile: IUserProfileBase | IUserProfile;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export default function UserCard({
   imageSize,
   userProfile,
   children,
+  className,
 }: IUserProps) {
   return (
-    <article className="flex items-center gap-3">
+    <article className={classNames('flex items-center gap-3', className)}>
       <UserImage user={userProfile} size={imageSize} />
       <div className="flex flex-auto items-center justify-between">
         <div>

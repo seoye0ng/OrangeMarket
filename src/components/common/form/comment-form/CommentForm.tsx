@@ -34,7 +34,12 @@ export default function CommentForm({
     >
       <UserImage size="36px" />
       <form onSubmit={handleCommentSubmit} className="flex w-full gap-2">
-        <Input type="text" placeholder="댓글 입력하기..." isClearable />
+        <Input
+          type="text"
+          ref={inputRef}
+          placeholder="댓글 입력하기..."
+          isClearable
+        />
         <button
           type="submit"
           className="shrink-0 px-1 text-14px font-medium text-primary"
