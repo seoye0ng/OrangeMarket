@@ -6,6 +6,7 @@ export const tokens = {
     'gray-100': '#DBDBDB',
     'gray-200': '#C4C4C4',
     'gray-300': '#767676',
+    'gray-400': '#333333',
     black: '#121212',
     white: '#FFFFFF',
     success: '#17c964',

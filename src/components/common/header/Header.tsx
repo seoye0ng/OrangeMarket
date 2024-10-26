@@ -2,15 +2,20 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import { headerConfig } from '@/config/headerConfig';
+import { headerConfig, IHeaderConfig } from '@/config/headerConfig';
 
 import withHeader from './withHeader';
+
+const getHeaderConfig = (pathname: string): IHeaderConfig | undefined => {
+  if (pathname.startsWith('/post')) return headerConfig['/post'];
+  return headerConfig[pathname];
+};
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const config = headerConfig[pathname];
+  const config = getHeaderConfig(pathname);
 
   if (!config) return null;
 
