@@ -5,7 +5,7 @@ export const commentList: ICommentList = {
     {
       id: '1',
       content: '한 나의 고독은 둘은 그리도 잊지 차츰 시각에 그 눈물 가실 내 경',
-      createdAt: '2023-06-01',
+      createdAt: '2021-12-20T06:10:26.803Z',
       author: {
         _id: '1',
         username: '초록초록 알파카',
