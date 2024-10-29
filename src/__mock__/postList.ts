@@ -1,6 +1,6 @@
 import { IPostList } from '@/api/types/post';
 
-export const postList: IPostList = {
+export const postListData: IPostList = {
   post: [
     {
       id: '1',
