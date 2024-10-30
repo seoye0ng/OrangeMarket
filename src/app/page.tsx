@@ -8,7 +8,7 @@ import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import PostItem from '@/components/common/post-item/PostItem';
-import useInfinitePostList from '@/hooks/queries/post/usePostList';
+import useInfinitePostList from '@/hooks/queries/post/useInfinitePostList';
 
 const POSTS_LIMIT = 10; // 페이지 당 불러올 포스트 수 설정
 
