@@ -1,4 +1,5 @@
 import { getRequest } from '@/api/requests';
+import { ICommentList } from '@/api/types/comment';
 import { IPostList, IPostDetail } from '@/api/types/post';
 
 export const postList = async (limit: number, skip: number) => {
@@ -9,8 +10,14 @@ export const postList = async (limit: number, skip: number) => {
   return response;
 };
 
-export const postDetail = async (PostId: string) => {
-  const response = await getRequest<IPostDetail>(`/post/:${PostId}`);
+export const postDetail = async (postId: string) => {
+  const response = await getRequest<IPostDetail>(`/post/:${postId}`);
+
+  return response;
+};
+
+export const commentList = async (postId: string) => {
+  const response = await getRequest<ICommentList>(`/post/:${postId}/comments`);
 
   return response;
 };
