@@ -16,5 +16,5 @@ export interface IPost {
 export type IPostWithoutAuthor = Omit<IPost, 'author'>;
 
 export interface IPostList {
-  post: IPost[];
+  posts: IPost[];
 }
