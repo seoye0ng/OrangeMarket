@@ -5,15 +5,12 @@ import PostReaction from './PostReaction';
 
 interface IPostCardProps {
   post: IPostWithoutAuthor;
-  postCardClassName?: string;
+  className?: string;
 }
 
-export default function PostCard({
-  post,
-  postCardClassName = '',
-}: IPostCardProps) {
+export default function PostCard({ post, className = '' }: IPostCardProps) {
   return (
-    <article className={postCardClassName}>
+    <article className={className}>
       <PostContent content={post.content} image={post.image} />
       <PostReaction
         hearted={post.hearted}
