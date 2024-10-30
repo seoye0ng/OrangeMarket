@@ -11,7 +11,9 @@ export interface IPost {
   commentCount: number;
   author: IUserProfile;
 }
-
+export interface IPostDetail {
+  post: IPost;
+}
 // author 필드를 제외한 타입 정의
 export type IPostWithoutAuthor = Omit<IPost, 'author'>;
 
