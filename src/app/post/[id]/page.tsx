@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import '@/__mock__/';
 import { IComment, ICommentRequest } from '@/api/types/comment';
 import CommentForm from '@/components/common/form/comment-form/CommentForm';
@@ -8,7 +10,6 @@ import PostItem from '@/components/common/post-item/PostItem';
 import useCommentList from '@/hooks/queries/post/useCommentList';
 import useCreateComment from '@/hooks/queries/post/useCreateComment';
 import usePostDetail from '@/hooks/queries/post/usePostDetail';
-import { useEffect, useState } from 'react';
 
 interface PostDetailPageProps {
   params: { id: string };
@@ -21,29 +22,27 @@ export default function PostDetailsPage({ params }: PostDetailPageProps) {
   const { data: postDetail, isLoading, error } = usePostDetail(id);
   const { mutateAsync: createComment } = useCreateComment();
   const commentCount = postDetail?.post.commentCount ?? 0; // 기본값을 0으로 설정
-  const { data: comments } = useCommentList(id, {
+  const { data: commentsData } = useCommentList(id, {
     enabled: commentCount > 0, // commentCount가 1 이상일 때만 요청
     initialData: [], // 기본값을 빈 배열로 설정
   });
 
   useEffect(() => {
-    if (comments) {
-      setCommentList(comments.comments);
+    if (commentsData) {
+      setCommentList(commentsData.comments);
     }
-  }, [comments]);
+  }, [commentsData]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!postDetail || error) return <p>Error: {error?.message}</p>;
 
   const handleAddComment = async (commentTerm: string) => {
-    console.log('input ref', commentTerm);
-
     const data: ICommentRequest = { comment: { content: commentTerm } };
     try {
       const response = await createComment({ postId: id, data });
       setCommentList((prevComments) => [...prevComments, response.comments]); // 댓글 목록 업데이트
-    } catch (error) {
-      console.error('댓글 작성 오류:', error);
+    } catch (err) {
+      console.error('댓글 작성 오류:', err);
     }
   };
 

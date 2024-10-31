@@ -62,7 +62,7 @@ mock.onGet(/\/post\/\d+\/comments/).reply((config) => {
 });
 
 /* --- 댓글 POST 요청 모킹 --- */
-mock.onPost(/\/post\/\d+\/comments/).reply((config) => {
+mock.onPost(/\/post\/\d+\/comments/).reply(() => {
   const comments = commentList.comments[commentList.comments.length - 1];
 
   return [200, { comments }];
