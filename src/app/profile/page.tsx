@@ -1,7 +1,7 @@
 'use client';
 
-import { postList } from '@/__mock__/postList';
-import { productList } from '@/__mock__/productList';
+import { postListData } from '@/__mock__/responseData/postList';
+import { productList } from '@/__mock__/responseData/productList';
 import PostSection from '@/components/profile/post/PostSection';
 import ProductListSection from '@/components/profile/product/ProductListSection';
 import UserInfoSection from '@/components/profile/user-info/UserInfoSection';
@@ -28,7 +28,7 @@ export default function Profile() {
         className="bg-white pb-26px pt-30px"
       />
       <ProductListSection className="bg-white py-5" productList={productList} />
-      <PostSection className="bg-white" postList={postList} />
+      <PostSection className="bg-white" postList={postListData} />
     </main>
   );
 }

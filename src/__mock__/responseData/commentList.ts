@@ -25,8 +25,26 @@ export const commentList: ICommentList = {
         '이런 자랑처럼 위에 유유히 책상을 까닭입니다. 것을 그리고 밤이 오는 모습 지나고 할 헤는 하나둘 청명한 알리라,',
       createdAt: '2023-06-01',
       author: {
-        _id: '초록색 알파카',
+        _id: '2초록색 알파카',
         username: '초록초록 알파카2',
+        accountname: 'al__12',
+        intro: '안녕 난 알파카2',
+        image: '',
+        isfollow: true,
+        following: [],
+        follower: [],
+        followerCount: 10,
+        followingCount: 10,
+      },
+    },
+    {
+      id: '3',
+      content:
+        '이런 자랑처럼 위에 유유히 책상을 까닭입니다. 것을 그리고 밤이 오는 모습 지나고 할 헤는 하나둘 청명한 알리라,',
+      createdAt: '2023-06-01',
+      author: {
+        _id: '3초록색 알파카',
+        username: '3초록초록 알파카2',
         accountname: 'al__12',
         intro: '안녕 난 알파카2',
         image: '',

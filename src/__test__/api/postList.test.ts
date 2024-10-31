@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { postListData } from '@/__mock__/postList';
+import { postListData } from '@/__mock__/responseData/postList';
 import { postList } from '@/api/apiRequests/post';
 import instance from '@/api/index';
 
