@@ -24,7 +24,6 @@ mock.onGet(/\/post\/feed.*/).reply((config) => {
 });
 
 /* --- 게시물 상세 GET 요청 모킹 --- */
-
 mock.onGet(/\/post\/\d+$/).reply((config) => {
   const { url } = config;
 
@@ -58,6 +57,13 @@ mock.onGet(/\/post\/\d+\/comments/).reply((config) => {
 
   // 모의 데이터에서 postId에 해당하는 댓글 찾기
   const comments = commentList.comments.filter((c) => c.id === postId);
+
+  return [200, { comments }];
+});
+
+/* --- 댓글 POST 요청 모킹 --- */
+mock.onPost(/\/post\/\d+\/comments/).reply((config) => {
+  const comments = commentList.comments[commentList.comments.length - 1];
 
   return [200, { comments }];
 });
