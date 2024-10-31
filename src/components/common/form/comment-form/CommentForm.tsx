@@ -3,16 +3,17 @@
 import { Input } from '@nextui-org/react';
 import classNames from 'classnames';
 import { useRef, FormEvent } from 'react';
+import { toast } from 'react-toastify';
 
 import UserImage from '@/components/common/post-item/user-card/UserImage';
 
 export interface ICommentFormProps {
   className?: string;
-  onComment: (commentTerm: string) => void;
+  onSubmit: (commentTerm: string) => void;
 }
 
 export default function CommentForm({
-  onComment,
+  onSubmit,
   className,
 }: ICommentFormProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -20,9 +21,13 @@ export default function CommentForm({
   const handleCommentSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const commentTerm = inputRef.current?.value || '';
-    /* TODO: 댓글을 입력하지 않을 때 */
-    // 댓글을 입력해주세요.
-    onComment(commentTerm);
+    /* 댓글을 입력하지 않을 때 */
+    if (!commentTerm) {
+      toast.error('댓글을 입력해주세요.');
+      return;
+    }
+
+    onSubmit(commentTerm);
   };
 
   return (
