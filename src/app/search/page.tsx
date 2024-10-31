@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import { userList } from '@/__mock__/userList';
+import { userList } from '@/__mock__/responseData/userList';
 import { IUserProfileBase } from '@/api/types/user';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 

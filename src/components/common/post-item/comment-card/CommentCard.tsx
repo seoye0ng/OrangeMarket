@@ -1,14 +1,15 @@
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import React from 'react';
 
 import { ICommentWithoutAuthor } from '@/api/types/comment';
 import { IUserProfile } from '@/api/types/user';
 import IconButton from '@/components/common/button/IconButton';
+import UserImage from '@/components/common/post-item/user-card/UserImage';
 import SMore from '@/components/icons/SMore';
 
 import 'dayjs/locale/ko';
-import UserImage from '../user-card/UserImage';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -23,11 +24,7 @@ const getTimeAgo = (createdAt: string) => {
   return dayjs(createdAt).fromNow();
 };
 
-export default function CommentCard({
-  user,
-  comment,
-  className,
-}: ICommentCardProps) {
+function CommentCard({ user, comment, className }: ICommentCardProps) {
   return (
     <article className={classNames('flex gap-3', className)}>
       <UserImage user={user} size="36px" />
@@ -46,3 +43,5 @@ export default function CommentCard({
     </article>
   );
 }
+
+export default React.memo(CommentCard);

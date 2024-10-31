@@ -40,8 +40,8 @@ export default function Home() {
     <main className="mt-5 px-4">
       {data?.pages.map((page, i) => (
         <React.Fragment key={i}>
-          {page.posts.map(({ author, ...post }) => (
-            <PostItem key={post.id} author={author} post={post} />
+          {page.posts.map((post) => (
+            <PostItem key={post.id} post={post} />
           ))}
         </React.Fragment>
       ))}
