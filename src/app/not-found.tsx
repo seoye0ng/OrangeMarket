@@ -1,8 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 
 import CustomButton from '@/components/common/button/Button';
 
 export default function NotFound() {
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
     <main className="h-screen pt-52 text-center">
       <Image
@@ -15,7 +21,12 @@ export default function NotFound() {
       <p className="mb-5 mt-7 text-14px font-normal text-gray-300">
         페이지를 찾을 수 없습니다. 🥲
       </p>
-      <CustomButton type="button" className="max-w-32" color="primary">
+      <CustomButton
+        type="button"
+        onClick={handleGoBack}
+        className="max-w-32"
+        color="primary"
+      >
         이전 페이지
       </CustomButton>
     </main>
