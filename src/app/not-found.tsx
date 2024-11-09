@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 import CustomButton from '@/components/common/button/Button';
+import Text from '@/components/common/text/Text';
 
 export default function NotFound() {
   const handleGoBack = () => {
@@ -18,9 +19,9 @@ export default function NotFound() {
         height={158}
         className="mx-auto"
       />
-      <p className="mb-5 mt-7 text-14px font-normal text-gray-300">
+      <Text weight="normal" size="14px" color="gray-300">
         페이지를 찾을 수 없습니다. 🥲
-      </p>
+      </Text>
       <CustomButton
         type="button"
         onClick={handleGoBack}

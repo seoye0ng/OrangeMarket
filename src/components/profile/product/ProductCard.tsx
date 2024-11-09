@@ -2,6 +2,7 @@
 import Image from 'next/image';
 
 import { IProduct } from '@/api/types/product';
+import Text from '@/components/common/text/Text';
 
 interface IProductProps {
   product: IProduct;
@@ -35,12 +36,17 @@ export default function ProductCard({ product, onClick }: IProductProps) {
           className="object-cover"
         />
       </div>
-      <p className="ellipis mt-6px px-2px text-14px font-normal leading-17px">
+      <Text size="14px" className="ellipis mt-6px px-2px">
         {product.itemName}
-      </p>
-      <p className="mt-1 px-2px text-12px font-bold leading-17px text-primary">
+      </Text>
+      <Text
+        size="12px"
+        color="primary-100"
+        weight="bold"
+        className="ellipis mt-1 px-2px"
+      >
         {product.price.toLocaleString('ko-KR')}
-      </p>
+      </Text>
     </article>
   );
 }

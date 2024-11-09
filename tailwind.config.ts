@@ -23,7 +23,7 @@ const config: Config = {
       },
       backgroundImage: {},
       colors: tokens.colors,
-      lineHeight: tokens.fontSize,
+      lineHeight: tokens.lineHeight,
       fontSize: tokens.fontSize,
       zIndex: tokens.zIndex,
       spacing: tokens.spacing,
@@ -41,10 +41,10 @@ const config: Config = {
           large: tokens.fontSize['18px'],
         },
         lineHeight: {
-          tiny: tokens.fontSize['17px'],
-          small: tokens.fontSize['17px'],
-          medium: tokens.fontSize['17px'],
-          large: tokens.fontSize['17px'],
+          tiny: tokens.lineHeight['17px'],
+          small: tokens.lineHeight['17px'],
+          medium: tokens.lineHeight['18px'],
+          large: tokens.lineHeight['20px'],
         },
         borderWidth: {
           small: '1px',

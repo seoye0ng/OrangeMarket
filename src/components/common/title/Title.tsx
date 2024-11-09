@@ -1,3 +1,5 @@
+import Text from '@/components/common/text/Text';
+
 interface TitleProps {
   title: string;
   description?: string;
@@ -9,9 +11,9 @@ export default function Title({ title, description, padding }: TitleProps) {
     <header className={`flex-center ${padding} ${description ? 'gap-3' : ''}`}>
       <h1 className="font-medium">{title}</h1>
       {description && (
-        <p className="leading-14px text-14px font-normal text-gray-300">
+        <Text size="14px" color="gray-300">
           {description}
-        </p>
+        </Text>
       )}
     </header>
   );

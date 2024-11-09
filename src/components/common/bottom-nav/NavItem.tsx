@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Text from '@/components/common/text/Text';
 import { IBottomNavConfig } from '@/config/bottomNavConfig';
 
 function NavItem({
@@ -20,13 +21,13 @@ function NavItem({
           color={isActive ? 'primary-100' : 'gray-300'}
           isActive={isActive}
         />
-        <p
-          className={`text-10px font-normal leading-14px transition-colors ${
-            isActive ? 'text-primary-100' : 'text-gray-300'
-          }`}
+        <Text
+          size="10px"
+          color={isActive ? 'primary-100' : 'gray-300'}
+          className="transition-colors"
         >
           {label}
-        </p>
+        </Text>
       </Link>
     </li>
   );

@@ -1,15 +1,15 @@
-import { IconColor } from '@/styles/token';
+import { Color } from '@/styles/token';
 
 export interface IIconProps {
   width?: number;
-  defaultColor?: IconColor;
-  activeColor?: IconColor;
+  defaultColor?: Color;
+  activeColor?: Color;
   onClick?: () => void;
 }
 
 export interface IIconDefaultProps {
   isActive?: boolean;
   width?: number;
-  color?: IconColor;
+  color?: Color;
   onClick?: () => void;
 }

@@ -14,15 +14,26 @@ export const tokens = {
     like: '#FFA9AB',
   },
   fontSize: {
+    '8px': '0.5rem',
     '10px': '0.625rem',
+    '12px': '0.75rem',
+    '14px': '0.875rem',
+    '16px': '1rem',
+    '18px': '1.125rem',
+    '20px': '1.25rem',
+    '22px': '1.375rem',
+    '24px': '1.5rem',
+  },
+  lineHeight: {
     '12px': '0.75rem',
     '14px': '0.875rem',
     '16px': '1rem',
     '17px': '1.0625rem',
     '18px': '1.125rem',
     '20px': '1.25rem',
-    '22px': '1.375rem',
     '24px': '1.5rem',
+    '28px': '1.75rem',
+    '30px': '1.875rem',
   },
   spacing: {
     '2px': '0.125rem',
@@ -46,4 +57,5 @@ export const tokens = {
   },
 };
 
-export type IconColor = keyof typeof tokens.colors;
+export type Color = keyof typeof tokens.colors;
+export type FontSize = keyof typeof tokens.fontSize;
