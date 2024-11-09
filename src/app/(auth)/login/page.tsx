@@ -6,6 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { ILoginRequest } from '@/api/types/auth';
 import CustomButton from '@/components/common/button/Button';
 import FormTemplate from '@/components/common/form/auth-form/FormTemplate';
+import Text from '@/components/common/text/Text';
 import Title from '@/components/common/title/Title';
 import { loginFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
@@ -51,11 +52,10 @@ export default function Login() {
         </form>
       </FormProvider>
       <Link href="/signup">
-        <button
-          type="button"
-          className="mx-auto mt-4 block p-1 text-12px font-normal text-gray-300"
-        >
-          이메일로 회원가입
+        <button type="button" className="mx-auto mt-4 block p-1">
+          <Text size="12px" color="gray-300">
+            이메일로 회원가입
+          </Text>
         </button>
       </Link>
     </>

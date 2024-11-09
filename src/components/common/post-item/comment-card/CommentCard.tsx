@@ -7,6 +7,7 @@ import { ICommentWithoutAuthor } from '@/api/types/comment';
 import { IUserProfile } from '@/api/types/user';
 import IconButton from '@/components/common/button/IconButton';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
+import Text from '@/components/common/text/Text';
 import SMore from '@/components/icons/SMore';
 
 import 'dayjs/locale/ko';
@@ -29,16 +30,18 @@ function CommentCard({ user, comment, className }: ICommentCardProps) {
     <article className={classNames('flex gap-3', className)}>
       <UserImage user={user} size="36px" />
       <div className="mt-[5px] flex w-full flex-col gap-4">
-        <div className="flex gap-6px">
-          <p className="text-14px font-medium leading-17px">{user.username}</p>
-          <span className="font-nomal text-10px leading-17px text-gray-300">
+        <div className="flex items-center gap-6px">
+          <Text size="14px" weight="medium">
+            {user.username}
+          </Text>
+          <Text size="10px" color="gray-300">
             {`· ${getTimeAgo(comment.createdAt)}`}
-          </span>
+          </Text>
           <IconButton icon={SMore} className="ml-auto" label="더보기 버튼" />
         </div>
-        <p className="text-12px font-normal leading-17px text-gray-400">
+        <Text size="12px" color="gray-400">
           {comment.content}
-        </p>
+        </Text>
       </div>
     </article>
   );

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import { IUserProfile } from '@/api/types/user';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
+import Text from '@/components/common/text/Text';
 
 import { ActionButtons } from './ActionButtons';
 import { FollowerFollowingButton } from './FollowerFollowButton';
@@ -30,15 +31,15 @@ export default function UserInfoSection({
         </div>
       </div>
       <div className="mb-5 mt-4 flex flex-col items-center">
-        <p className="mb-6px text-16px font-bold leading-17px">
+        <Text size="16px" weight="bold">
           {userProfile.username}
-        </p>
-        <p className="mb-4 text-14px font-normal leading-14px text-gray-300">
+        </Text>
+        <Text size="14px" color="gray-300">
           {userProfile.accountname}
-        </p>
-        <p className="text-14px font-normal leading-17px text-gray-300">
+        </Text>
+        <Text size="14px" color="gray-300">
           {userProfile.intro}
-        </p>
+        </Text>
       </div>
       <ActionButtons type={type} />
     </section>

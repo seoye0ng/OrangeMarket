@@ -1,4 +1,5 @@
 import { IPostWithoutAuthor } from '@/api/types/post';
+import Text from '@/components/common/text/Text';
 
 import PostContent from './PostContent';
 import PostReaction from './PostReaction';
@@ -17,9 +18,9 @@ export default function PostCard({ post, className = '' }: IPostCardProps) {
         heartCount={post.heartCount}
         commentCount={post.commentCount}
       />
-      <p className="text-10px font-normal leading-3 text-gray-300">
+      <Text size="10px" color="gray-300">
         {post.updatedAt}
-      </p>
+      </Text>
     </article>
   );
 }

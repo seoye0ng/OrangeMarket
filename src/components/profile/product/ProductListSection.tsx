@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useCallback } from 'react';
 
 import { IProduct, IProductList } from '@/api/types/product';
+import Text from '@/components/common/text/Text';
 
 import ProductCard from './ProductCard';
 
@@ -24,13 +25,13 @@ export default function ProductListSection({
 
   return (
     <section className={classNames(className)}>
-      <p className="mx-16px mb-4 text-16px font-bold leading-17px">
+      <Text className="mx-4" size="16px" weight="bold">
         판매중인 상품
-      </p>
+      </Text>
       {product.length === 0 ? (
-        <div className="mx-16px">현재 판매중인 상품이 없습니다.</div>
+        <div className="mx-4">현재 판매중인 상품이 없습니다.</div>
       ) : (
-        <div className="horizontal-scroll scrollbar-hidden flex gap-15px px-4">
+        <div className="horizontal-scroll scrollbar-hidden mt-4 flex gap-15px px-4">
           {product.map((productData) => (
             <ProductCard
               key={productData.id}
