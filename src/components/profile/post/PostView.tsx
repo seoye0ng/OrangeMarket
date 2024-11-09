@@ -11,21 +11,21 @@ interface PostAlbumViewProps {
 }
 
 function PostListView({ postList }: PostListViewProps) {
-  if (postList.post.length === 0) {
+  if (postList.posts.length === 0) {
     return <div className="pb-20px px-4 text-center">포스트가 없습니다.</div>;
   }
 
   return (
     <div className="px-4 pb-20 pt-4">
-      {postList.post.map((post) => (
-        <PostItem key={post.id} author={post.author} post={post} />
+      {postList.posts.map((post) => (
+        <PostItem key={post.id} post={post} />
       ))}
     </div>
   );
 }
 
 function PostAlbumView({ postList }: PostAlbumViewProps) {
-  const filteredImagePosts = postList.post.filter((post) => post.image);
+  const filteredImagePosts = postList.posts.filter((post) => post.image);
 
   if (filteredImagePosts.length === 0) {
     return (
