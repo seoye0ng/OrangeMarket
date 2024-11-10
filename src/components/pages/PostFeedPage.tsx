@@ -11,7 +11,7 @@ import { Spinner } from '@nextui-org/react';
 
 const POSTS_LIMIT = 10;
 
-export default function PostFeed() {
+export default function PostFeedPage() {
   // 무한 스크롤 구현
   const {
     data,

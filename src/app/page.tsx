@@ -1,5 +1,5 @@
-import PostFeed from '@/components/pages/PostFeed';
+import PostFeedPage from '@/components/pages/PostFeedPage';
 
 export default function Home() {
-  return <PostFeed />;
+  return <PostFeedPage />;
 }
