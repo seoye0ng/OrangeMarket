@@ -11,15 +11,16 @@ export default function NotFound() {
   };
 
   return (
-    <main className="h-screen pt-52 text-center">
-      <Image
-        src="/assets/icons/icon-404.svg"
-        alt="404 아이콘 이미지"
-        width={158}
-        height={158}
-        className="mx-auto"
-      />
-      <Text weight="normal" size="14px" color="gray-300">
+    <main className="flex h-screen flex-col items-center justify-center gap-4">
+      <div className="relative aspect-square w-40">
+        <Image
+          src="/assets/icons/icon-404.svg"
+          alt="404 아이콘 이미지"
+          fill
+          className="object-cover"
+        />
+      </div>
+      <Text size="14px" color="gray-300">
         페이지를 찾을 수 없습니다. 🥲
       </Text>
       <CustomButton
