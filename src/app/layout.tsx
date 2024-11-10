@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 import BottomNav from '@/components/common/bottom-nav/BottomNav';
 import Header from '@/components/common/header/Header';
 import Provider from '@/providers';
 import './globals.css';
 import { sans } from '@/utils/fonts';
+
+import Loading from './loading';
 
 export const metadata: Metadata = {
   title: 'orange-market',
@@ -20,7 +23,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={sans.className}>
         <Header />
-        <Provider>{children}</Provider>
+        <Provider>
+          <Suspense fallback={<Loading />}>{children}</Suspense>
+        </Provider>
         <BottomNav />
       </body>
     </html>
