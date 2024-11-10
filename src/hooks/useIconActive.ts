@@ -1,11 +1,8 @@
 import { useState } from 'react';
 
-import { IconColor } from '@/styles/token';
+import { Color } from '@/styles/token';
 
-export function useIconActiveState(
-  defaultColor: IconColor,
-  activeColor: IconColor,
-) {
+export function useIconActiveState(defaultColor: Color, activeColor: Color) {
   const [isActive, setIsActive] = useState(false);
 
   const handleMouseDown = () => {
