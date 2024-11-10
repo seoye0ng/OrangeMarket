@@ -20,7 +20,7 @@ export default function NotFound() {
           className="object-cover"
         />
       </div>
-      <Text weight="normal" size="14px" color="gray-300">
+      <Text size="14px" color="gray-300">
         페이지를 찾을 수 없습니다. 🥲
       </Text>
       <CustomButton
