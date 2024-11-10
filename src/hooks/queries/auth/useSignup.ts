@@ -1,15 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { useRouter } from 'next/navigation';
 
 import { signup } from '@/api/apiRequests/auth';
 import { ISignUpRequest, ISignupResponse } from '@/api/types/auth';
+import useNavigate from '@/hooks/useNavigate';
 
 function useSignup() {
-  const router = useRouter();
+  const { goTo } = useNavigate();
 
   const onSuccess = () => {
-    router.push('/login');
+    goTo('/login');
   };
 
   const onError = (error: AxiosError) => {

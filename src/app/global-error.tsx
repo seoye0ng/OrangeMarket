@@ -3,6 +3,7 @@
 'use client';
 
 import ErrorDisplay from '@/components/common/error/ErrorDisplay';
+import useNavigate from '@/hooks/useNavigate';
 import { useEffect } from 'react';
 
 export default function GlobalError({
@@ -16,9 +17,7 @@ export default function GlobalError({
     console.error(error);
   }, [error]);
 
-  const onGoBack = () => {
-    window.history.back();
-  };
+  const { goBack } = useNavigate();
 
   return (
     <html>
@@ -29,7 +28,7 @@ export default function GlobalError({
           message="잠시 뒤에 시도해 주십시오."
           subMessage={error.message}
           onRetry={reset}
-          onGoBack={onGoBack}
+          onGoBack={goBack}
         />
       </body>
     </html>
