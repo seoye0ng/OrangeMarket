@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import Login from '@/app/(auth)/login/page';
+import Login from '@/app/(public)/(auth)/login/page';
 
 // useRouter를 모킹하여 테스트 환경에서 라우팅을 처리하지 않음
 jest.mock('next/navigation', () => ({
