@@ -13,7 +13,7 @@ export default function RequiredLogin() {
   return (
     <motion.div
       animate={{
-        backgroundColor: showBottomSheet ? ' --primary-100' : 'white',
+        backgroundColor: showBottomSheet ? 'var(--primary-100)' : 'white',
       }}
       className="relative h-screen"
     >
