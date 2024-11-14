@@ -2,8 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 전역 스타일 */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --primary-100: #f26e22;
+}
+
+/* 다크 모드 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 20, 20, 20;
+  }
+}
+
 /* HTML의 기본 스타일을 정의하는 곳. 주로 기본 요소에 대한 초기 스타일링에 사용 */
 @layer base {
+  body {
+    @apply m-0 h-full bg-white p-0 text-[#121212]; /* 기본 여백과 패딩 초기화, 기본 색상 */
+    -webkit-font-smoothing: antialiased; /* 폰트 스무딩 */
+    -moz-osx-font-smoothing: grayscale; /* 폰트 스무딩 */
+  }
   h1 {
     @apply text-2xl;
   }
@@ -21,28 +43,6 @@
   }
   a {
   }
-}
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
-body {
-  color: black;
-  font-size: 1rem; /* 기본 폰트 크기 */
-  line-height: 1.5; /* 기본 줄 간격 */
-  background-color: #fff; /* 배경색 */
-  margin: 0; /* 기본 여백 초기화 */
-  padding: 0; /* 기본 패딩 초기화 */
-  -webkit-font-smoothing: antialiased; /* 폰트 스무딩 */
-  -moz-osx-font-smoothing: grayscale; /* 폰트 스무딩 */
 }
 
 /* 재사용 가능한 UI 컴포넌트의 스타일을 정의하는 곳. 여러 곳에서 사용될 스타일을 여기서 정의 */
