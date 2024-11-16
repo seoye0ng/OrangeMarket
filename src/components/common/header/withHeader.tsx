@@ -32,7 +32,7 @@ export default function withHeader(
           {title && (
             <span
               className={classNames(
-                LeftIcon ? 'text-14px' : 'text-18px font-medium leading-22px',
+                LeftIcon ? 'text-14px' : 'leading-22px text-18px font-medium',
               )}
             >
               {title}

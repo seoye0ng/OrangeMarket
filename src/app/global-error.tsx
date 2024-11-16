@@ -2,9 +2,10 @@
 
 'use client';
 
+import { useEffect } from 'react';
+
 import ErrorDisplay from '@/components/common/error/ErrorDisplay';
 import useNavigate from '@/hooks/useNavigate';
-import { useEffect } from 'react';
 
 export default function GlobalError({
   error,

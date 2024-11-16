@@ -38,7 +38,7 @@ export default function PostDetailsPage({ postId }: PostDetailPageProps) {
   const handleAddComment = async (commentTerm: string) => {
     const data: ICommentRequest = { comment: { content: commentTerm } };
     try {
-      const response = await createComment({ postId: postId, data });
+      const response = await createComment({ postId, data });
       setCommentList((prevComments) => [...prevComments, response.comments]); // 댓글 목록 업데이트
     } catch (err) {
       console.error('댓글 작성 오류:', err);

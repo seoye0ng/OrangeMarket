@@ -1,13 +1,15 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
 import '@/__mock__';
 
+import { Spinner } from '@nextui-org/react';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import PostItem from '@/components/common/post-item/PostItem';
 import useInfinitePostList from '@/hooks/queries/post/useInfinitePostList';
-import { Spinner } from '@nextui-org/react';
 
 const POSTS_LIMIT = 10;
 

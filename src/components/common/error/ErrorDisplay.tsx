@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import Text from '@/components/common/text/Text';
+
 import CustomButton from '@/components/common/button/Button';
+import Text from '@/components/common/text/Text';
 
 interface ErrorDisplayProps {
   iconSrc: string;
