@@ -9,8 +9,11 @@ class AuthService {
     this.token = token;
     StorageService.setStorageAdapter('localStorage');
     StorageService.set('userAccount', userAccount);
-    StorageService.setStorageAdapter('cookie');
-    StorageService.set('token', token);
+    StorageService.setStorageAdapter('cookieStorage');
+    StorageService.set('token', token, {
+      expires: 3,
+      path: '',
+    });
   }
 
   static logout(): void {
@@ -18,7 +21,7 @@ class AuthService {
     this.token = null;
     StorageService.setStorageAdapter('localStorage');
     StorageService.remove('userAccount');
-    StorageService.setStorageAdapter('cookie');
+    StorageService.setStorageAdapter('cookieStorage');
     StorageService.remove('token');
   }
 
