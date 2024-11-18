@@ -11,22 +11,34 @@ import Title from '@/components/common/title/Title';
 import { loginFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
 import useLogin from '@/hooks/queries/auth/useLogin';
+import useNavigate from '@/hooks/useNavigate';
+import AuthService from '@/services/AuthService';
 
 export default function LoginPage() {
+  const { goTo } = useNavigate();
+  const { mutateAsync: login } = useLogin();
+
   const methods = useForm({
     mode: 'onBlur',
-    defaultValues: { email: '', password: '' },
+    defaultValues: { user: { email: '', password: '' } },
   });
-  const { mutate } = useLogin();
 
   const {
     handleSubmit,
     formState: { isValid },
   } = methods;
 
-  const onSubmit = (data: ILoginRequest) => {
-    console.log('성공');
-    mutate(data);
+  const onSubmit = async (data: ILoginRequest) => {
+    try {
+      const response = await login(data);
+      const { token, accountname } = response.user;
+      if (token && accountname) {
+        AuthService.login(accountname, token);
+        goTo('/feed');
+      }
+    } catch (error) {
+      console.error('로그인 에러:', error);
+    }
   };
 
   return (
