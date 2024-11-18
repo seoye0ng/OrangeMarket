@@ -26,8 +26,10 @@ export type ISignupResponse = IBaseResponse<{ intro: string }>;
 
 /* -- 로그인 요청, 응답 -- */
 export interface ILoginRequest {
-  email: string;
-  password: string;
+  user: {
+    email: string;
+    password: string;
+  };
 }
 
 export type ILoginResponse = IBaseResponse<{ token: string }>;

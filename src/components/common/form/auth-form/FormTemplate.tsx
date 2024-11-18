@@ -28,8 +28,8 @@ export default function FormTemplate({ fields, children }: FormTemplateProps) {
 
         return (
           <UnderlineInput
-            key={name}
-            {...register(name, field.validation)}
+            key={`user.${name}`}
+            {...register(`user.${name}`, field.validation)}
             isClearable
             variant="underlined"
             type={inputType}
