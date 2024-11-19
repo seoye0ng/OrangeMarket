@@ -55,7 +55,7 @@ export const headerConfig: Record<string, IHeaderConfig> = {
   '/upload': {
     LeftIcon: BackArrow,
     RightButton: CustomButton,
-    rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
+    rightButtonProps: { color: 'primary', size: 'ms', children: '업로드' },
   },
   '/add-product': {
     LeftIcon: BackArrow,

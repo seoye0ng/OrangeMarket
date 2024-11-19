@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-import { createComment } from '@/api/apiRequests/post';
+import { createComment } from '@/api/apiRequests/comment';
 import { ICommentResponse, ICommentRequest } from '@/api/types/comment';
 
 function useCreateComment() {
