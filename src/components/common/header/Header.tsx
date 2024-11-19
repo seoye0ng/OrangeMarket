@@ -3,9 +3,10 @@
 import { usePathname } from 'next/navigation';
 
 import { headerConfig, IHeaderConfig } from '@/config/headerConfig';
+import { useHeaderContext } from '@/context/provider/headerContext';
+import useNavigate from '@/hooks/useNavigate';
 
 import withHeader from './withHeader';
-import useNavigate from '@/hooks/useNavigate';
 
 const getHeaderConfig = (pathname: string): IHeaderConfig | undefined => {
   if (pathname.startsWith('/post')) return headerConfig['/post'];
@@ -14,12 +15,12 @@ const getHeaderConfig = (pathname: string): IHeaderConfig | undefined => {
 
 export default function Header() {
   const pathname = usePathname();
+  const { goBack, goTo } = useNavigate();
+  const { setIsHeaderClick } = useHeaderContext();
 
   const config = getHeaderConfig(pathname);
 
   if (!config) return null;
-
-  const { goBack, goTo } = useNavigate();
 
   const handleSearch = (searchTerm: string) => {
     console.log('ref 작동하심?', searchTerm);
@@ -36,8 +37,8 @@ export default function Header() {
         console.log('더보기 모달 open');
         break;
       case '/upload':
-        // handleUpload();
-        goTo('/');
+        setIsHeaderClick(true);
+        // console.log('upload header click');
         break;
       default:
         break;

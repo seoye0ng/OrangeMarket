@@ -49,7 +49,10 @@ export default function withHeader(
           </button>
         )}
         {RightButton && (
-          <RightButton {...(rightButtonProps as ICustomButtonProps)} />
+          <RightButton
+            {...(rightButtonProps as ICustomButtonProps)}
+            onClick={onRightClick}
+          />
         )}
         {RightSearchForm && (
           <RightSearchForm {...(rightSearchFormProps as ISearchFormProps)} />
