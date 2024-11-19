@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { IUploadPostRequest } from '@/api/types/post';
@@ -20,11 +20,14 @@ export default function UploadPage() {
     },
   });
 
-  const onSubmit = (data: IUploadPostRequest) => {
-    console.log(isHeaderClick);
-    console.log(data); // 제출된 폼 데이터 출력
-    uploadPost(data);
-  };
+  const onSubmit = useCallback(
+    (data: IUploadPostRequest) => {
+      console.log('isHeaderClick:', isHeaderClick);
+      console.log('Data:', data);
+      uploadPost(data);
+    },
+    [isHeaderClick, uploadPost],
+  );
 
   useEffect(() => {
     if (isHeaderClick) {
