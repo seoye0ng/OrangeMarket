@@ -20,3 +20,7 @@ export type IPostWithoutAuthor = Omit<IPost, 'author'>;
 export interface IPostList {
   posts: IPost[];
 }
+
+export interface IUploadPostRequest {
+  post: Pick<IPost, 'image' | 'content'>;
+}
