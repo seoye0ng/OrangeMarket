@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery } from '@tanstack/react-query';
 
-import { commentList } from '@/api/apiRequests/post';
+import { commentList } from '@/api/apiRequests/comment';
 
 function useCommentList(
   postId: string,

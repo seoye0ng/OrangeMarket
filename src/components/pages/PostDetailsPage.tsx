@@ -7,8 +7,8 @@ import { IComment, ICommentRequest } from '@/api/types/comment';
 import CommentForm from '@/components/common/form/comment-form/CommentForm';
 import CommentCard from '@/components/common/post-item/comment-card/CommentCard';
 import PostItem from '@/components/common/post-item/PostItem';
-import useCommentList from '@/hooks/queries/post/useCommentList';
-import useCreateComment from '@/hooks/queries/post/useCreateComment';
+import useCommentList from '@/hooks/queries/comment/useCommentList';
+import useCreateComment from '@/hooks/queries/comment/useCreateComment';
 import usePostDetail from '@/hooks/queries/post/usePostDetail';
 
 interface PostDetailPageProps {
