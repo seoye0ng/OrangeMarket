@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { IUploadPostRequest } from '@/api/types/post';
 import PreviewImage from '@/components/common/form/preview-image/PreviewImage';
+import { useAutoResizeHeight } from '@/hooks/useAutoResizeHeight';
 import { usePreviewImage } from '@/hooks/usePreviewImage';
 
 interface IUploadFormProps {
@@ -14,6 +15,8 @@ export default function UploadForm({ className }: IUploadFormProps) {
   // useFormContext의 타입 지정
   const { register } = useFormContext<IUploadPostRequest>();
   const { preview, addImage, deleteImage } = usePreviewImage();
+  const { elementRef, resizeToFitContent } =
+    useAutoResizeHeight<HTMLTextAreaElement>();
 
   return (
     <form className={classNames('flex flex-col gap-4', className)}>
@@ -21,6 +24,8 @@ export default function UploadForm({ className }: IUploadFormProps) {
         {...register('post.content', { required: '게시글을 입력해주세요.' })}
         placeholder="게시글 입력하기..."
         className="scrollbar-hidden w-full resize-none text-14px focus:outline-none"
+        ref={elementRef}
+        onInput={resizeToFitContent}
         rows={1} // 최소 높이
       />
       {/* TODO: 여러개 이미지 처리하기 */}
