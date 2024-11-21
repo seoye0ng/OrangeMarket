@@ -18,7 +18,7 @@ export default function withHeader(
 ) {
   return function WrappedComponent() {
     return (
-      <header className="flex items-center justify-between border-b-1 px-4 py-2 text-24px">
+      <header className="h-header flex items-center justify-between border-b-1 px-4 text-24px">
         <div className="flex items-center space-x-4">
           {LeftIcon && (
             <button
