@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
 import { IUploadPostRequest } from '@/api/types/post';
+import PreviewImage from '@/components/common/form/preview-image/PreviewImage';
+import { usePreviewImage } from '@/hooks/usePreviewImage';
 
 interface IUploadFormProps {
   className?: string;
@@ -11,6 +13,7 @@ interface IUploadFormProps {
 export default function UploadForm({ className }: IUploadFormProps) {
   // useFormContext의 타입 지정
   const { register } = useFormContext<IUploadPostRequest>();
+  const { preview, addImage, deleteImage } = usePreviewImage();
 
   return (
     <form className={classNames('flex flex-col gap-4', className)}>
@@ -20,6 +23,14 @@ export default function UploadForm({ className }: IUploadFormProps) {
         className="scrollbar-hidden w-full resize-none text-14px focus:outline-none"
         rows={1} // 최소 높이
       />
+      {/* TODO: 여러개 이미지 처리하기 */}
+      {preview && (
+        <PreviewImage
+          previewUrl={preview}
+          onClick={deleteImage}
+          className="h-56"
+        />
+      )}
       <label
         htmlFor="postImage"
         className="relative mt-auto h-12 w-12 shrink-0 cursor-pointer self-end"
@@ -37,6 +48,7 @@ export default function UploadForm({ className }: IUploadFormProps) {
         type="file"
         id="postImage"
         className="hidden"
+        onChange={addImage}
       />
     </form>
   );
