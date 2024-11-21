@@ -8,6 +8,8 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --primary-100: #f26e22;
+  /* w, h */
+  --header-height: 48px;
 }
 
 /* 다크 모드 */
@@ -66,6 +68,12 @@
 
 /* 작은 스타일 단위(유틸리티 클래스)를 정의. 필요에 따라 여러 곳에서 조합하여 사용 */
 @layer utilities {
+  .h-header {
+    height: var(--header-height);
+  }
+  .h-calc-header-screen {
+    height: calc(100vh - var(--header-height));
+  }
   .text-balance {
     text-wrap: balance;
   }
