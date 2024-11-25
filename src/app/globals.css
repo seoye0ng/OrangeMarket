@@ -57,6 +57,10 @@
     @apply flex w-full flex-col items-center;
   }
 
+  .position-center {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform;
+  }
+
   .ellipis {
     @apply overflow-hidden text-ellipsis whitespace-nowrap break-all;
   }
