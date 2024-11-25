@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
 import { IUploadPostRequest } from '@/api/types/post';
 import PreviewImage from '@/components/common/form/preview-image/PreviewImage';
+import ImageInput from '@/components/common/input/ImageInput';
 import { useAutoResizeHeight } from '@/hooks/useAutoResizeHeight';
 import { usePreviewImage } from '@/hooks/usePreviewImage';
 
@@ -41,24 +41,10 @@ export default function UploadForm({ className }: IUploadFormProps) {
           className="h-56"
         />
       )}
-      <label
-        htmlFor="postImage"
-        className="relative mt-auto h-12 w-12 shrink-0 cursor-pointer self-end"
-      >
-        <Image
-          src="/assets/icons/icon-upload-file.svg"
-          alt="사진 첨부 아이콘"
-          fill
-          className="object-cover"
-        />
-      </label>
-      <input
+      <ImageInput
         {...register('post.image')}
-        accept="image/jpg, image/jpeg, image/png, image/gif"
-        type="file"
-        id="postImage"
-        className="hidden"
         onChange={addImage}
+        className="shrink-0 self-end"
       />
     </form>
   );
