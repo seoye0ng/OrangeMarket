@@ -44,7 +44,7 @@ export default function UploadForm({ className }: IUploadFormProps) {
       <ImageInput
         {...register('post.image')}
         onChange={addImage}
-        className="shrink-0 self-end"
+        className="mt-auto shrink-0 self-end"
       />
     </form>
   );

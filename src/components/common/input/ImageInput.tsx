@@ -50,7 +50,7 @@ const ImageInput = forwardRef(
         <label
           htmlFor={id}
           className={classNames(
-            'relative mt-auto shrink-0 cursor-pointer rounded-full',
+            'relative cursor-pointer rounded-full',
             size.label,
             inputStyles.colors[color],
             className,
