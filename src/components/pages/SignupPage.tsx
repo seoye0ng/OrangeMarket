@@ -5,10 +5,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { ISignUpRequest } from '@/api/types/auth';
 import CustomButton from '@/components/common/button/Button';
-import FormTemplate from '@/components/common/form/auth-form/FormTemplate';
-import ImageField from '@/components/common/form/auth-form/ImageField';
+import ProfileFields from '@/components/common/form/auth-form/ProfileFields';
+import SignupFields from '@/components/common/form/auth-form/SignupFields';
 import Title from '@/components/common/title/Title';
-import { signupFields, profileFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
 import useSignup from '@/hooks/queries/auth/useSignup';
 
@@ -78,13 +77,7 @@ export default function SignupPage() {
       />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {step === 1 ? (
-            <FormTemplate fields={signupFields} />
-          ) : (
-            <FormTemplate fields={profileFields}>
-              <ImageField />
-            </FormTemplate>
-          )}
+          {step === 1 ? <SignupFields /> : <ProfileFields />}
           <CustomButton
             type={step === 1 ? 'button' : 'submit'}
             color="primary"

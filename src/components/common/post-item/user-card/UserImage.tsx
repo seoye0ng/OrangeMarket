@@ -6,7 +6,7 @@ import { IUserProfile, IUserProfileBase } from '@/api/types/user';
 
 interface IUserImageProps {
   user?: IUserProfileBase | IUserProfile;
-  size?: '42px' | '50px' | '110px' | '36px';
+  size?: '42px' | '50px' | '110px' | '36px' | 'inherit';
   type?: 'link' | 'disabled';
   className?: string;
 }
@@ -25,6 +25,7 @@ export default function UserImage({
       className={classNames(
         'relative inline-block shrink-0 overflow-hidden rounded-full',
         className,
+        { 'pointer-events-none': type !== 'link' },
       )}
       style={{ height: size, width: size }} // 스타일로 동적으로 크기 설정
     >
@@ -32,6 +33,7 @@ export default function UserImage({
         src={user?.image || '/assets/icons/basic-profile-img-.svg'}
         alt={`${user?.username} 프로필 이미지`}
         fill
+        priority
         className="object-cover"
       />
     </Link>
