@@ -1,23 +1,29 @@
 'use client';
 
+import classNames from 'classnames';
 import { useFormContext } from 'react-hook-form';
 
 import { UnderlineInput } from '@/components/common/input/UnderlineInput';
 import { IFields } from '@/config/authFieldConfig';
 
-interface FormTemplateProps {
+interface IFieldsLayoutProps {
+  className?: string;
   fields: IFields;
-  children?: React.ReactNode; // 추가적인 컴포넌트(프로필 사진) 받을 수 있음
+  children?: React.ReactNode | React.ReactNode[]; // 추가 컴포넌트 삽입 가능
 }
 
-export default function FormTemplate({ fields, children }: FormTemplateProps) {
+export default function FieldsLayout({
+  className,
+  fields,
+  children,
+}: IFieldsLayoutProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
   return (
-    <fieldset className="flex-center gap-4">
+    <fieldset className={classNames('flex-center gap-4', className)}>
       {children}
       {Object.entries(fields).map(([name, field]) => {
         const inputType =
