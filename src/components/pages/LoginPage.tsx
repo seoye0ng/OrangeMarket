@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { ILoginRequest } from '@/api/types/auth';
 import CustomButton from '@/components/common/button/Button';
-import FormTemplate from '@/components/common/form/auth-form/FormTemplate';
+import FieldsLayout from '@/components/common/form/auth-form/FieldsLayout';
 import Text from '@/components/common/text/Text';
 import Title from '@/components/common/title/Title';
 import { loginFields } from '@/config/authFieldConfig';
@@ -50,7 +50,7 @@ export default function LoginPage() {
       />
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormTemplate fields={loginFields} />
+          <FieldsLayout fields={loginFields} />
           <CustomButton
             type="submit"
             color="primary"
