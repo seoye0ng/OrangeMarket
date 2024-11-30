@@ -16,7 +16,12 @@ const userProfile = {
 
 const users = [userProfile, userProfile, userProfile];
 
-export default function FollowListPage() {
+interface IFollowListPageProps {
+  accountName: string;
+}
+
+export default function FollowListPage({ accountName }: IFollowListPageProps) {
+  console.log(accountName);
   return (
     <main className="px-4 pt-6">
       <ul className="flex flex-col gap-4">
