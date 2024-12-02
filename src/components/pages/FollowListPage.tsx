@@ -26,16 +26,12 @@ export default function FollowListPage() {
     .split('/');
   const followListType = getFollowListType(rawFollowListType);
 
-  const {
-    data: users,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteFollowList({
-    accountName,
-    followListType,
-    limit: FOLLOW_LIST_LIMIT,
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteFollowList({
+      accountName,
+      followListType,
+      limit: FOLLOW_LIST_LIMIT,
+    });
 
   const { ref, inView } = useInView();
 
@@ -49,7 +45,7 @@ export default function FollowListPage() {
   return (
     <main className="px-4 pt-6">
       <ul className="flex flex-col gap-4">
-        {users?.pages.map((page) =>
+        {data?.pages.map((page) =>
           page.map((user) => (
             <UserCard imageSize="50px" userProfile={user} key="user._id">
               <CustomButton
