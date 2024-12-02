@@ -3,7 +3,8 @@ import MockAdapter from 'axios-mock-adapter';
 import instance from '@/api/index'; // axios 인스턴스 가져오기
 
 import { commentList } from './responseData/commentList';
-import { postListData } from './responseData/postList'; // 모킹된 데이터
+import { followList } from './responseData/followList';
+import { postListData } from './responseData/postList';
 
 // Mock Adapter 인스턴스 생성
 const mock = new MockAdapter(instance);
@@ -67,3 +68,19 @@ mock.onPost(/\/post\/\d+\/comments/).reply(() => {
 
   return [200, { comments }];
 });
+
+/* --- 팔로워/팔로잉 목록 GET 요청 모킹 --- */
+mock
+  .onGet(/\/profile\/[^/]+\/(following|follower)\?limit=\d+&skip=\d+/)
+  .reply((config) => {
+    // URL에서 쿼리 파라미터 추출
+    const urlParams = new URLSearchParams(config.url?.split('?')[1]);
+    const limit = parseInt(urlParams.get('limit') || '10', 10);
+    const skip = parseInt(urlParams.get('skip') || '0', 10);
+
+    // 해당 타입의 목록에서 원하는 부분만 슬라이스
+    const users = followList.slice(skip, skip + limit) || [];
+
+    // 응답 반환
+    return [200, users];
+  });
