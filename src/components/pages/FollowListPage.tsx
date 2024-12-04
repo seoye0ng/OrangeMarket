@@ -4,12 +4,14 @@ import '@/__mock__';
 
 import { Spinner } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { CustomButton } from '@/components/common/button';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
+import FollowButton from '@/components/follow/FollowButton';
+import useFollow from '@/hooks/queries/follow/useFollow';
 import useInfiniteFollowList from '@/hooks/queries/follow/useInfiniteFollowList';
+import useUnFollow from '@/hooks/queries/follow/useUnFollow';
 
 const FOLLOW_LIST_LIMIT = 20;
 const getFollowListType = (
@@ -33,7 +35,14 @@ export default function FollowListPage() {
       limit: FOLLOW_LIST_LIMIT,
     });
 
+  const { mutate: follow } = useFollow();
+  const { mutate: unfollow } = useUnFollow();
+
   const { ref, inView } = useInView();
+
+  const [userFollowStatus, setUserFollowStatus] = useState<
+    Record<string, boolean>
+  >({});
 
   // 요소가 뷰포트에 들어오면 다음 페이지 가져오기
   useEffect(() => {
@@ -42,20 +51,39 @@ export default function FollowListPage() {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
+  const handleFollowClick = (
+    followAccountName: string,
+    isFollowed: boolean,
+  ) => {
+    setUserFollowStatus((prev) => ({
+      ...prev,
+      [followAccountName]: !isFollowed,
+    }));
+
+    if (isFollowed) return unfollow({ accountName: followAccountName });
+
+    return follow({ accountName: followAccountName });
+  };
+
   return (
     <main className="px-4 pt-6">
       <ul className="flex flex-col gap-4">
         {data?.pages.map((page) =>
-          page.map((user) => (
-            <UserCard imageSize="50px" userProfile={user} key="user._id">
-              <CustomButton
-                color={user.isfollow ? 'white' : 'primary'}
-                size="s"
-              >
-                {user.isfollow ? '취소' : '팔로우'}
-              </CustomButton>
-            </UserCard>
-          )),
+          page.map((user) => {
+            const isFollowed =
+              userFollowStatus[user.accountname] ?? user.isfollow;
+
+            return (
+              <UserCard imageSize="50px" userProfile={user} key="user._id">
+                <FollowButton
+                  isFollow={isFollowed}
+                  onClick={() =>
+                    handleFollowClick(user.accountname, isFollowed)
+                  }
+                />
+              </UserCard>
+            );
+          }),
         )}
       </ul>
       {/* 스크롤 로딩 처리 */}
