@@ -12,7 +12,7 @@ export const getRequest = async <T>(
 };
 
 /* POST 요청 */
-export const postRequest = async <T, D>(
+export const postRequest = async <T, D = void>(
   url: string,
   data?: D,
   config?: AxiosRequestConfig,
