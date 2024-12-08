@@ -64,15 +64,15 @@ function Text({
     return {
       fontSize,
       lineHeight,
-      fontWeight: `font-${weight}`,
       color: textColor,
     };
-  }, [size, weight, color]);
+  }, [size, color]);
 
   return (
     <p
-      className={classNames(styles.fontWeight, className)}
+      className={classNames(className)}
       style={{
+        fontWeight: weight,
         fontSize: styles.fontSize,
         lineHeight: styles.lineHeight,
         color: styles.color,
