@@ -1,8 +1,6 @@
 import Image from 'next/image';
 
 import IconButton from '@/components/common/button/IconButton';
-import FollowButton from '@/components/follow/FollowButton';
-import classNames from 'classnames';
 
 interface ISocialActionButtons {
   type: '채팅' | '공유';

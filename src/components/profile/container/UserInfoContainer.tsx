@@ -1,15 +1,15 @@
 'use client';
 
 import classNames from 'classnames';
+import { useState } from 'react';
 
 import { IUserProfile } from '@/api/types/user';
-
+import useNavigate from '@/hooks/useNavigate';
 import AuthService from '@/services/AuthService';
+
 import UserActions from '../components/user-info/UserActions';
 import UserInfoDetails from '../components/user-info/UserInfoDetails';
 import UserInfoHeader from '../components/user-info/UserInfoHeader';
-import useNavigate from '@/hooks/useNavigate';
-import { useState } from 'react';
 
 interface IUserInfoContainer {
   userProfile: IUserProfile;
@@ -43,10 +43,8 @@ export default function UserInfoContainer({
 
     if (isFollowed) {
       // 팔로우 취소 API 호출
-      return;
     }
     // 팔로우 API 호출
-    return;
   };
 
   return (

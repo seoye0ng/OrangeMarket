@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+
 import { IProduct } from '@/api/types/product';
 
 export function useProduct() {

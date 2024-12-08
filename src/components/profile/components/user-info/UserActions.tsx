@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import SocialActionButton from './SocialActionButton';
-import FollowButton from '@/components/follow/FollowButton';
 import CustomButton from '@/components/common/button/Button';
+import FollowButton from '@/components/follow/FollowButton';
+
+import SocialActionButton from './SocialActionButton';
 
 interface IUserActionsProps {
   isFollow: boolean;
   isMyProfile: boolean;
-  accountname?: string;
   onNavigate: (path: string) => void;
   onFollow: () => void;
 }

@@ -1,8 +1,8 @@
 import UserImage from '@/components/common/post-item/user-card/UserImage';
+
 import FollowStatButton from './FollowStatButton';
 
 interface IUserInfoHeaderProps {
-  className?: string;
   accountName?: string;
   followerCount: number;
   followingCount: number;
