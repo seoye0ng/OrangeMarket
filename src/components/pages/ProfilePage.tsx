@@ -3,7 +3,7 @@
 import { postListData } from '@/__mock__/responseData/postList';
 import { productList } from '@/__mock__/responseData/productList';
 import PostSection from '@/components/profile/post/PostSection';
-import ProductListSection from '@/components/profile/product/ProductListSection';
+import ProductListContainer from '@/components/profile/container/ProductListContainer';
 import UserInfoContainer from '@/components/profile/container/UserInfoContainer';
 
 const userProfile = {
@@ -31,7 +31,7 @@ export default function ProfilePage({ accountName }: IProfilePageProps) {
         userProfile={userProfile}
         className="bg-white pb-26px pt-30px shadow-test1"
       />
-      <ProductListSection
+      <ProductListContainer
         className="bg-white py-5 shadow-test2"
         productList={productList}
       />
