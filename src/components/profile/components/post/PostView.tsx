@@ -2,7 +2,7 @@ import { IPostList } from '@/api/types/post';
 import { PostContent } from '@/components/common/post-item/post-card';
 import PostItem from '@/components/common/post-item/PostItem';
 
-import EmptyState from '../components/empty-state/EmptyState';
+import EmptyState from '../empty-state/EmptyState';
 
 interface PostListViewProps {
   postList: IPostList;
