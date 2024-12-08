@@ -5,21 +5,21 @@ import classNames from 'classnames';
 import { IUserProfile } from '@/api/types/user';
 
 import AuthService from '@/services/AuthService';
-import UserActions from './UserActions';
-import UserInfoDetails from './UserInfoDetails';
-import UserInfoHeader from './UserInfoHeader';
+import UserActions from '../components/user-info/UserActions';
+import UserInfoDetails from '../components/user-info/UserInfoDetails';
+import UserInfoHeader from '../components/user-info/UserInfoHeader';
 import useNavigate from '@/hooks/useNavigate';
 import { useState } from 'react';
 
-interface IUserInfoSection {
+interface IUserInfoContainer {
   userProfile: IUserProfile;
   className?: string;
 }
 
-export default function UserInfoSection({
+export default function UserInfoContainer({
   userProfile,
   className,
-}: IUserInfoSection) {
+}: IUserInfoContainer) {
   const { goTo } = useNavigate();
 
   const {
@@ -47,10 +47,6 @@ export default function UserInfoSection({
     }
     // 팔로우 API 호출
     return;
-  };
-
-  const handleShare = () => {
-    // 공유하기
   };
 
   return (

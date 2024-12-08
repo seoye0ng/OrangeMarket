@@ -4,11 +4,11 @@ import { postListData } from '@/__mock__/responseData/postList';
 import { productList } from '@/__mock__/responseData/productList';
 import PostSection from '@/components/profile/post/PostSection';
 import ProductListSection from '@/components/profile/product/ProductListSection';
-import UserInfoSection from '@/components/profile/user-info/UserInfoSection';
+import UserInfoContainer from '@/components/profile/container/UserInfoContainer';
 
 const userProfile = {
   _id: '',
-  accountname: '@alpaca__!',
+  accountname: 'alpaca__!',
   image: '',
   username: '오렌지 알파카',
   intro: '안녕 난 오렌지 알파카!',
@@ -19,16 +19,23 @@ const userProfile = {
   isfollow: false,
 };
 
-export default function Profile() {
-  // const type = 'user' || 'otherUser'
+interface IProfilePageProps {
+  accountName: string;
+}
+
+export default function ProfilePage({ accountName }: IProfilePageProps) {
+  console.log(accountName);
   return (
     <main className="flex flex-col gap-6px bg-gray-50">
-      <UserInfoSection
+      <UserInfoContainer
         userProfile={userProfile}
-        className="bg-white pb-26px pt-30px"
+        className="bg-white pb-26px pt-30px shadow-test1"
       />
-      <ProductListSection className="bg-white py-5" productList={productList} />
-      <PostSection className="bg-white" postList={postListData} />
+      <ProductListSection
+        className="bg-white py-5 shadow-test2"
+        productList={productList}
+      />
+      <PostSection className="bg-white shadow-test4" postList={postListData} />
     </main>
   );
 }
