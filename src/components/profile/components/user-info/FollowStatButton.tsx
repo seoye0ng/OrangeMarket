@@ -1,27 +1,31 @@
 import Text from '@/components/common/text/Text';
 import { formatFollowerCount } from '@/utils/fomatFollowCount';
 
-interface IFollowerFollowingButtonProps {
+interface FollowStatButtonProps {
   count: number;
   onClick?: () => void;
+  label?: string;
 }
 
-export function FollowerFollowingButton({
+export default function FollowStatButton({
   count,
   onClick,
-}: IFollowerFollowingButtonProps) {
+  label,
+}: FollowStatButtonProps) {
   return (
     <button
       type="button"
-      className="flex flex-col items-center gap-6px"
+      className="flex flex-col items-center gap-2"
       onClick={onClick}
     >
       <Text size="18px" weight="bold">
         {formatFollowerCount(count)}
       </Text>
-      <Text size="8px" color="gray-300">
-        followers
-      </Text>
+      {label && (
+        <Text size="12px" color="gray-300">
+          {label}
+        </Text>
+      )}
     </button>
   );
 }

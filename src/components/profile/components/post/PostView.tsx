@@ -2,6 +2,8 @@ import { IPostList } from '@/api/types/post';
 import { PostContent } from '@/components/common/post-item/post-card';
 import PostItem from '@/components/common/post-item/PostItem';
 
+import EmptyState from '../empty-state/EmptyState';
+
 interface PostListViewProps {
   postList: IPostList;
 }
@@ -12,7 +14,12 @@ interface PostAlbumViewProps {
 
 function PostListView({ postList }: PostListViewProps) {
   if (postList.posts.length === 0) {
-    return <div className="pb-20px px-4 text-center">포스트가 없습니다.</div>;
+    return (
+      <EmptyState
+        className="pb-20px px-4 text-center"
+        message="포스트가 없습니다."
+      />
+    );
   }
 
   return (
@@ -29,9 +36,10 @@ function PostAlbumView({ postList }: PostAlbumViewProps) {
 
   if (filteredImagePosts.length === 0) {
     return (
-      <div className="pb-20 pt-4 text-center">
-        이미지가 있는 포스트가 없습니다.
-      </div>
+      <EmptyState
+        className="pb-20 pt-4 text-center"
+        message="이미지가 있는 포스트가 없습니다."
+      />
     );
   }
 
