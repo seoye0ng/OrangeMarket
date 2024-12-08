@@ -7,41 +7,31 @@ interface IUserActionsProps {
   isFollow: boolean;
   isMyProfile: boolean;
   accountname?: string;
+  onNavigate: (path: string) => void;
+  onFollow: () => void;
 }
 
 export default function UserActions({
   isFollow,
   isMyProfile,
-  accountname,
+  onNavigate,
+  onFollow,
 }: IUserActionsProps) {
-  const [isFollowed, setIsFollowed] = useState(isFollow);
-
-  const handleFollowClick = () => {
-    setIsFollowed((prev) => !prev);
-
-    if (isFollowed) {
-      // 팔로우 취소 API 호출
-      return;
-    }
-    // 팔로우 API 호출
-    return;
-  };
-
-  const handleShareClick = () => {
-    // 공유하기
-  };
-
-  const handleNavigationClick = () => {
-    // goTo(path)
-  };
-
   if (isMyProfile) {
     return (
       <div className="flex items-center gap-3">
-        <CustomButton size="ml" color="white">
+        <CustomButton
+          size="ml"
+          color="white"
+          onClick={() => onNavigate('edit')}
+        >
           프로필 수정
         </CustomButton>
-        <CustomButton size="m" color="white">
+        <CustomButton
+          size="m"
+          color="white"
+          onClick={() => onNavigate('product')}
+        >
           상품 등록
         </CustomButton>
       </div>
@@ -50,14 +40,14 @@ export default function UserActions({
 
   return (
     <div className="flex items-center gap-10px">
-      <SocialActionButton type="채팅" onClick={handleNavigationClick} />
+      <SocialActionButton type="채팅" onClick={() => onNavigate('chat')} />
       <FollowButton
         size="ml"
         unFollowMessage="언팔로우"
-        isFollow={isFollowed}
-        onClick={handleFollowClick}
+        isFollow={isFollow}
+        onClick={onFollow}
       />
-      <SocialActionButton type="공유" onClick={handleShareClick} />
+      <SocialActionButton type="공유" />
     </div>
   );
 }
