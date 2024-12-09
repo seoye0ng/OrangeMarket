@@ -1,9 +1,5 @@
-import { Spinner } from '@nextui-org/react';
+import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
 
 export default function Loading() {
-  return (
-    <div className="flex h-screen items-center justify-center">
-      <Spinner color="primary" size="lg" />
-    </div>
-  );
+  return <LoadingSpinner />;
 }
