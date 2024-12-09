@@ -1,6 +1,6 @@
 export const TITLE_TEXT: Record<
   string,
-  { title: string; description: string }
+  { title: string; description?: string }
 > = {
   signup: {
     title: '이메일로 회원가입',
@@ -12,6 +12,5 @@ export const TITLE_TEXT: Record<
   },
   login: {
     title: '로그인',
-    description: '',
   },
 };
