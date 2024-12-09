@@ -15,3 +15,7 @@ export interface IUserProfile extends IUserProfileBase {
 }
 
 export type ISearchUserList = IUserProfileBase[];
+
+export interface IProfileResponse {
+  profile: IUserProfile;
+}
