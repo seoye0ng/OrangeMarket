@@ -5,12 +5,14 @@ import instance from '@/api/index'; // axios 인스턴스 가져오기
 import { commentList } from './responseData/commentList';
 import { followList } from './responseData/followList';
 import { postListData } from './responseData/postList';
+import { productList } from './responseData/productList';
+import { userProfile } from './responseData/profile';
 
 // Mock Adapter 인스턴스 생성
 const mock = new MockAdapter(instance);
 
-/* --- '/post/feed'로 시작하는 모든 GET 요청을 모킹 --- */
-mock.onGet(/\/post\/feed.*/).reply((config) => {
+/* --- '/post/feed'로 시작하는 모든 GET 요청, userpost를 모킹 --- */
+mock.onGet(/\/post\/(feed.*|[^/]+\/userpost)/).reply((config) => {
   // URL에서 쿼리 파라미터를 가져오기
   const urlParams = new URLSearchParams(config.url?.split('?')[1]);
 
@@ -84,3 +86,23 @@ mock
     // 응답 반환
     return [200, users];
   });
+
+/* --- 프로필 GET 요청 모킹 --- */
+mock.onGet(/^\/profile\/[^/]+$/).reply((config) => {
+  const { url } = config;
+  const accountName = url?.split('/')[2];
+
+  if (accountName) return [200, userProfile];
+
+  return [404, { message: 'Profile not found' }];
+});
+
+/* --- 상품 GET 요청 모킹 --- */
+mock.onGet(/^\/product\/[^/]+$/).reply((config) => {
+  const { url } = config;
+  const accountName = url?.split('/')[2];
+
+  if (accountName) return [200, productList];
+
+  return [404, { message: 'Profile not found' }];
+});
