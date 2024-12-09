@@ -9,7 +9,7 @@
   --background-end-rgb: 255, 255, 255;
   --primary-100: #f26e22;
   /* w, h */
-  --header-height: 48px;
+  --header-height: 3rem;
 }
 
 /* 다크 모드 */
@@ -76,7 +76,7 @@
     height: var(--header-height);
   }
   .h-calc-header-screen {
-    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
   }
   .text-balance {
     text-wrap: balance;
