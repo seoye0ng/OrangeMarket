@@ -4,7 +4,7 @@ import { userList } from '@/__mock__/responseData/userList';
 import { IUserProfileBase } from '@/api/types/user';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 
-export default function Search() {
+export default function SearchPage() {
   return (
     <main className="mt-5 px-4">
       {userList.map((user: IUserProfileBase) => (

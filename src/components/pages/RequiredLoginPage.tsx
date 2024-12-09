@@ -7,7 +7,7 @@ import BottomSheet from '@/components/common/bottom-sheet/BottomSheet';
 import Splash from '@/components/common/splash/Splash';
 import SocialLogin from '@/components/login/SocialLogin';
 
-export default function RequiredLogin() {
+export default function RequiredLoginPage() {
   const [showBottomSheet, setShowBottomSheet] = useState(false);
 
   return (
