@@ -1,22 +1,22 @@
 import classNames from 'classnames';
 
-import { IProductList } from '@/api/types/product';
 import Text from '@/components/common/text/Text';
+import useProductList from '@/hooks/queries/product/useProductList';
 
 import EmptyState from '../components/empty-state/EmptyState';
 import ProductCard from '../components/product/ProductCard';
 import { useProduct } from '../hook/useProduct';
 
 interface IProductListSectionProps {
-  productList: IProductList;
+  accountName: string;
   className?: string;
 }
 
 export default function ProductListContainer({
-  productList,
+  accountName,
   className,
 }: IProductListSectionProps) {
-  const { product } = productList;
+  const { data: productList } = useProductList(accountName);
   const { productClick } = useProduct();
 
   return (
@@ -24,11 +24,11 @@ export default function ProductListContainer({
       <Text className="mx-4" size="16px" weight="bold">
         판매중인 상품
       </Text>
-      {product.length === 0 ? (
+      {productList?.data === 0 ? (
         <EmptyState className="mx-4" message="현재 판매중인 상품이 없습니다." />
       ) : (
         <div className="horizontal-scroll scrollbar-hidden mt-4 flex gap-15px px-4">
-          {product.map((productData) => (
+          {productList?.product.map((productData) => (
             <ProductCard
               key={productData.id}
               product={productData}
