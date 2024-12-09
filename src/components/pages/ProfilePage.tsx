@@ -1,41 +1,42 @@
 'use client';
 
-import { postListData } from '@/__mock__/responseData/postList';
-import { productList } from '@/__mock__/responseData/productList';
-import PostSection from '@/components/profile/container/PostContainer';
+import '@/__mock__';
+
+import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
+import PostContainer from '@/components/profile/container/PostContainer';
 import ProductListContainer from '@/components/profile/container/ProductListContainer';
 import UserInfoContainer from '@/components/profile/container/UserInfoContainer';
-
-const userProfile = {
-  _id: '',
-  accountname: 'alpaca__!',
-  image: '',
-  username: '오렌지 알파카',
-  intro: '안녕 난 오렌지 알파카!',
-  follower: [''],
-  following: [''],
-  followerCount: 102345,
-  followingCount: 50,
-  isfollow: false,
-};
+import useProfile from '@/hooks/queries/profile/useProfile';
 
 interface IProfilePageProps {
   accountName: string;
 }
 
 export default function ProfilePage({ accountName }: IProfilePageProps) {
-  console.log(accountName);
+  const { data: userProfile, isError, isLoading } = useProfile(accountName);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError || !userProfile) {
+    return <div>해당 계정이 존재하지 않습니다.</div>;
+  }
+
   return (
     <main className="flex flex-col gap-6px bg-gray-50">
       <UserInfoContainer
-        userProfile={userProfile}
+        userProfile={userProfile.profile}
         className="bg-white pb-26px pt-30px"
       />
       <ProductListContainer
         className="bg-white py-5"
-        productList={productList}
+        accountName={userProfile.profile.accountname}
       />
-      <PostSection className="bg-white" postList={postListData} />
+      <PostContainer
+        className="bg-white"
+        accountName={userProfile.profile.accountname}
+      />
     </main>
   );
 }
