@@ -34,7 +34,7 @@ export default function UserInfoContainer({
   const isMyprofile = AuthService.getUser() === accountname;
 
   const handleNavigation = (path: string) => {
-    goTo(`/${path}`);
+    goTo(`${path}`);
   };
   const [isFollowed, setIsFollowed] = useState(isfollow);
 
