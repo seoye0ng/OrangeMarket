@@ -51,14 +51,21 @@ export const headerConfig: IHeaderConfig[] = [
     },
   },
   {
-    pathPattern: /^\/profile\/.+\/followers$/,
+    pathPattern: /^\/[^/]+$/, // profile
+    config: {
+      LeftIcon: BackArrow,
+      RightIcon: More,
+    },
+  },
+  {
+    pathPattern: /^\/[^/]+\/followers$/,
     config: {
       title: 'Followers',
       LeftIcon: BackArrow,
     },
   },
   {
-    pathPattern: /^\/profile\/.+\/following$/,
+    pathPattern: /^\/[^/]+\/following$/,
     config: {
       title: 'Followings',
       LeftIcon: BackArrow,

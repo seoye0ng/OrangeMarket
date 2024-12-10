@@ -1,32 +1,61 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
+import { Spinner } from '@nextui-org/react';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-import { IPostList } from '@/api/types/post';
+import { USER_POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
+import useInfiniteUserPostList from '@/hooks/queries/post/useInfiniteUserPostList';
 
-import { IconSwitcher } from '../components/post/IconSwitcher';
-import { PostAlbumView, PostListView } from '../components/post/PostView';
+import PostView from '../components/post/PostView';
+import ViewSwitcher from '../components/post/ViewSwitcher';
 
 interface IPostSection {
+  accountName: string;
   className?: string;
-  postList: IPostList;
 }
 
-export default function PostContainer({ className, postList }: IPostSection) {
-  const [postType, setPostType] = useState<'list' | 'album'>('list');
+export default function PostContainer({
+  className,
+  accountName,
+}: IPostSection) {
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteUserPostList(accountName, USER_POSTS_LIMIT);
+  const { ref, inView } = useInView();
 
-  const handlePostType = (type: 'list' | 'album') => {
-    if (type === postType) return;
-    console.log('change일 때만');
-    setPostType(type);
+  const [postView, setPostView] = useState<'list' | 'album'>('list');
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
+  const handlePostView = (view: 'list' | 'album') => {
+    if (view === postView) return;
+    setPostView(view);
   };
 
   return (
-    <section className={classNames('', className)}>
-      <IconSwitcher postType={postType} onSwitch={handlePostType} />
-      {postType === 'list' && <PostListView postList={postList} />}
-      {postType === 'album' && <PostAlbumView postList={postList} />}
+    <section className={classNames(className)}>
+      <ViewSwitcher postView={postView} onSwitch={handlePostView} />
+      <div className="px-4 pb-20 pt-4">
+        {data?.pages.map((page, i) => (
+          <PostView key={i} postList={page} postView={postView} />
+        ))}
+      </div>
+      {hasNextPage && (
+        <div ref={ref} className="pb-14">
+          {isFetchingNextPage ? (
+            <Spinner color="primary" size="lg" />
+          ) : (
+            '스크롤 내리기'
+          )}
+        </div>
+      )}
     </section>
   );
 }

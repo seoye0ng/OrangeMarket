@@ -4,41 +4,47 @@ import PostList from '@/components/icons/PostList';
 import { IIconDefaultProps } from '@/components/icons/types/iconType';
 
 interface IconSwitcherProps {
-  postType: 'list' | 'album';
-  onSwitch: (type: 'list' | 'album') => void;
+  postView: 'list' | 'album';
+  onSwitch: (view: 'list' | 'album') => void;
 }
 
-const icons: {
+interface Icons {
   label: string;
   IconComponent: React.FC<IIconDefaultProps>;
-  type: 'list' | 'album';
-}[] = [
+  view: 'list' | 'album';
+}
+
+const icons: Icons[] = [
   {
     label: '리스트형 아이콘',
     IconComponent: PostList,
-    type: 'list',
+    view: 'list',
   },
   {
     label: '앨범형 아이콘',
     IconComponent: PostAlbum,
-    type: 'album',
+    view: 'album',
   },
 ];
 
-const getIconColor = (currentType: string, targetType: string) => {
-  return currentType === targetType ? 'gray-300' : 'gray-100';
-};
+const getIconColor = (currentView: string, targetView: string) =>
+  currentView === targetView ? 'gray-300' : 'gray-100';
 
-export function IconSwitcher({ postType, onSwitch }: IconSwitcherProps) {
+export default function ViewSwitcher({
+  postView,
+  onSwitch,
+}: IconSwitcherProps) {
+  const handleSwitch = (view: 'list' | 'album') => () => onSwitch(view);
+
   return (
     <div className="border-b-1 border-gray-100 px-4 pt-2 text-right">
-      {icons.map(({ label, IconComponent, type }) => (
+      {icons.map(({ label, IconComponent, view }) => (
         <IconButton
-          key={type}
+          key={view}
           className="ml-4"
           label={label}
-          onClick={() => onSwitch(type)}
-          icon={<IconComponent color={getIconColor(postType, type)} />}
+          onClick={handleSwitch(view)}
+          icon={<IconComponent color={getIconColor(postView, view)} />}
         />
       ))}
     </div>

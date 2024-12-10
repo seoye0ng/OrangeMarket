@@ -16,3 +16,16 @@ export const postDetail = async (postId: string) => {
 
   return response;
 };
+
+/* --- user 게시물 리스트 GET 요청 --- */
+export const userPostList = async (
+  accountName: string,
+  limit: number,
+  skip: number,
+) => {
+  const response = await getRequest<IPostList>(
+    `/post/${accountName}/userpost/?limit=${limit}&skip=${skip}`,
+  );
+
+  return response;
+};

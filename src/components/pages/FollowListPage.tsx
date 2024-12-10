@@ -9,11 +9,11 @@ import { useInView } from 'react-intersection-observer';
 
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 import FollowButton from '@/components/follow/FollowButton';
+import { FOLLOW_LIST_LIMIT } from '@/constants/infiniteScrollLimits';
 import useFollow from '@/hooks/queries/follow/useFollow';
 import useInfiniteFollowList from '@/hooks/queries/follow/useInfiniteFollowList';
 import useUnFollow from '@/hooks/queries/follow/useUnFollow';
 
-const FOLLOW_LIST_LIMIT = 20;
 const getFollowListType = (
   rawFollowListType: string,
 ): 'follower' | 'following' =>

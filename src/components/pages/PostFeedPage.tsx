@@ -9,9 +9,8 @@ import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import PostItem from '@/components/common/post-item/PostItem';
+import { POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
 import useInfinitePostList from '@/hooks/queries/post/useInfinitePostList';
-
-const POSTS_LIMIT = 10;
 
 export default function PostFeedPage() {
   // 무한 스크롤 구현
