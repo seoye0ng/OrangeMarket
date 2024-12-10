@@ -29,7 +29,10 @@ const getIconColor = (currentType: string, targetType: string) => {
   return currentType === targetType ? 'gray-300' : 'gray-100';
 };
 
-export function IconSwitcher({ postType, onSwitch }: IconSwitcherProps) {
+export default function IconSwitcher({
+  postType,
+  onSwitch,
+}: IconSwitcherProps) {
   return (
     <div className="border-b-1 border-gray-100 px-4 pt-2 text-right">
       {icons.map(({ label, IconComponent, type }) => (

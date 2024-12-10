@@ -9,8 +9,8 @@ import { useInView } from 'react-intersection-observer';
 
 import useInfiniteUserPostList from '@/hooks/queries/post/useInfiniteUserPostList';
 
-import { IconSwitcher } from '../components/post/IconSwitcher';
-import { PostAlbumView, PostListView } from '../components/post/PostView';
+import IconSwitcher from '../components/post/IconSwitcher';
+import PostView from '../components/post/PostView';
 
 interface IPostSection {
   accountName: string;
@@ -43,12 +43,9 @@ export default function PostContainer({
     <section className={classNames('', className)}>
       <IconSwitcher postType={postType} onSwitch={handlePostType} />
       <div className="px-4 pb-20 pt-4">
-        {postType === 'list' &&
-          data?.pages.map((page) => <PostListView postList={page} />)}
-        {postType === 'album' &&
-          data?.pages.map((page, i) => (
-            <PostAlbumView key={i} postList={page} />
-          ))}
+        {data?.pages.map((page, i) => (
+          <PostView key={i} postList={page} type={postType} />
+        ))}
       </div>
       {hasNextPage && (
         <div ref={ref} className="pb-14">
