@@ -6,11 +6,11 @@ import EmptyState from '../empty-state/EmptyState';
 
 interface PostViewProps {
   postList: IPostList;
-  type: 'list' | 'album';
+  postView: 'list' | 'album';
 }
 
-function PostView({ postList, type }: PostViewProps) {
-  const isListView = type === 'list';
+function PostView({ postList, postView }: PostViewProps) {
+  const isListView = postView === 'list';
 
   if (postList.posts.length === 0) {
     const message = isListView

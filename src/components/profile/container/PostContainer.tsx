@@ -9,8 +9,8 @@ import { useInView } from 'react-intersection-observer';
 
 import useInfiniteUserPostList from '@/hooks/queries/post/useInfiniteUserPostList';
 
-import IconSwitcher from '../components/post/IconSwitcher';
 import PostView from '../components/post/PostView';
+import ViewSwitcher from '../components/post/ViewSwitcher';
 
 interface IPostSection {
   accountName: string;
@@ -26,7 +26,7 @@ export default function PostContainer({
     useInfiniteUserPostList(accountName, POSTS_LIMIT);
   const { ref, inView } = useInView();
 
-  const [postType, setPostType] = useState<'list' | 'album'>('list');
+  const [postView, setPostView] = useState<'list' | 'album'>('list');
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -34,17 +34,17 @@ export default function PostContainer({
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  const handlePostType = (type: 'list' | 'album') => {
-    if (type === postType) return;
-    setPostType(type);
+  const handlePostView = (view: 'list' | 'album') => {
+    if (view === postView) return;
+    setPostView(view);
   };
 
   return (
     <section className={classNames('', className)}>
-      <IconSwitcher postType={postType} onSwitch={handlePostType} />
+      <ViewSwitcher postView={postView} onSwitch={handlePostView} />
       <div className="px-4 pb-20 pt-4">
         {data?.pages.map((page, i) => (
-          <PostView key={i} postList={page} type={postType} />
+          <PostView key={i} postList={page} postView={postView} />
         ))}
       </div>
       {hasNextPage && (
