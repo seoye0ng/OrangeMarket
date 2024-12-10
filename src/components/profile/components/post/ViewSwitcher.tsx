@@ -8,11 +8,13 @@ interface IconSwitcherProps {
   onSwitch: (view: 'list' | 'album') => void;
 }
 
-const icons: {
+interface Icons {
   label: string;
   IconComponent: React.FC<IIconDefaultProps>;
   view: 'list' | 'album';
-}[] = [
+}
+
+const icons: Icons[] = [
   {
     label: '리스트형 아이콘',
     IconComponent: PostList,
@@ -25,14 +27,15 @@ const icons: {
   },
 ];
 
-const getIconColor = (currentView: string, targetView: string) => {
-  return currentView === targetView ? 'gray-300' : 'gray-100';
-};
+const getIconColor = (currentView: string, targetView: string) =>
+  currentView === targetView ? 'gray-300' : 'gray-100';
 
 export default function ViewSwitcher({
   postView,
   onSwitch,
 }: IconSwitcherProps) {
+  const handleSwitch = (view: 'list' | 'album') => () => onSwitch(view);
+
   return (
     <div className="border-b-1 border-gray-100 px-4 pt-2 text-right">
       {icons.map(({ label, IconComponent, view }) => (
@@ -40,7 +43,7 @@ export default function ViewSwitcher({
           key={view}
           className="ml-4"
           label={label}
-          onClick={() => onSwitch(view)}
+          onClick={handleSwitch(view)}
           icon={<IconComponent color={getIconColor(postView, view)} />}
         />
       ))}
