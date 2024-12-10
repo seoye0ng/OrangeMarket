@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import { USER_POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
 import useInfiniteUserPostList from '@/hooks/queries/post/useInfiniteUserPostList';
 
 import PostView from '../components/post/PostView';
@@ -16,14 +17,13 @@ interface IPostSection {
   accountName: string;
   className?: string;
 }
-const POSTS_LIMIT = 12;
 
 export default function PostContainer({
   className,
   accountName,
 }: IPostSection) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteUserPostList(accountName, POSTS_LIMIT);
+    useInfiniteUserPostList(accountName, USER_POSTS_LIMIT);
   const { ref, inView } = useInView();
 
   const [postView, setPostView] = useState<'list' | 'album'>('list');
@@ -40,7 +40,7 @@ export default function PostContainer({
   };
 
   return (
-    <section className={classNames('', className)}>
+    <section className={classNames(className)}>
       <ViewSwitcher postView={postView} onSwitch={handlePostView} />
       <div className="px-4 pb-20 pt-4">
         {data?.pages.map((page, i) => (
