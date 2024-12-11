@@ -7,6 +7,7 @@ import { followList } from './responseData/followList';
 import { postListData } from './responseData/postList';
 import { productList } from './responseData/productList';
 import { userProfile } from './responseData/profile';
+import { userList } from './responseData/userList';
 
 // Mock Adapter 인스턴스 생성
 const mock = new MockAdapter(instance);
@@ -105,4 +106,15 @@ mock.onGet(/^\/product\/[^/]+$/).reply((config) => {
   if (accountName) return [200, productList];
 
   return [404, { message: 'Profile not found' }];
+});
+
+/* --- search GET 요청 모킹 --- */
+mock.onGet(/\/user\/searchuser\/\?keyword=.+/).reply((config) => {
+  const { url } = config;
+  const params = new URLSearchParams(url?.split('?')[1]);
+  const keyword = params.get('keyword');
+
+  if (keyword) return [200, userList];
+
+  return [404, { message: 'User not found' }];
 });

@@ -3,7 +3,8 @@
 import { usePathname } from 'next/navigation';
 
 import { headerConfig } from '@/config/headerConfig';
-import { useHeaderContext } from '@/context/provider/headerContext';
+import { useHeaderContext } from '@/context/provider/HeaderContext';
+import { useSearchContext } from '@/context/provider/SearchContext';
 import useNavigate from '@/hooks/useNavigate';
 
 import withHeader from './withHeader';
@@ -20,15 +21,11 @@ export default function Header() {
   const pathname = usePathname();
   const { goBack, goTo } = useNavigate();
   const { setIsHeaderClick } = useHeaderContext();
+  const { setSearchTerm } = useSearchContext();
 
   const config = getHeaderConfig(pathname);
 
   if (!config) return null;
-
-  const handleSearch = (searchTerm: string) => {
-    console.log('ref 작동하심?', searchTerm);
-    // 검색 api 호출
-  };
 
   const onRightClick = () => {
     switch (pathname) {
@@ -41,11 +38,14 @@ export default function Header() {
         break;
       case '/upload':
         setIsHeaderClick(true);
-        // console.log('upload header click');
         break;
       default:
         break;
     }
+  };
+
+  const handleSearch = (searchTerm: string) => {
+    setSearchTerm(searchTerm);
   };
 
   const DynamicHeader = withHeader(
