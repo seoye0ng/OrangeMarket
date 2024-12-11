@@ -45,7 +45,6 @@ export default function Header() {
   };
 
   const handleSearch = (searchTerm: string) => {
-    setIsHeaderClick(true);
     setSearchTerm(searchTerm);
   };
 
