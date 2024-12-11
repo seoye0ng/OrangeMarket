@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { IUploadPostRequest } from '@/api/types/post';
 import UploadForm from '@/components/common/form/upload-form/UploadForm';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
-import { useHeaderContext } from '@/context/provider/headerContext';
+import { useHeaderContext } from '@/context/provider/HeaderContext';
 import useUploadPost from '@/hooks/queries/upload/useUploadPost';
 
 export default function UploadPage() {
