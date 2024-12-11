@@ -14,7 +14,7 @@ export interface IUserProfile extends IUserProfileBase {
   isfollow: boolean;
 }
 
-export type ISearchUserList = IUserProfileBase[];
+export type ISearchUser = IUserProfile[];
 
 export interface IProfileResponse {
   profile: IUserProfile;
