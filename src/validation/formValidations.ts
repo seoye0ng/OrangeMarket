@@ -42,3 +42,7 @@ export const accountNameValidation = {
 export const userNameValidation = {
   required: '사용자 이름은 필수 입력 사항입니다.',
 };
+
+export const uploadValidation = {
+  required: '게시글 입력은 필수 입력 사항입니다.',
+};
