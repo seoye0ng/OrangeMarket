@@ -2,17 +2,17 @@
 
 import '@/__mock__';
 
-import { Spinner } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useState } from 'react';
 
+import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 import FollowButton from '@/components/follow/FollowButton';
 import { FOLLOW_LIST_LIMIT } from '@/constants/infiniteScrollLimits';
 import useFollow from '@/hooks/queries/follow/useFollow';
 import useInfiniteFollowList from '@/hooks/queries/follow/useInfiniteFollowList';
 import useUnFollow from '@/hooks/queries/follow/useUnFollow';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 
 const getFollowListType = (
   rawFollowListType: string,
@@ -38,18 +38,15 @@ export default function FollowListPage() {
   const { mutate: follow } = useFollow();
   const { mutate: unfollow } = useUnFollow();
 
-  const { ref, inView } = useInView();
+  const { ref } = useInfiniteScroll({
+    fetchNextPage,
+    hasNextPage,
+    isFetching: isFetchingNextPage,
+  });
 
   const [userFollowStatus, setUserFollowStatus] = useState<
     Record<string, boolean>
   >({});
-
-  // 요소가 뷰포트에 들어오면 다음 페이지 가져오기
-  useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [inView, hasNextPage, fetchNextPage]);
 
   const handleFollowClick = (
     followAccountName: string,
@@ -86,16 +83,11 @@ export default function FollowListPage() {
           }),
         )}
       </ul>
-      {/* 스크롤 로딩 처리 */}
-      {hasNextPage && (
-        <div ref={ref} className="pb-14">
-          {isFetchingNextPage ? (
-            <Spinner color="primary" size="lg" />
-          ) : (
-            '스크롤 내리기'
-          )}
-        </div>
-      )}
+      <InfiniteScrollLoader
+        refCallback={ref}
+        isFetchingNextPage={isFetchingNextPage}
+        hasNextPage={hasNextPage}
+      />
     </main>
   );
 }
