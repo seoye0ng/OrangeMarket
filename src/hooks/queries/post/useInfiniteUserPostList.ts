@@ -2,10 +2,11 @@ import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 
 import { userPostList } from '@/api/apiRequests/post';
 import { IPostList } from '@/api/types/post';
+import { postKeys } from '@/queries/post/postKeys';
 
 function useInfiniteUserPostList(accountName: string, limit: number) {
   return useInfiniteQuery<IPostList>({
-    queryKey: ['userPostList', accountName, limit],
+    queryKey: postKeys.list({ limit, accountName }),
     queryFn: ({ pageParam = 0 }) =>
       userPostList(accountName, limit, pageParam as number),
     getNextPageParam: (lastPage, allPages) => {

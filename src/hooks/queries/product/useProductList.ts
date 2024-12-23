@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { productList } from '@/api/apiRequests/product';
+import { productKeys } from '@/queries/product/productKeys';
 
-function useProductList(accountname: string) {
+function useProductList(accountName: string) {
   return useQuery({
-    queryKey: ['productList', accountname],
-    queryFn: () => productList(accountname),
+    queryKey: productKeys.list(accountName),
+    queryFn: () => productList(accountName),
   });
 }
 

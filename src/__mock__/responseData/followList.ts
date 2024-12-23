@@ -4,7 +4,7 @@ export const followList: IFollowList = [
   {
     _id: '1',
     username: '초록초록 알파카',
-    accountname: '@al__1',
+    accountname: 'al__1',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -16,7 +16,7 @@ export const followList: IFollowList = [
   {
     _id: '2',
     username: '버건디 알파카',
-    accountname: '@al__12',
+    accountname: 'al__12',
     image: '',
     following: [],
     follower: [],
@@ -28,7 +28,7 @@ export const followList: IFollowList = [
   {
     _id: '3',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__123',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -40,7 +40,7 @@ export const followList: IFollowList = [
   {
     _id: '4',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__1234',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -52,7 +52,7 @@ export const followList: IFollowList = [
   {
     _id: '5',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__12345',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -64,7 +64,7 @@ export const followList: IFollowList = [
   {
     _id: '6',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: '@al__123456',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -76,7 +76,7 @@ export const followList: IFollowList = [
   {
     _id: '7',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__1234567',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -88,7 +88,7 @@ export const followList: IFollowList = [
   {
     _id: '8',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__12345678',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -100,7 +100,7 @@ export const followList: IFollowList = [
   {
     _id: '9',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__123456789',
     image: '/assets/video.png',
     following: [],
     follower: [],
@@ -112,7 +112,7 @@ export const followList: IFollowList = [
   {
     _id: '10',
     username: '코발트블루 알파카',
-    accountname: '@al__123',
+    accountname: 'al__12345678910',
     image: '/assets/video.png',
     following: [],
     follower: [],

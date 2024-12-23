@@ -22,7 +22,7 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (searchTerm) refetch();
-  }, [searchTerm]);
+  }, [refetch, searchTerm]);
 
   if (isError) {
     return <EmptyState className="mx-4" message="유저가 없습니다." />;
