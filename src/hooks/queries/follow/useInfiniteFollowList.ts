@@ -2,6 +2,7 @@ import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 
 import { followList } from '@/api/apiRequests/followList';
 import { IFollowList } from '@/api/types/follow';
+import { followKeys } from '@/queries/follow/followKeys';
 
 interface IFollowListProps {
   accountName: string;
@@ -15,7 +16,11 @@ function useInfiniteFollowList({
   limit,
 }: IFollowListProps) {
   return useInfiniteQuery<IFollowList>({
-    queryKey: [`${followListType}List`, accountName, limit],
+    queryKey: followKeys.list({
+      type: followListType,
+      accountName,
+      limit,
+    }),
     queryFn: ({ pageParam = 0 }) =>
       followList(accountName, followListType, limit, pageParam as number),
     getNextPageParam: (lastPage, allPages) => {
