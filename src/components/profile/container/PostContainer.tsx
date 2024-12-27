@@ -7,8 +7,8 @@ import { useState } from 'react';
 
 import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
 import { USER_POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
-import useInfiniteUserPostList from '@/hooks/queries/post/useInfiniteUserPostList';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import useInfiniteUserPostList from '@/queries/post/useInfiniteUserPostList';
 
 import PostView from '../components/post/PostView';
 import ViewSwitcher from '../components/post/ViewSwitcher';

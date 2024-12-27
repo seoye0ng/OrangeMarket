@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import Text from '@/components/common/text/Text';
-import useProductList from '@/hooks/queries/product/useProductList';
+import useProductList from '@/queries/product/useProductList';
 
 import EmptyState from '../components/empty-state/EmptyState';
 import ProductCard from '../components/product/ProductCard';

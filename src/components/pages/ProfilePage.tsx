@@ -6,7 +6,7 @@ import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
 import PostContainer from '@/components/profile/container/PostContainer';
 import ProductListContainer from '@/components/profile/container/ProductListContainer';
 import UserInfoContainer from '@/components/profile/container/UserInfoContainer';
-import useProfile from '@/hooks/queries/profile/useProfile';
+import useProfile from '@/queries/profile/useProfile';
 
 interface IProfilePageProps {
   accountName: string;

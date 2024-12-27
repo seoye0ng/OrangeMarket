@@ -7,8 +7,8 @@ import '@/__mock__';
 import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
 import PostItem from '@/components/common/post-item/PostItem';
 import { POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
-import useInfinitePostList from '@/hooks/queries/post/useInfinitePostList';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import useInfinitePostList from '@/queries/post/useInfinitePostList';
 
 export default function PostFeedPage() {
   // 무한 스크롤 구현

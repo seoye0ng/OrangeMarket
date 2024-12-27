@@ -8,20 +8,22 @@ import ProfileFields from '@/components/common/form/auth-form/ProfileFields';
 import SignupFields from '@/components/common/form/auth-form/SignupFields';
 import Title from '@/components/common/title/Title';
 import { TITLE_TEXT } from '@/constants/titleText';
-import useSignup from '@/hooks/queries/auth/useSignup';
 import useHistorySync from '@/hooks/useHistorySync';
 import useSteps from '@/hooks/useSteps';
+import useSignup from '@/queries/auth/useSignup';
 
 export default function SignupPage() {
   const methods = useForm<ISignUpRequest>({
     mode: 'onBlur',
     defaultValues: {
-      email: '',
-      password: '',
-      accountname: '',
-      username: '',
-      image: '',
-      intro: '',
+      user: {
+        email: '',
+        password: '',
+        accountname: '',
+        username: '',
+        image: '',
+        intro: '',
+      },
     },
   });
 
@@ -30,7 +32,7 @@ export default function SignupPage() {
   const { pushState } = useHistorySync(goToPreviousStep);
 
   const handleNext = async () => {
-    const isValid = await methods.trigger(['email', 'password']); // 특정 필드만 검사
+    const isValid = await methods.trigger(['user.email', 'user.password']); // 특정 필드만 검사
     if (!isValid) {
       console.log('유효성 검사 실패');
       return;

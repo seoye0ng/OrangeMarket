@@ -10,8 +10,8 @@ import Text from '@/components/common/text/Text';
 import Title from '@/components/common/title/Title';
 import { loginFields } from '@/config/authFieldConfig';
 import { TITLE_TEXT } from '@/constants/titleText';
-import useLogin from '@/hooks/queries/auth/useLogin';
 import useNavigate from '@/hooks/useNavigate';
+import useLogin from '@/queries/auth/useLogin';
 import AuthService from '@/services/AuthService';
 
 export default function LoginPage() {

@@ -7,7 +7,7 @@ import '@/__mock__';
 import { IUserProfileBase } from '@/api/types/user';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 import { useSearchContext } from '@/context/provider/SearchContext';
-import useSearch from '@/hooks/queries/search/useSearch';
+import useSearch from '@/queries/search/useSearch';
 
 import EmptyState from '../profile/components/empty-state/EmptyState';
 

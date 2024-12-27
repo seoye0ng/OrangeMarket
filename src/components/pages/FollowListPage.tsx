@@ -9,17 +9,18 @@ import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoad
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 import FollowButton from '@/components/follow/FollowButton';
 import { FOLLOW_LIST_LIMIT } from '@/constants/infiniteScrollLimits';
-import useFollow from '@/hooks/queries/follow/useFollow';
-import useInfiniteFollowList from '@/hooks/queries/follow/useInfiniteFollowList';
-import useUnFollow from '@/hooks/queries/follow/useUnFollow';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import useFollow from '@/queries/follow/useFollow';
+import useInfiniteFollowList from '@/queries/follow/useInfiniteFollowList';
+import useUnFollow from '@/queries/follow/useUnFollow';
 
-const getFollowListType = (
+function getFollowListType(
   rawFollowListType: string,
-): 'follower' | 'following' =>
-  rawFollowListType === 'follower' || rawFollowListType === 'following'
+): 'follower' | 'following' {
+  return rawFollowListType === 'follower' || rawFollowListType === 'following'
     ? rawFollowListType
     : 'following';
+}
 
 export default function FollowListPage() {
   const pathname = usePathname();

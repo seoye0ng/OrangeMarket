@@ -14,12 +14,14 @@ export interface IBaseResponse<T> {
 
 /* -- 회원가입 요청, 응답 -- */
 export interface ISignUpRequest {
-  username: string;
-  email: string;
-  password: string;
-  accountname: string;
-  intro: string;
-  image: string;
+  user: {
+    username: string;
+    email: string;
+    password: string;
+    accountname: string;
+    intro: string;
+    image: string;
+  };
 }
 
 export type ISignupResponse = IBaseResponse<{ intro: string }>;

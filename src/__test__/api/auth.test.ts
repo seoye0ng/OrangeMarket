@@ -10,12 +10,14 @@ describe('signup API Test', () => {
 
   // 공통 회원가입 요청 데이터
   const requestData: ISignUpRequest = {
-    username: '알파카',
-    email: 'alpaca@naver.com',
-    password: 'alpaca01!',
-    accountname: 'alpaca_01',
-    intro: '안녕 난 알파카!',
-    image: '',
+    user: {
+      username: '알파카',
+      email: 'alpaca@naver.com',
+      password: 'alpaca01!',
+      accountname: 'alpaca_01',
+      intro: '안녕 난 알파카!',
+      image: '',
+    },
   };
 
   // 각 테스트 전에 Mock Adapter 설정
