@@ -6,14 +6,31 @@ import { IIconDefaultProps } from '@/components/icons/types/iconType';
 
 export interface IBottomNavConfig {
   label: string;
+  href: string;
   bottomNavIcon: React.ComponentType<IIconDefaultProps>;
 }
 
-const bottomNavConfig: { [key: string]: IBottomNavConfig } = {
-  '/': { label: '홈', bottomNavIcon: Home },
-  '/chat': { label: '채팅', bottomNavIcon: Chat },
-  '/post': { label: '게시물 작성', bottomNavIcon: Post },
-  '/profile': { label: '프로필', bottomNavIcon: Profile },
-};
+const bottomNavConfig: IBottomNavConfig[] = [
+  {
+    label: '홈',
+    href: '/feed',
+    bottomNavIcon: Home,
+  },
+  {
+    label: '채팅',
+    href: '/chat',
+    bottomNavIcon: Chat,
+  },
+  {
+    label: '게시물 작성',
+    href: '/upload',
+    bottomNavIcon: Post,
+  },
+  {
+    label: '프로필',
+    href: '/',
+    bottomNavIcon: Profile,
+  },
+];
 
 export default bottomNavConfig;
