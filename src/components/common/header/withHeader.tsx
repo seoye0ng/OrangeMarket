@@ -3,7 +3,14 @@ import classNames from 'classnames';
 import { IIconProps } from '@/components/icons/types/iconType';
 
 import { ICustomButtonProps } from '../button/Button';
+import IconButton from '../button/IconButton';
+import BottomDrawer, { IdrawerContents } from '../drawer/BottomDrawer';
 import { ISearchFormProps } from '../form/search-form/SearchForm';
+
+const headerDrawerContents: IdrawerContents[] = [
+  { title: '설정 및 개인정보', action: () => {} },
+  { title: '로그아웃', action: () => {} },
+];
 
 export default function withHeader(
   title?: string,
@@ -15,6 +22,8 @@ export default function withHeader(
   rightSearchFormProps?: ISearchFormProps,
   onLeftClick?: () => void,
   onRightClick?: () => void,
+  isOpen?: boolean,
+  onOpenChange?: () => void,
 ) {
   return function WrappedComponent() {
     return (
@@ -40,13 +49,16 @@ export default function withHeader(
           )}
         </div>
         {RightIcon && (
-          <button
-            type="button"
-            className="my-1 cursor-pointer"
-            onClick={onRightClick}
-          >
-            <RightIcon activeColor="gray-200" />
-          </button>
+          <>
+            <IconButton onClick={onRightClick} label="">
+              <RightIcon activeColor="gray-200" />
+            </IconButton>
+            <BottomDrawer
+              isOpen={isOpen}
+              onOpenChange={onOpenChange}
+              contents={headerDrawerContents}
+            />
+          </>
         )}
         {RightButton && (
           <RightButton

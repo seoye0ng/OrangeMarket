@@ -1,5 +1,6 @@
 'use client';
 
+import { useDisclosure } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 
 import { headerConfig } from '@/config/headerConfig';
@@ -22,24 +23,23 @@ export default function Header() {
   const { goBack, goTo } = useNavigate();
   const { setIsHeaderClick } = useHeaderContext();
   const { setSearchTerm } = useSearchContext();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const config = getHeaderConfig(pathname);
-
+  console.log('pathname', pathname);
   if (!config) return null;
 
   const onRightClick = () => {
     switch (pathname) {
-      case '/':
+      case '/feed':
         goTo('/search');
-        break;
-      case '/profile':
-        // openModal();
-        console.log('더보기 모달 open');
         break;
       case '/upload':
         setIsHeaderClick(true);
         break;
       default:
+        onOpen();
+        console.log('drawer open');
         break;
     }
   };
@@ -58,6 +58,8 @@ export default function Header() {
     { ...config.rightSearchFormProps, onSearch: handleSearch },
     goBack,
     onRightClick,
+    isOpen,
+    onOpenChange,
   );
 
   return <DynamicHeader />;
