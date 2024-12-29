@@ -25,7 +25,7 @@ export default function TextButton({
       className={className}
       variant="light"
       radius="full"
-      onClick={onClick}
+      onPress={onClick}
     >
       <Text size={size} color={color} weight={weight}>
         {children}
