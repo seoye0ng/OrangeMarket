@@ -20,7 +20,7 @@ export default function SocialActionButton({
   return (
     <IconButton
       label={`${type} 버튼 아이콘`}
-      className="rounded-full border-1 border-gray-100 p-6px"
+      className="border-all-gray rounded-full p-6px"
       onClick={onClick}
     >
       <Image

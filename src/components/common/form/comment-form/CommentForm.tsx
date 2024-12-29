@@ -33,7 +33,7 @@ export default function CommentForm({
   return (
     <article
       className={classNames(
-        'flex items-center gap-2 border-t-1 border-gray-100 bg-white',
+        'border-t-gray flex items-center gap-2 bg-white',
         className,
       )}
     >

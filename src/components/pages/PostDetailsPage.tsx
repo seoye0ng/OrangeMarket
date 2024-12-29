@@ -49,7 +49,7 @@ export default function PostDetailsPage({ postId }: PostDetailPageProps) {
     <main className="relative pb-20 pt-5">
       <PostItem post={postDetail.post} className="px-4" />
       {commentList && (
-        <section className="border-t-1 border-gray-100 px-4 pt-5">
+        <section className="border-t-gray px-4 pt-5">
           {commentList.map(({ author: commentAuthor, ...comment }) => (
             <CommentCard
               key={comment.id}

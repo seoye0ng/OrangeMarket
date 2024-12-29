@@ -37,7 +37,7 @@ export default function ViewSwitcher({
   const handleSwitch = (view: 'list' | 'album') => () => onSwitch(view);
 
   return (
-    <div className="border-b-1 border-gray-100 px-4 pt-2 text-right">
+    <div className="border-b-gray px-4 pt-2 text-right">
       {icons.map(({ label, IconComponent, view }) => (
         <IconButton
           key={view}

@@ -36,14 +36,14 @@ export default function ProductCard({ product, onClick }: IProductProps) {
           className="object-cover"
         />
       </div>
-      <Text size="14px" className="ellipis mt-6px px-2px">
+      <Text size="14px" className="ellipsis mt-6px px-2px">
         {product.itemName}
       </Text>
       <Text
         size="12px"
         color="primary-100"
         weight="bold"
-        className="ellipis mt-1 px-2px"
+        className="ellipsis mt-1 px-2px"
       >
         {product.price.toLocaleString('ko-KR')}
       </Text>
