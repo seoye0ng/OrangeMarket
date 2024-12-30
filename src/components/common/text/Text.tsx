@@ -60,19 +60,27 @@ function Text({
   const styles = useMemo(() => {
     const { fontSize, lineHeight } = textStyles[size]; // 폰트 크기와 줄 간격을 매핑하여 가져오기
     const textColor = tokens.colors[color];
+    const fontWeight = {
+      thin: 100,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      bold: 700,
+    }[weight];
 
     return {
       fontSize,
       lineHeight,
       color: textColor,
+      fontWeight,
     };
-  }, [size, color]);
+  }, [size, color, weight]);
 
   return (
     <p
       className={classNames(className)}
       style={{
-        fontWeight: weight,
+        fontWeight: styles.fontWeight,
         fontSize: styles.fontSize,
         lineHeight: styles.lineHeight,
         color: styles.color,
