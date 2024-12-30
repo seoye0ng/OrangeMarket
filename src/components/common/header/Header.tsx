@@ -53,7 +53,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="h-header flex items-center justify-between px-4">
+      <header className="h-header border-b-gray flex items-center justify-between px-4">
         <HeaderTitleSection
           title={config?.title}
           LeftIcon={config?.LeftButton}
