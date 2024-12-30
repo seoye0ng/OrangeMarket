@@ -2,6 +2,7 @@
 
 import '@/__mock__';
 
+import classNames from 'classnames';
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -10,7 +11,7 @@ import ProfileFields from '@/components/common/form/auth-form/ProfileFields';
 import useProfile from '@/queries/profile/useProfile';
 import AuthService from '@/services/AuthService';
 
-export default function EditAccountPage() {
+export default function EditAccountPage({ className }: { className: string }) {
   const accountName = AuthService.getUser() || '';
   const { data: userProfile, isLoading } = useProfile(accountName, {
     enabled: !!accountName,
@@ -49,11 +50,11 @@ export default function EditAccountPage() {
 
   if (userProfile) {
     return (
-      <div className="pt-[30px]">
+      <main className={classNames(className, 'pt-[30px]')}>
         <FormProvider {...methods}>
           <ProfileFields />
         </FormProvider>
-      </div>
+      </main>
     );
   }
 }
