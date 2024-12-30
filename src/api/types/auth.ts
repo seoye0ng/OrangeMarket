@@ -1,26 +1,26 @@
-export interface IUser {
-  _id: string;
+interface IUserBase {
   username: string;
-  email: string;
   accountname: string;
+  intro: string;
   image: string;
 }
 
 /* -- 공통 응답 구조 인터페이스 -- */
 export interface IBaseResponse<T> {
   message: string;
-  user: IUser & T;
+  user: IUserBase & { _id: string } & T;
+}
+
+/* -- account edit 요청 -- */
+export interface IAccountEditRequest {
+  user: IUserBase;
 }
 
 /* -- 회원가입 요청, 응답 -- */
 export interface ISignUpRequest {
-  user: {
-    username: string;
+  user: IUserBase & {
     email: string;
     password: string;
-    accountname: string;
-    intro: string;
-    image: string;
   };
 }
 
