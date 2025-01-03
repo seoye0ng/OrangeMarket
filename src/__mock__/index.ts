@@ -118,3 +118,12 @@ mock.onGet(/\/user\/searchuser\/\?keyword=.+/).reply((config) => {
 
   return [404, { message: 'User not found' }];
 });
+
+/* --- 프로필 수정 PUT 요청 모킹 --- */
+mock.onPut(/\/user/).reply((config) => {
+  const data = JSON.parse(config.data);
+
+  if (data) return [200, userProfile];
+
+  return [404, { message: 'Profile not found' }];
+});
