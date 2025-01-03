@@ -1,19 +1,9 @@
-interface IUserBase {
-  username: string;
-  accountname: string;
-  intro: string;
-  image: string;
-}
+import { IUserBase } from './user';
 
 /* -- 공통 응답 구조 인터페이스 -- */
 export interface IBaseResponse<T> {
   message: string;
   user: IUserBase & { _id: string } & T;
-}
-
-/* -- account edit 요청 -- */
-export interface IAccountEditRequest {
-  user: IUserBase;
 }
 
 /* -- 회원가입 요청, 응답 -- */
