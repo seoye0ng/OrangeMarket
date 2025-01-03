@@ -98,6 +98,16 @@ export const getHeaderConfig = (
     };
   }
 
+  if (pathname === '/account/edit') {
+    return {
+      LeftButton: BackArrow,
+      RightButton: CustomButton,
+      rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
+      onLeftClick: goBack,
+      onRightClick: () => setIsHeaderClick(true),
+    };
+  }
+
   if (pathname === '/edit-product') {
     return {
       LeftButton: BackArrow,
