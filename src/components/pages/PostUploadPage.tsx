@@ -23,21 +23,18 @@ export default function PostUploadPage() {
 
   const onSubmit = useCallback(
     (data: IUploadPostRequest) => {
-      console.log('isHeaderClick:', isHeaderClick);
       console.log('Data:', data);
       uploadPost(data);
     },
-    [isHeaderClick, uploadPost],
+    [uploadPost],
   );
 
   useEffect(() => {
     console.log('useEffect:', isHeaderClick);
     if (isHeaderClick) {
       methods.handleSubmit(onSubmit)();
-    }
-    return () => {
       setIsHeaderClick(false);
-    };
+    }
   }, [isHeaderClick, methods, onSubmit, setIsHeaderClick]);
 
   return (
