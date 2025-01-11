@@ -1,5 +1,5 @@
-import UploadPage from '@/components/pages/UploadPage';
+import PostUploadPage from '@/components/pages/PostUploadPage';
 
 export default function page() {
-  return <UploadPage />;
+  return <PostUploadPage />;
 }
