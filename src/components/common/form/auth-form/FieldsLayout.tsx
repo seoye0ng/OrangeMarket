@@ -30,6 +30,7 @@ export default function FieldsLayout({
           {
             email: 'email',
             password: 'password',
+            link: 'url',
           }[name] || 'text';
 
         return (
