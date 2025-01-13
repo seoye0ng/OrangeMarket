@@ -27,7 +27,9 @@ export const UnderlineInput = extendVariants(Input, {
     size: {
       full: {
         inputWrapper: ['w-full h-auto border-b-0 after:h-[1px]'],
-        label: ['group-data-[filled-within=true]:scale-100 static mb-[10px]'],
+        label: [
+          'group-data-[filled-within=true]:scale-100 static mb-[10px] text-tiny',
+        ],
         innerWrapper: ['pb-2'],
         input: ['text-small'],
       },
