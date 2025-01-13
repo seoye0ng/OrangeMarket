@@ -9,12 +9,14 @@ import { IFields } from '@/config/authFieldConfig';
 interface IFieldsLayoutProps {
   className?: string;
   fields: IFields;
+  prefix?: 'user' | 'product';
   children?: React.ReactNode | React.ReactNode[]; // 추가 컴포넌트 삽입 가능
 }
 
 export default function FieldsLayout({
   className,
   fields,
+  prefix = 'user',
   children,
 }: IFieldsLayoutProps) {
   const {
@@ -35,8 +37,8 @@ export default function FieldsLayout({
 
         return (
           <UnderlineInput
-            key={`user.${name}`}
-            {...register(`user.${name}`, field.validation)}
+            key={`${prefix}.${name}`}
+            {...register(`${prefix}.${name}`, field.validation)}
             isClearable
             variant="underlined"
             type={inputType}
