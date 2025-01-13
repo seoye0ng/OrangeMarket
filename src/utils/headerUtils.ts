@@ -16,7 +16,8 @@ export interface IHeaderConfig {
   onLeftClick?: () => void;
   RightIcon?: React.ComponentType<IIconProps>;
   onRightClick?: () => void;
-  RightButton?: React.ComponentType<ICustomButtonProps>;
+  RightButton?: React.ComponentType;
+  // RightButton?: React.ComponentType<ICustomButtonProps>;
   rightButtonProps?: ICustomButtonProps;
   RightForm?: React.ComponentType<ISearchFormProps>;
   rightFormProps?: ISearchFormProps;
@@ -88,7 +89,7 @@ export const getHeaderConfig = (
     };
   }
 
-  if (pathname === '/add-product') {
+  if (pathname === '/product/upload') {
     return {
       LeftButton: BackArrow,
       RightButton: CustomButton,
@@ -108,7 +109,7 @@ export const getHeaderConfig = (
     };
   }
 
-  if (pathname === '/edit-product') {
+  if (pathname === '/product/edit') {
     return {
       LeftButton: BackArrow,
       RightIcon: More,
