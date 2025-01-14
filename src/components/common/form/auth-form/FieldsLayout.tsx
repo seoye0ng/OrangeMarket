@@ -33,6 +33,7 @@ export default function FieldsLayout({
             email: 'email',
             password: 'password',
             link: 'url',
+            price: 'number',
           }[name] || 'text';
 
         return (
