@@ -41,7 +41,6 @@ export default function FieldsLayout({
             key={`${prefix}.${name}`}
             {...register(`${prefix}.${name}`, field.validation)}
             isClearable
-            variant="underlined"
             type={inputType}
             label={field.label}
             placeholder={field.placeholder}

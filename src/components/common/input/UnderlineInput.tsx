@@ -38,5 +38,6 @@ export const UnderlineInput = extendVariants(Input, {
   defaultVariants: {
     color: 'stone',
     size: 'full',
+    variant: 'underlined',
   },
 });
