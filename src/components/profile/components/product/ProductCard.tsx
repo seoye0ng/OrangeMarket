@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-import Image from 'next/image';
-
 import { IProduct } from '@/api/types/product';
+import CustomImage from '@/components/common/custom-image/CustomImage';
 import Text from '@/components/common/text/Text';
 
 interface IProductProps {
@@ -27,15 +26,11 @@ export default function ProductCard({ product, onClick }: IProductProps) {
       onClick={onClick}
       onKeyDown={handleKeyDown} // 키보드 이벤트 추가
     >
-      <div className="relative aspect-[14/9] h-[90px] w-full overflow-hidden rounded-8px">
-        <Image
-          src={product.itemImage}
-          sizes="100vw"
-          alt={product.itemName}
-          fill
-          className="object-cover"
-        />
-      </div>
+      <CustomImage
+        className="aspect-[14/9] h-[90px] w-full rounded-8px"
+        imageSrc={product.itemImage}
+        alt={product.itemName}
+      />
       <Text size="14px" className="ellipsis mt-6px px-2px">
         {product.itemName}
       </Text>
