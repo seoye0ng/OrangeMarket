@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 
 import IconButton from '@/components/common/button/IconButton';
+import CustomImage from '@/components/common/custom-image/CustomImage';
 
 interface IPreviewImageProps {
   className?: string;
@@ -15,31 +15,20 @@ export default function PreviewImage({
   onClick,
 }: IPreviewImageProps) {
   return (
-    <div
-      className={classNames(
-        'relative inset-0 w-full overflow-hidden rounded-10px',
-        className,
-      )}
-    >
-      <Image
-        src={previewUrl}
+    <div className={classNames('relative', className)}>
+      <CustomImage
+        className="inset-0 h-full w-full rounded-10px"
+        imageSrc={previewUrl}
         alt="업로드 이미지 미리보기"
-        priority // LCP 최적화
-        fill
-        className="object-cover"
       />
       <IconButton
         label="삭제 버튼"
         className="absolute right-6px top-6px"
         onClick={onClick}
-      >
-        <Image
-          src="/assets/icons/x.svg"
-          alt="삭제 아이콘 이미지"
-          width={22}
-          height={22}
-        />
-      </IconButton>
+        imageSrc="/assets/icons/x.svg"
+        imageWidth={22}
+        imageHeight={22}
+      />
     </div>
   );
 }
