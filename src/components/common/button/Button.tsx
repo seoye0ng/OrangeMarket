@@ -13,6 +13,8 @@ export interface ICustomButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
+export type CustomButtonType = typeof CustomButton;
+
 const commonStyle = 'min-w-fit h-fit';
 
 const CustomButton = extendVariants(Button, {

@@ -8,10 +8,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { IEditAccountRequest } from '@/api/types/user';
 import ProfileFields from '@/components/common/form/auth-form/ProfileFields';
 import { useHeaderContext } from '@/context/provider/HeaderContext';
+import useNavigate from '@/hooks/useNavigate';
 import useEditAccount from '@/queries/profile/useEditAccount';
 import useProfile from '@/queries/profile/useProfile';
 import AuthService from '@/services/AuthService';
-import useNavigate from '@/hooks/useNavigate';
 
 export default function EditAccountPage({ className }: { className: string }) {
   const accountName = AuthService.getUser() || '';
@@ -65,7 +65,7 @@ export default function EditAccountPage({ className }: { className: string }) {
     if (isEditAccountSuccess) {
       goTo(`/${accountName}`);
     }
-  }, [isEditAccountSuccess]);
+  }, [accountName, goTo, isEditAccountSuccess]);
 
   if (!accountName || isLoading) {
     console.log('Loading...');

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CustomButton, {
+  CustomButtonType,
   ICustomButtonProps,
 } from '@/components/common/button/Button';
 import SearchForm, {
@@ -16,8 +17,7 @@ export interface IHeaderConfig {
   onLeftClick?: () => void;
   RightIcon?: React.ComponentType<IIconProps>;
   onRightClick?: () => void;
-  RightButton?: React.ComponentType;
-  // RightButton?: React.ComponentType<ICustomButtonProps>;
+  RightButton?: CustomButtonType;
   rightButtonProps?: ICustomButtonProps;
   RightForm?: React.ComponentType<ISearchFormProps>;
   rightFormProps?: ISearchFormProps;
@@ -103,9 +103,13 @@ export const getHeaderConfig = (
     return {
       LeftButton: BackArrow,
       RightButton: CustomButton,
-      rightButtonProps: { color: 'primary', size: 'ms', children: '저장' },
+      rightButtonProps: {
+        color: 'primary',
+        size: 'ms',
+        children: '저장',
+        onClick: () => setIsHeaderClick(true),
+      },
       onLeftClick: goBack,
-      onRightClick: () => setIsHeaderClick(true),
     };
   }
 

@@ -1,9 +1,9 @@
 import PostDetailsPage from '@/components/pages/PostDetailsPage';
 
 export default function PostDetails({
-  param: { id },
+  params: { id },
 }: {
-  param: { id: string };
+  params: { id: string };
 }) {
   return <PostDetailsPage postId={id} />;
 }

@@ -1,4 +1,7 @@
-import { ICustomButtonProps } from '@/components/common/button/Button';
+import {
+  ICustomButtonProps,
+  CustomButtonType,
+} from '@/components/common/button/Button';
 import IconButton from '@/components/common/button/IconButton';
 import { ISearchFormProps } from '@/components/common/form/search-form/SearchForm';
 import { IIconProps } from '@/components/icons/types/iconType';
@@ -6,7 +9,7 @@ import { IIconProps } from '@/components/icons/types/iconType';
 interface IHeaderRightProps {
   RightIcon?: React.ComponentType<IIconProps>;
   onRightClick?: () => void;
-  RightButton?: React.ComponentType<ICustomButtonProps>;
+  RightButton?: CustomButtonType;
   rightButtonProps?: ICustomButtonProps;
   RightForm?: React.ComponentType<ISearchFormProps>;
   rightFormProps?: ISearchFormProps;

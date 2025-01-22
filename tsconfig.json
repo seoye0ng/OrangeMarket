@@ -31,7 +31,8 @@
       "@types/*": ["src/types/*"],
       "@store/*": ["src/store/*"],
       "@providers/*": ["src/providers/*"],
-      "@constants/*": ["src/constants"]
+      "@constants/*": ["src/constants"],
+      "@context/*": ["src/context"]
     }
   },
   "include": [
