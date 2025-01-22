@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import IconButton from '@/components/common/button/IconButton';
 
 interface ISocialActionButtons {
@@ -17,18 +15,15 @@ export default function SocialActionButton({
   type,
 }: ISocialActionButtons) {
   const buttonImage = socialActionButtonMaps[type];
+
   return (
     <IconButton
       label={`${type} 버튼 아이콘`}
       className="border-all-gray rounded-full p-6px"
       onClick={onClick}
-    >
-      <Image
-        src={buttonImage}
-        alt={`${type} 버튼 아이콘 이미지`}
-        width={20}
-        height={20}
-      />
-    </IconButton>
+      imageSrc={buttonImage}
+      imageWidth={20}
+      imageHeight={20}
+    />
   );
 }
