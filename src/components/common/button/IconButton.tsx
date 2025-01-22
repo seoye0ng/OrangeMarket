@@ -1,17 +1,22 @@
+import Image from 'next/image';
 import { isValidElement } from 'react';
 
 interface IIconButtonProps {
   className?: string;
   label: string;
   icon?: React.ComponentType | JSX.Element; // ComponentType 또는 JSX.Element를 받을 수 있도록 처리
-  children?: React.ReactNode;
+  imageSrc?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   onClick?: () => void;
 }
 
 export default function IconButton({
   className = '',
   icon: Icon,
-  children,
+  imageSrc,
+  imageWidth,
+  imageHeight,
   label,
   onClick,
 }: IIconButtonProps) {
@@ -27,7 +32,15 @@ export default function IconButton({
 
       {/* 아이콘이 JSX.Element일 경우 그대로 렌더링 */}
       {Icon && isValidElement(Icon) && Icon}
-      {children}
+      {imageSrc && (
+        <Image
+          src={imageSrc}
+          alt={`${label} 아이콘 이미지`}
+          width={imageWidth}
+          height={imageHeight}
+          priority
+        />
+      )}
     </button>
   );
 }
