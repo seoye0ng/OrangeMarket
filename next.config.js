@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,10 +13,10 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve('src'),
+      '@': path.resolve(__dirname, 'src'), // 경로를 'src'로 설정
     };
     return config;
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
