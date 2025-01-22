@@ -19,11 +19,11 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@app/*": ["app/*"],
-      "@api/*": ["api/*"],
+      "@app/*": ["src/app/*"],
+      "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
@@ -34,7 +34,8 @@
       "@providers/*": ["src/providers/*"],
       "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
-      "@service/*": ["src/service/*"]
+      "@service/*": ["src/service/*"],
+      "@validation/*": ["src/validation/*"]
     }
   },
   "include": [
