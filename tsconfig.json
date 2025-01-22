@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@app/*": ["app/*"],
+      "@api/*": ["api/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
@@ -31,8 +32,9 @@
       "@types/*": ["src/types/*"],
       "@store/*": ["src/store/*"],
       "@providers/*": ["src/providers/*"],
-      "@constants/*": ["src/constants"],
-      "@context/*": ["src/context"]
+      "@constants/*": ["src/constants/*"],
+      "@context/*": ["src/context/*"],
+      "@service/*": ["src/service/*"]
     }
   },
   "include": [
