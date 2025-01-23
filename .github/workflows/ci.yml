@@ -25,6 +25,8 @@ jobs:
           node-version: '18'
       - run: yarn install --frozen-lockfile
       - run: yarn build
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
 
   test:
     name: Test
