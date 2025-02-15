@@ -16,8 +16,8 @@ export default function UserInfoHeader({
   onNavigate,
 }: IUserInfoHeaderProps) {
   return (
-    <div className="relative flex w-full items-center">
-      <UserImage size="110px" className="absolute left-1/2 -translate-x-1/2" />
+    <div className="flex w-full items-center justify-center">
+      <UserImage size="110px" />
       <div className="absolute flex w-full items-center justify-between px-10">
         <FollowStatButton
           count={followerCount}

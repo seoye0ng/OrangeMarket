@@ -20,6 +20,7 @@ export default function CustomImage({
         alt={alt}
         fill
         className="object-cover"
+        loading="lazy"
       />
     </div>
   );
