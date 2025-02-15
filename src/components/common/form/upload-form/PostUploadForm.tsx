@@ -10,7 +10,7 @@ interface IUploadFormProps {
   className?: string;
 }
 
-export default function UploadForm({ className }: IUploadFormProps) {
+export default function PostUploadForm({ className }: IUploadFormProps) {
   // useFormContext의 타입 지정
   const { register } = useFormContext<IUploadPostRequest>();
 

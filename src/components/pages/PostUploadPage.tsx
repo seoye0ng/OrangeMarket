@@ -4,7 +4,7 @@ import { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { IUploadPostRequest } from '@/api/types/post';
-import UploadForm from '@/components/common/form/upload-form/UploadForm';
+import PostUploadForm from '@/components/common/form/upload-form/PostUploadForm';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
 import { useHeaderContext } from '@/context/provider/HeaderContext';
 import useUploadPost from '@/queries/upload/useUploadPost';
@@ -41,7 +41,7 @@ export default function PostUploadPage() {
     <main className="h-calc-header-screen flex gap-[13px] p-4">
       <FormProvider {...methods}>
         <UserImage className="shadow-test1" />
-        <UploadForm className="h-full flex-grow" />
+        <PostUploadForm className="h-full flex-grow" />
       </FormProvider>
     </main>
   );
