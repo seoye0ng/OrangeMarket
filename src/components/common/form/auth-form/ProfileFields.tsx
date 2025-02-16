@@ -16,13 +16,13 @@ export default function ProfileFields() {
 
   return (
     <FieldsLayout fields={profileFields}>
-      <div className="flex h-[110px] w-[110px] items-end">
-        <UserImage size="inherit" />
+      <div className="relative">
+        <UserImage size="110px" link={false} />
         <ImageInput
           {...register('user.image')}
           inputSize="s"
           // onChange={addImage}
-          className="shrink-0 -translate-x-full"
+          className="absolute bottom-0 right-0"
         />
       </div>
     </FieldsLayout>
