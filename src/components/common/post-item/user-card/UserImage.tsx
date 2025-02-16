@@ -1,41 +1,39 @@
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { IUserProfile, IUserProfileBase } from '@/api/types/user';
+import CustomImage from '@/components/common/custom-image/CustomImage';
 
 interface IUserImageProps {
   user?: IUserProfileBase | IUserProfile;
   size?: '42px' | '50px' | '110px' | '36px' | 'inherit';
-  type?: 'link' | 'disabled';
+  link?: boolean;
   className?: string;
 }
+
+const sizeMap: Record<string, string> = {
+  '42px': 'h-[42px] w-[42px]',
+  '50px': 'h-[50px] w-[50px]',
+  '110px': 'h-[110px] w-[110px]',
+  '36px': 'h-[36px] w-[36px]',
+  inherit: 'h-full w-full',
+};
 
 export default function UserImage({
   user,
   size = '42px',
-  type = 'disabled',
+  link = true,
   className,
 }: IUserImageProps) {
-  const herf = type === 'link' ? `/profile/:${user?.accountname}` : '#';
+  const avatarClassNames = classNames(sizeMap[size], 'rounded-full', className);
 
-  return (
-    <Link
-      href={herf}
-      className={classNames(
-        'relative inline-block shrink-0 overflow-hidden rounded-full',
-        className,
-        { 'pointer-events-none': type !== 'link' },
-      )}
-      style={{ height: size, width: size }} // 스타일로 동적으로 크기 설정
-    >
-      <Image
-        src={user?.image || '/assets/icons/basic-profile-img-.svg'}
-        alt={`${user?.username} 프로필 이미지`}
-        fill
-        priority
-        className="object-cover"
-      />
-    </Link>
+  const Avatar = (
+    <CustomImage
+      imageSrc={user?.image || '/assets/icons/basic-profile-img-.svg'}
+      alt={`${user?.username} 프로필 이미지`}
+      className={avatarClassNames}
+    />
   );
+
+  return link ? <Link href={user?.accountname || '#'}>{Avatar}</Link> : Avatar;
 }
