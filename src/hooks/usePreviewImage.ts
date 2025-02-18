@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
-export function usePreviewImage() {
+export function usePreviewImage(multiple: boolean = true) {
   const [preview, setPreview] = useState<string[]>([]);
 
   const addImage = (file: File) => {
     const reader = new FileReader();
     reader.onload = () =>
-      setPreview((prev) => [...prev, reader.result as string]);
+      setPreview((prev) =>
+        multiple
+          ? [...prev, reader.result as string]
+          : [reader.result as string],
+      );
     reader.readAsDataURL(file);
   };
 

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import Image from 'next/image';
+import { forwardRef } from 'react';
 
 type InputSize = 's' | 'm';
 type InputColor = 'primary-100' | 'gray-200';
@@ -29,43 +30,53 @@ const inputStyles: {
   },
 };
 
-export default function ImageInput({
-  inputSize = 'm',
-  color = 'primary-100',
-  id = 'imageFile',
-  accept = 'image/jpg, image/jpeg, image/png, image/gif',
-  className,
-  ...inputProps
-}: ImageInputProps) {
-  const size = inputStyles.sizes[inputSize];
+const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
+  (
+    {
+      inputSize = 'm',
+      color = 'primary-100',
+      id = 'imageFile',
+      accept = 'image/jpg, image/jpeg, image/png, image/gif',
+      className,
+      ...inputProps
+    },
+    ref,
+  ) => {
+    const size = inputStyles.sizes[inputSize];
 
-  return (
-    <>
-      <label
-        htmlFor={id}
-        className={classNames(
-          'cursor-pointer rounded-full',
-          size.label,
-          inputStyles.colors[color],
-          className,
-        )}
-      >
-        <Image
-          src="/assets/icons/icon-image.svg"
-          alt="사진 첨부 아이콘"
-          priority
-          width={size.img}
-          height={size.img}
-          className="position-center"
+    return (
+      <>
+        <label
+          htmlFor={id}
+          className={classNames(
+            'cursor-pointer rounded-full',
+            size.label,
+            inputStyles.colors[color],
+            className,
+          )}
+        >
+          <Image
+            src="/assets/icons/icon-image.svg"
+            alt="사진 첨부 아이콘"
+            priority
+            width={size.img}
+            height={size.img}
+            className="position-center"
+          />
+        </label>
+        <input
+          type="file"
+          accept={accept}
+          className="hidden"
+          id={id}
+          ref={ref}
+          {...inputProps}
         />
-      </label>
-      <input
-        type="file"
-        accept={accept}
-        className="hidden"
-        id={id}
-        {...inputProps}
-      />
-    </>
-  );
-}
+      </>
+    );
+  },
+);
+
+// React DevTools에서 디버깅할 때 이름이 표시되도록 displayName 설정
+ImageInput.displayName = 'ImageInput';
+export default ImageInput;
