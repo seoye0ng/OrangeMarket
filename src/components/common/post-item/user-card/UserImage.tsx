@@ -6,6 +6,7 @@ import CustomImage from '@/components/common/custom-image/CustomImage';
 
 interface IUserImageProps {
   user?: IUserProfileBase | IUserProfile;
+  src?: string;
   size?: '42px' | '50px' | '110px' | '36px' | 'inherit';
   link?: boolean;
   className?: string;
@@ -21,6 +22,7 @@ const sizeMap: Record<string, string> = {
 
 export default function UserImage({
   user,
+  src,
   size = '42px',
   link = true,
   className,
@@ -29,8 +31,8 @@ export default function UserImage({
 
   const Avatar = (
     <CustomImage
-      imageSrc={user?.image || '/assets/icons/basic-profile-img-.svg'}
-      alt={`${user?.username} 프로필 이미지`}
+      imageSrc={src || user?.image || '/assets/icons/basic-profile-img-.svg'}
+      alt={`${user?.username || ''} 프로필 이미지`}
       className={avatarClassNames}
     />
   );
