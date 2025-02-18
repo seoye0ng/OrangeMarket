@@ -3,25 +3,31 @@ import { useFormContext } from 'react-hook-form';
 import ImageInput from '@/components/common/input/ImageInput';
 import UserImage from '@/components/common/post-item/user-card/UserImage';
 import { profileFields } from '@/config/authFieldConfig';
-// import { usePreviewImage } from '@/hooks/usePreviewImage';
+import { usePreviewImage } from '@/hooks/usePreviewImage';
 
 import FieldsLayout from './FieldsLayout';
 
 export default function ProfileFields() {
-  const { register } = useFormContext();
-  // const { addImage } = usePreviewImage();
+  const { register, setValue } = useFormContext();
+  const { preview, addImage } = usePreviewImage(false);
 
-  //  const { addImage, deleteImage } = usePreviewImage();
-  // ImageInput 컴포넌트에서 image를 가져오면 UserImage에서 렌더링 되어야 함.
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const imageFile = e.target.files?.[0];
+    if (imageFile) {
+      setValue('user.image', imageFile.name);
+      addImage(imageFile);
+    }
+  };
 
   return (
     <FieldsLayout fields={profileFields}>
       <div className="relative">
-        <UserImage size="110px" link={false} />
+        <UserImage size="110px" link={false} src={preview[0]} />
         <ImageInput
-          {...register('user.image')}
           inputSize="s"
-          // onChange={addImage}
+          {...register('user.image', {
+            onChange: handleImageChange,
+          })}
           className="absolute bottom-0 right-0"
         />
       </div>
