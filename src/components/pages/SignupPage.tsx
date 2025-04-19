@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
 import { useState } from 'react';
@@ -33,24 +35,27 @@ export default function SignupPage() {
   });
 
   const [isEmailAvailable, setIsEmailAvailable] = useState(false);
+  const [isAccountAvailable, setIsAccountAvailable] = useState(false);
 
-  const { mutate: checkEmailValid } = useEmailValid();
-  const { mutate: checkAccountValid } = useAccountNameValid();
+  const { mutate: emailValid } = useEmailValid();
+  const { mutate: accountValid } = useAccountNameValid();
   const { mutate: signup, error, isError } = useSignup();
   const { step, goToNextStep, goToPreviousStep } = useSteps(1, 2);
   const { pushState } = useHistorySync(goToPreviousStep);
 
-  const handleEmailAvailableCheck = async () => {
-    const email = methods.getValues('user.email'); // 입력된 이메일 값 가져오기
-    await methods.trigger('user.email'); // react-hook-form의 유효성 검사 실행
-    checkEmailValid({ user: { email } });
-    setIsEmailAvailable(true); // 이메일 사용 가능 상태로 설정
-  };
+  const isFirstStep = step === 1;
+  const titleInfo = TITLE_TEXT[isFirstStep ? 'signup' : 'set-profile'];
 
-  const handleAccountNameCheck = async () => {
-    const accountname = methods.getValues('user.accountname'); // 입력된 계정명 값 가져오기
-    await methods.trigger('user.accountname'); // react-hook-form의 유효성 검사 실행
-    checkAccountValid({ user: { accountname } });
+  const checkDuplicate = async (
+    field: 'email' | 'accountname',
+    validateFn: (args: any) => void,
+    onSuccess?: () => void,
+  ) => {
+    const value = methods.getValues(`user.${field}`);
+    const isValid = await methods.trigger(`user.${field}`);
+    if (!isValid) return;
+    validateFn({ user: { [field]: value } });
+    onSuccess?.();
   };
 
   const handleNext = async () => {
@@ -63,20 +68,23 @@ export default function SignupPage() {
     pushState(); // 브라우저 히스토리에 상태 추가
   };
 
-  const onSubmit = (data: ISignUpRequest) => {
+  const onSubmit = async (data: ISignUpRequest) => {
     console.log('성공', data);
+    const isValid = await methods.trigger([
+      'user.accountname',
+      'user.username',
+    ]);
+    if (!isValid || !isAccountAvailable) {
+      console.log('유효성 검사 실패');
+      return;
+    }
     signup(data);
-
     if (isError) {
       console.error(error);
       return;
     }
-
     goTo('/login');
   };
-
-  const isFirstStep = step === 1;
-  const titleInfo = TITLE_TEXT[isFirstStep ? 'signup' : 'set-profile'];
 
   return (
     <>
@@ -90,12 +98,20 @@ export default function SignupPage() {
           {isFirstStep ? (
             <SignupFields
               isDisabled={methods.watch('user.email')?.length < 1}
-              onClick={handleEmailAvailableCheck}
+              onClick={() =>
+                checkDuplicate('email', emailValid, () =>
+                  setIsEmailAvailable(true),
+                )
+              }
             />
           ) : (
             <ProfileFields
               isDisabled={methods.watch('user.accountname')?.length < 1}
-              onClick={handleAccountNameCheck}
+              onClick={() =>
+                checkDuplicate('accountname', accountValid, () =>
+                  setIsAccountAvailable(true),
+                )
+              }
             />
           )}
           <CustomButton
