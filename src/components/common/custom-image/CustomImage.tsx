@@ -16,7 +16,6 @@ export default function CustomImage({
     <div className={classNames('relative overflow-hidden', className)}>
       <Image
         src={imageSrc}
-        sizes="100vw"
         alt={alt}
         fill
         className="object-cover"
