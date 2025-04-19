@@ -6,22 +6,34 @@ export interface IBaseResponse<T> {
   user: IUserBase & { _id: string } & T;
 }
 
-/* -- 회원가입 요청, 응답 -- */
-export interface ISignUpRequest {
-  user: IUserBase & {
-    email: string;
-    password: string;
-  };
+/* -- 유저 기본 정보 인터페이스 -- */
+export interface IUserEmail {
+  email: string;
 }
 
-export type ISignupResponse = IBaseResponse<{ intro: string }>;
+export interface IUserAuth extends IUserEmail {
+  password: string;
+}
+
+/* -- 회원가입 요청, 응답 -- */
+export interface ISignUpRequest {
+  user: IUserBase & IUserAuth;
+}
+
+export type ISignUpResponse = IBaseResponse<{ intro: string }>;
+
+/* -- 이메일 유효성 검사 요청, 응답 -- */
+export interface IEmailValidRequest {
+  user: IUserEmail;
+}
+
+export type IEmailValidResponse = {
+  message: string;
+};
 
 /* -- 로그인 요청, 응답 -- */
 export interface ILoginRequest {
-  user: {
-    email: string;
-    password: string;
-  };
+  user: IUserAuth;
 }
 
 export type ILoginResponse = IBaseResponse<{ token: string }>;
