@@ -10,11 +10,13 @@ import SignupFields from '@/components/common/form/auth-form/SignupFields';
 import Title from '@/components/common/title/Title';
 import { TITLE_TEXT } from '@/constants/titleText';
 import useHistorySync from '@/hooks/useHistorySync';
+import useNavigate from '@/hooks/useNavigate';
 import useSteps from '@/hooks/useSteps';
 import useEmailValid from '@/queries/auth/useEmailValid';
 import useSignup from '@/queries/auth/useSignup';
 
 export default function SignupPage() {
+  const { goTo } = useNavigate();
   const methods = useForm<ISignUpRequest>({
     mode: 'onBlur',
     defaultValues: {
@@ -32,7 +34,7 @@ export default function SignupPage() {
   const [isEmailAvailable, setIsEmailAvailable] = useState(false);
 
   const { mutate: checkEmailValid } = useEmailValid();
-  const { mutate } = useSignup();
+  const { mutate: signup, error, isError } = useSignup();
   const { step, goToNextStep, goToPreviousStep } = useSteps(1, 2);
   const { pushState } = useHistorySync(goToPreviousStep);
 
@@ -55,7 +57,14 @@ export default function SignupPage() {
 
   const onSubmit = (data: ISignUpRequest) => {
     console.log('성공', data);
-    mutate(data);
+    signup(data);
+
+    if (isError) {
+      console.error(error);
+      return;
+    }
+
+    goTo('/login');
   };
 
   const isFirstStep = step === 1;
