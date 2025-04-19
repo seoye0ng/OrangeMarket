@@ -12,6 +12,7 @@ import { TITLE_TEXT } from '@/constants/titleText';
 import useHistorySync from '@/hooks/useHistorySync';
 import useNavigate from '@/hooks/useNavigate';
 import useSteps from '@/hooks/useSteps';
+import useAccountNameValid from '@/queries/auth/useAccountNameValid';
 import useEmailValid from '@/queries/auth/useEmailValid';
 import useSignup from '@/queries/auth/useSignup';
 
@@ -34,6 +35,7 @@ export default function SignupPage() {
   const [isEmailAvailable, setIsEmailAvailable] = useState(false);
 
   const { mutate: checkEmailValid } = useEmailValid();
+  const { mutate: checkAccountValid } = useAccountNameValid();
   const { mutate: signup, error, isError } = useSignup();
   const { step, goToNextStep, goToPreviousStep } = useSteps(1, 2);
   const { pushState } = useHistorySync(goToPreviousStep);
@@ -43,6 +45,12 @@ export default function SignupPage() {
     await methods.trigger('user.email'); // react-hook-form의 유효성 검사 실행
     checkEmailValid({ user: { email } });
     setIsEmailAvailable(true); // 이메일 사용 가능 상태로 설정
+  };
+
+  const handleAccountNameCheck = async () => {
+    const accountname = methods.getValues('user.accountname'); // 입력된 계정명 값 가져오기
+    await methods.trigger('user.accountname'); // react-hook-form의 유효성 검사 실행
+    checkAccountValid({ user: { accountname } });
   };
 
   const handleNext = async () => {
@@ -85,7 +93,10 @@ export default function SignupPage() {
               onClick={handleEmailAvailableCheck}
             />
           ) : (
-            <ProfileFields />
+            <ProfileFields
+              isDisabled={methods.watch('user.accountname')?.length < 1}
+              onClick={handleAccountNameCheck}
+            />
           )}
           <CustomButton
             type={isFirstStep ? 'button' : 'submit'}
