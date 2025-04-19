@@ -1,5 +1,7 @@
 import { postRequest } from '@/api/requests';
 import {
+  IAccountValidRequest,
+  IAccountValidResponse,
   IEmailValidRequest,
   IEmailValidResponse,
   ILoginRequest,
@@ -31,6 +33,15 @@ export const emailValid = async (data: IEmailValidRequest) => {
     '/user/emailvalid',
     data,
   );
+
+  return response;
+};
+
+export const accountValid = async (data: IAccountValidRequest) => {
+  const response = await postRequest<
+    IAccountValidResponse,
+    IAccountValidRequest
+  >('/user/accountnamevalid', data);
 
   return response;
 };

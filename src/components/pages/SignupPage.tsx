@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +14,7 @@ import { TITLE_TEXT } from '@/constants/titleText';
 import useHistorySync from '@/hooks/useHistorySync';
 import useNavigate from '@/hooks/useNavigate';
 import useSteps from '@/hooks/useSteps';
+import useAccountNameValid from '@/queries/auth/useAccountNameValid';
 import useEmailValid from '@/queries/auth/useEmailValid';
 import useSignup from '@/queries/auth/useSignup';
 
@@ -31,23 +34,35 @@ export default function SignupPage() {
     },
   });
 
-  const [isEmailAvailable, setIsEmailAvailable] = useState(false);
+  const [validationStatus, setValidationStatus] = useState({
+    isEmailAvailable: false,
+    isAccountAvailable: false,
+  });
 
-  const { mutate: checkEmailValid } = useEmailValid();
+  const { mutate: emailValid } = useEmailValid();
+  const { mutate: accountValid } = useAccountNameValid();
   const { mutate: signup, error, isError } = useSignup();
   const { step, goToNextStep, goToPreviousStep } = useSteps(1, 2);
   const { pushState } = useHistorySync(goToPreviousStep);
 
-  const handleEmailAvailableCheck = async () => {
-    const email = methods.getValues('user.email'); // 입력된 이메일 값 가져오기
-    await methods.trigger('user.email'); // react-hook-form의 유효성 검사 실행
-    checkEmailValid({ user: { email } });
-    setIsEmailAvailable(true); // 이메일 사용 가능 상태로 설정
+  const isFirstStep = step === 1;
+  const titleInfo = TITLE_TEXT[isFirstStep ? 'signup' : 'set-profile'];
+
+  const checkDuplicate = async (
+    field: 'email' | 'accountname',
+    validateFn: (args: any) => void,
+    onSuccess?: () => void,
+  ) => {
+    const value = methods.getValues(`user.${field}`);
+    const isValid = await methods.trigger(`user.${field}`);
+    if (!isValid) return;
+    validateFn({ user: { [field]: value } });
+    onSuccess?.();
   };
 
-  const handleNext = async () => {
-    const isValid = await methods.trigger(['user.email', 'user.password']); // 특정 필드만 검사
-    if (!isValid || !isEmailAvailable) {
+  const onNext = async () => {
+    const isValid = await methods.trigger(['user.email', 'user.password']);
+    if (!isValid || !validationStatus.isEmailAvailable) {
       console.log('유효성 검사 실패');
       return;
     }
@@ -55,20 +70,66 @@ export default function SignupPage() {
     pushState(); // 브라우저 히스토리에 상태 추가
   };
 
-  const onSubmit = (data: ISignUpRequest) => {
-    console.log('성공', data);
+  const onSubmit = async (data: ISignUpRequest) => {
+    const isValid = await methods.trigger([
+      'user.accountname',
+      'user.username',
+    ]);
+    if (!isValid || !validationStatus.isAccountAvailable) {
+      console.log('유효성 검사 실패');
+      return;
+    }
     signup(data);
-
     if (isError) {
       console.error(error);
       return;
     }
-
     goTo('/login');
   };
 
-  const isFirstStep = step === 1;
-  const titleInfo = TITLE_TEXT[isFirstStep ? 'signup' : 'set-profile'];
+  const renderStepFields = () => {
+    if (isFirstStep) {
+      return (
+        <SignupFields
+          isDisabled={methods.watch('user.email')?.length < 1}
+          onClick={() =>
+            checkDuplicate('email', emailValid, () =>
+              setValidationStatus((prev) => ({
+                ...prev,
+                isEmailAvailable: true,
+              })),
+            )
+          }
+        />
+      );
+    }
+    return (
+      <ProfileFields
+        isDisabled={methods.watch('user.accountname')?.length < 1}
+        onClick={() =>
+          checkDuplicate('accountname', accountValid, () =>
+            setValidationStatus((prev) => ({
+              ...prev,
+              isAccountAvailable: true,
+            })),
+          )
+        }
+      />
+    );
+  };
+
+  const renderButton = () => (
+    <CustomButton
+      type={isFirstStep ? 'button' : 'submit'}
+      color="primary"
+      size="l"
+      radius="full"
+      className="mt-30px"
+      onPress={isFirstStep ? onNext : undefined}
+    >
+      {isFirstStep ? '다음' : '오렌지마켓 시작하기'}
+    </CustomButton>
+  );
 
   return (
     <>
@@ -79,24 +140,8 @@ export default function SignupPage() {
       />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {isFirstStep ? (
-            <SignupFields
-              isDisabled={methods.watch('user.email')?.length < 1}
-              onClick={handleEmailAvailableCheck}
-            />
-          ) : (
-            <ProfileFields />
-          )}
-          <CustomButton
-            type={isFirstStep ? 'button' : 'submit'}
-            color="primary"
-            size="l"
-            radius="full"
-            className="mt-30px"
-            onPress={isFirstStep ? handleNext : undefined}
-          >
-            {isFirstStep ? '다음' : '오렌지마켓 시작하기'}
-          </CustomButton>
+          {renderStepFields()}
+          {renderButton()}
         </form>
       </FormProvider>
     </>

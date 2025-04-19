@@ -1,14 +1,20 @@
 import { IUserBase } from './user';
 
-/* -- 공통 응답 구조 인터페이스 -- */
-export interface IBaseResponse<T> {
+/* -- 공통 응답 구조 -- */
+export interface IMessageResponse {
   message: string;
+}
+
+export interface IBaseResponse<T> extends IMessageResponse {
   user: IUserBase & { _id: string } & T;
 }
 
 /* -- 유저 기본 정보 인터페이스 -- */
 export interface IUserEmail {
   email: string;
+}
+export interface IUserAccount {
+  accountname: string;
 }
 
 export interface IUserAuth extends IUserEmail {
@@ -27,9 +33,14 @@ export interface IEmailValidRequest {
   user: IUserEmail;
 }
 
-export type IEmailValidResponse = {
-  message: string;
-};
+export type IEmailValidResponse = IMessageResponse;
+
+/* -- 계정명 유효성 검사 요청, 응답 -- */
+export interface IAccountValidRequest {
+  user: IUserAccount;
+}
+
+export type IAccountValidResponse = IMessageResponse;
 
 /* -- 로그인 요청, 응답 -- */
 export interface ILoginRequest {
