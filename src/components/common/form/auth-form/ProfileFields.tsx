@@ -1,3 +1,4 @@
+import { Button } from '@nextui-org/react';
 import { useFormContext } from 'react-hook-form';
 
 import ImageInput from '@/components/common/input/ImageInput';
@@ -7,7 +8,12 @@ import { usePreviewImage } from '@/hooks/usePreviewImage';
 
 import FieldsLayout from './FieldsLayout';
 
-export default function ProfileFields() {
+interface IProfileFields {
+  isDisabled: boolean;
+  onClick: () => void;
+}
+
+export default function ProfileFields({ isDisabled, onClick }: IProfileFields) {
   const { register, setValue } = useFormContext();
   const { preview, addImage } = usePreviewImage(false);
 
@@ -20,7 +26,21 @@ export default function ProfileFields() {
   };
 
   return (
-    <FieldsLayout fields={profileFields}>
+    <FieldsLayout
+      fields={profileFields}
+      customElement={{
+        accountname: (
+          <Button
+            isDisabled={isDisabled}
+            color="primary"
+            onPress={onClick}
+            className="px-1 text-white"
+          >
+            중복확인
+          </Button>
+        ),
+      }}
+    >
       <div className="relative">
         <UserImage size="110px" link={false} src={preview[0]} />
         <ImageInput
