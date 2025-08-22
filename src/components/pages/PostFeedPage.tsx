@@ -2,8 +2,6 @@
 
 'use client';
 
-import '@/__mock__';
-
 import TopButton from '@/components/common/button/TopButton';
 import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
 import PostItem from '@/components/common/post-item/PostItem';
