@@ -31,9 +31,9 @@ export default function LoginPage() {
   const onSubmit = async (data: ILoginRequest) => {
     try {
       const response = await login(data);
-      const { token, accountname } = response.user;
-      if (token && accountname) {
-        AuthService.login(accountname, token);
+      const { accountname } = response.user;
+      if (accountname) {
+        AuthService.login(accountname);
         goTo('/feed');
       }
     } catch (error) {
