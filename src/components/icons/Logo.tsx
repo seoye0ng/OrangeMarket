@@ -8,7 +8,7 @@ const style = {
 
 function Logo({ width = 144, color = 'primary-100' }: IIconDefaultProps) {
   const iconColor = tokens.colors[color];
-  const pointColor = color === 'white' ? color : '#5FD972';
+  const pointColor = color === 'primary-100' ? '#5FD972' : tokens.colors[color];
 
   return (
     <svg
