@@ -5,11 +5,10 @@ import { useEffect } from 'react';
 import '@/__mock__';
 
 import { IUserProfileBase } from '@/api/types/user';
+import EmptyState from '@/components/common/empty-state/EmptyState';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
 import { useSearchContext } from '@/context/provider/SearchContext';
 import useSearch from '@/queries/search/useSearch';
-
-import EmptyState from '../profile/components/empty-state/EmptyState';
 
 export default function SearchPage() {
   const { searchTerm } = useSearchContext();
@@ -25,7 +24,7 @@ export default function SearchPage() {
   }, [refetch, searchTerm]);
 
   if (isError) {
-    return <EmptyState className="mx-4" message="유저가 없습니다." />;
+    return <EmptyState className="mx-4" title="유저가 없습니다." />;
   }
 
   return (

@@ -1,8 +1,7 @@
 import { IPostList } from '@/api/types/post';
+import EmptyState from '@/components/common/empty-state/EmptyState';
 import { PostContent } from '@/components/common/post-item/post-card';
 import PostItem from '@/components/common/post-item/PostItem';
-
-import EmptyState from '../empty-state/EmptyState';
 
 interface PostViewProps {
   postList: IPostList;
@@ -18,7 +17,7 @@ function PostView({ postList, postView }: PostViewProps) {
       : '이미지가 있는 포스트가 없습니다.';
 
     return (
-      <EmptyState className="pb-20px px-4 text-center" message={message} />
+      <EmptyState className="pb-20px px-4 text-center" description={message} />
     );
   }
 
