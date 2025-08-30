@@ -35,9 +35,11 @@ export default function PostFeedPage() {
   // TODO: 에러 시 처리
   // if (error) return <div>{error.message}</div>;
 
+  const isEmpty = data?.pages.every((page) => page.posts.length === 0) ?? true;
+
   return (
     <main className="h-screen px-4 pb-20 pt-5">
-      {data?.pages.every((page) => page.posts.length === 0) ? (
+      {isEmpty ? (
         <EmptyState
           className="items-center justify-center gap-5 text-center text-gray-500"
           icon={<Logo width={100} color="gray-100" />}
