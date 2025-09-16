@@ -24,7 +24,7 @@ export default function TopButton() {
     <button
       type="button"
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 rounded-full bg-gray-400 p-15px shadow-lg transition-all duration-200 hover:opacity-70 ${
+      className={`fixed bottom-20 right-6 rounded-full bg-gray-400 p-15px shadow-lg transition-all duration-200 hover:opacity-70 ${
         isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
