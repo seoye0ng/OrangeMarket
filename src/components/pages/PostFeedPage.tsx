@@ -3,6 +3,7 @@
 import { CustomButton, TopButton } from '@/components/common/button';
 import EmptyState from '@/components/common/empty-state/EmptyState';
 import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
+import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
 import PostItem from '@/components/common/post-item/PostItem';
 import Logo from '@/components/icons/Logo';
 import { POSTS_LIMIT } from '@/constants/infiniteScrollLimits';
@@ -17,7 +18,7 @@ export default function PostFeedPage() {
   const {
     data,
     // error,
-    // isLoading,
+    isLoading,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -29,8 +30,7 @@ export default function PostFeedPage() {
     isFetching: isFetchingNextPage,
   });
 
-  // TODO: 로딩 시 처리
-  // if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
 
   // TODO: 에러 시 처리
   // if (error) return <div>{error.message}</div>;
@@ -38,7 +38,7 @@ export default function PostFeedPage() {
   const isEmpty = data?.pages.every((page) => page.posts.length === 0) ?? true;
 
   return (
-    <main className="h-screen px-4 pb-20 pt-5">
+    <main className="h-calc-header-screen px-4 pb-20 pt-5">
       {isEmpty ? (
         <EmptyState
           className="items-center justify-center gap-5 text-center text-gray-500"
