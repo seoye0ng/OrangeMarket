@@ -4,17 +4,15 @@ import CustomButton from '@/components/common/button/Button';
 import Text from '@/components/common/text/Text';
 
 interface ErrorDisplayProps {
-  iconSrc: string;
-  altText: string;
+  iconSrc?: string;
   message: string;
   subMessage?: string;
   onRetry?: () => void;
-  onGoBack: () => void;
+  onGoBack?: () => void;
 }
 
 export default function ErrorDisplay({
   iconSrc,
-  altText,
   message,
   subMessage,
   onRetry,
@@ -22,9 +20,16 @@ export default function ErrorDisplay({
 }: ErrorDisplayProps) {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-3">
-      <div className="relative aspect-square w-40">
-        <Image src={iconSrc} alt={altText} fill className="object-cover" />
-      </div>
+      {iconSrc && (
+        <div className="relative aspect-square w-40">
+          <Image
+            src={iconSrc}
+            alt="에러 아이콘"
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
       <Text size="16px" className="mt-2">
         {message}
       </Text>
@@ -34,16 +39,14 @@ export default function ErrorDisplay({
         </Text>
       )}
       <div className="flex gap-2">
-        {onRetry && (
-          <CustomButton
-            type="button"
-            onClick={onRetry}
-            className="max-w-32"
-            color="white"
-          >
-            다시 시도하기
-          </CustomButton>
-        )}
+        <CustomButton
+          type="button"
+          onClick={onRetry}
+          className="max-w-32"
+          color="white"
+        >
+          다시 시도하기
+        </CustomButton>
         <CustomButton
           type="button"
           onClick={onGoBack}

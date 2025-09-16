@@ -2,6 +2,7 @@
 
 import { CustomButton, TopButton } from '@/components/common/button';
 import EmptyState from '@/components/common/empty-state/EmptyState';
+import ErrorDisplay from '@/components/common/error/ErrorDisplay';
 import InfiniteScrollLoader from '@/components/common/loading/InfiniteScrollLoader';
 import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
 import PostItem from '@/components/common/post-item/PostItem';
@@ -17,7 +18,8 @@ export default function PostFeedPage() {
   // 무한 스크롤 구현
   const {
     data,
-    // error,
+    isError,
+    refetch,
     isLoading,
     fetchNextPage,
     hasNextPage,
@@ -31,14 +33,18 @@ export default function PostFeedPage() {
   });
 
   if (isLoading) return <LoadingSpinner />;
-
-  // TODO: 에러 시 처리
-  // if (error) return <div>{error.message}</div>;
+  if (isError)
+    return (
+      <ErrorDisplay
+        message="피드를 불러오는 중 문제가 발생했습니다."
+        onRetry={refetch}
+      />
+    );
 
   const isEmpty = data?.pages.every((page) => page.posts.length === 0) ?? true;
 
   return (
-    <main className="h-calc-header-screen px-4 pb-20 pt-5">
+    <main className="h-full px-4 pb-20 pt-5">
       {isEmpty ? (
         <EmptyState
           className="items-center justify-center gap-5 text-center text-gray-500"

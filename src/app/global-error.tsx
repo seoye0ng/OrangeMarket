@@ -25,7 +25,6 @@ export default function GlobalError({
       <body>
         <ErrorDisplay
           iconSrc="/assets/icons/icon-error.svg"
-          altText="에러 아이콘"
           message="잠시 뒤에 시도해 주십시오."
           subMessage={error.message}
           onRetry={reset}
