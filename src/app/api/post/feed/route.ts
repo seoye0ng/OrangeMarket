@@ -9,7 +9,7 @@ export async function GET(req: Request) {
   const token = cookies().get('token')?.value;
 
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/post/feed/?limit=${limit}&skip=${skip}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/post/feed/?limit=${limit}&skip=${skip}`,
     {
       method: 'GET',
       headers: {

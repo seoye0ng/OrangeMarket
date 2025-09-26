@@ -8,7 +8,7 @@ export async function GET(req: Request) {
   const keyword = url.searchParams.get('keyword') ?? '';
 
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/user/searchuser/?keyword=${encodeURIComponent(keyword)}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/user/searchuser/?keyword=${encodeURIComponent(keyword)}`,
     {
       method: 'GET',
       headers: {

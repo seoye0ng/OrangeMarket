@@ -11,7 +11,7 @@ export async function GET(
   console.log('token in profile proxy:', token);
 
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/profile/${accountname}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/profile/${accountname}`,
     {
       method: 'GET',
       headers: {

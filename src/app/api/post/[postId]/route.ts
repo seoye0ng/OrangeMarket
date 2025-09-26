@@ -8,13 +8,16 @@ export async function GET(
   const { postId } = await params;
   const token = cookies().get('token')?.value;
 
-  const res = await fetch(`${process.env.BACKEND_BASE_URL}/post/${postId}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/post/${postId}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
     },
-  });
+  );
 
   const data = await res.json();
   return NextResponse.json(data);
