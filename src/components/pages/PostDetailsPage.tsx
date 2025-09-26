@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import '@/__mock__/';
 import { IComment, ICommentRequest } from '@/api/types/comment';
 import CommentForm from '@/components/common/form/comment-form/CommentForm';
 import CommentCard from '@/components/common/post-item/comment-card/CommentCard';

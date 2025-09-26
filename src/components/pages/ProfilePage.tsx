@@ -1,7 +1,5 @@
 'use client';
 
-import '@/__mock__';
-
 import LoadingSpinner from '@/components/common/loading/LoadingSpinner';
 import PostContainer from '@/components/profile/container/PostContainer';
 import ProductListContainer from '@/components/profile/container/ProductListContainer';
