@@ -2,21 +2,20 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const limit = searchParams.get('limit');
-  const skip = searchParams.get('skip');
-
   const token = cookies().get('token')?.value;
 
+  const url = new URL(req.url);
+  const keyword = url.searchParams.get('keyword') ?? '';
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/post/feed/?limit=${limit}&skip=${skip}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/user/searchuser/?keyword=${encodeURIComponent(keyword)}`,
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
-      cache: 'no-store', // 항상 최신 데이터
+      cache: 'no-store',
     },
   );
 

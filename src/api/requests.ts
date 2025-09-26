@@ -5,9 +5,15 @@ import instance from '.';
 /* GET 요청 */
 export const getRequest = async <T>(
   url: string,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig & { useBFF?: boolean },
 ): Promise<T> => {
-  const response = await instance.get(url, config);
+  const finalConfig: AxiosRequestConfig = {
+    ...config,
+    baseURL:
+      config?.useBFF === false ? process.env.NEXT_PUBLIC_BASE_URL : '/api',
+  };
+
+  const response = await instance.get<T>(url, finalConfig);
   return response.data;
 };
 
@@ -15,9 +21,15 @@ export const getRequest = async <T>(
 export const postRequest = async <T, D = void>(
   url: string,
   data?: D,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig & { useBFF?: boolean },
 ): Promise<T> => {
-  const response = await instance.post(url, data, config);
+  const finalConfig: AxiosRequestConfig = {
+    ...config,
+    baseURL:
+      config?.useBFF === false ? process.env.NEXT_PUBLIC_BASE_URL : '/api',
+  };
+
+  const response = await instance.post<T>(url, data, finalConfig);
   return response.data;
 };
 

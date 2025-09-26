@@ -1,7 +1,5 @@
 'use client';
 
-import '@/__mock__';
-
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 

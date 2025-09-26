@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 
-import '@/__mock__';
-
 import { IUserProfileBase } from '@/api/types/user';
 import EmptyState from '@/components/common/empty-state/EmptyState';
 import UserCard from '@/components/common/post-item/user-card/UserCard';
