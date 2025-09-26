@@ -3,19 +3,27 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   req: Request,
-  { params }: { params: Promise<{ postId: string }> },
+  { params }: { params: Promise<{ id: string }> },
 ) {
-  const { postId } = await params;
+  // accountname
+  const { id } = await params;
+
   const token = cookies().get('token')?.value;
 
+  const url = new URL(req.url);
+  const limit = url.searchParams.get('limit');
+  const skip = url.searchParams.get('skip');
+
+  // 백엔드 API 호출
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/post/${postId}`,
+    `${process.env.BACKEND_BASE_URL}/post/${id}/userpost?limit=${limit}&skip=${skip}`,
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
+      cache: 'no-store',
     },
   );
 
