@@ -31,7 +31,7 @@ export default function ProductListContainer({
         />
       ) : (
         <div className="horizontal-scroll scrollbar-hidden mt-4 flex gap-15px px-4">
-          {productList?.product.map((productData) => (
+          {productList?.product?.map((productData) => (
             <ProductCard
               key={productData.id}
               product={productData}
