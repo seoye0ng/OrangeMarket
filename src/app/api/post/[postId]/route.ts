@@ -1,0 +1,21 @@
+import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
+
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ postId: string }> },
+) {
+  const { postId } = await params;
+  const token = cookies().get('token')?.value;
+
+  const res = await fetch(`${process.env.BACKEND_BASE_URL}/post/${postId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+
+  const data = await res.json();
+  return NextResponse.json(data);
+}
