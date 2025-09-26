@@ -14,6 +14,9 @@ export const signup = async (data: ISignUpRequest) => {
   const response = await postRequest<ISignUpResponse, ISignUpRequest>(
     '/user',
     data,
+    {
+      useBFF: false,
+    },
   );
 
   return response;
@@ -32,6 +35,9 @@ export const emailValid = async (data: IEmailValidRequest) => {
   const response = await postRequest<IEmailValidResponse, IEmailValidRequest>(
     '/user/emailvalid',
     data,
+    {
+      useBFF: false,
+    },
   );
 
   return response;
@@ -41,7 +47,9 @@ export const accountValid = async (data: IAccountValidRequest) => {
   const response = await postRequest<
     IAccountValidResponse,
     IAccountValidRequest
-  >('/user/accountnamevalid', data);
+  >('/user/accountnamevalid', data, {
+    useBFF: false,
+  });
 
   return response;
 };
