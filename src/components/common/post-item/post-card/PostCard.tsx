@@ -14,6 +14,7 @@ export default function PostCard({ post, className = '' }: IPostCardProps) {
     <article className={className}>
       <PostContent content={post.content} image={post.image} />
       <PostReaction
+        id={post.id}
         hearted={post.hearted}
         heartCount={post.heartCount}
         commentCount={post.commentCount}
