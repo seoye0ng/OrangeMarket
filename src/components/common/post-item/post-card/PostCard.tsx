@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { IPostWithoutAuthor } from '@/api/types/post';
 import Text from '@/components/common/text/Text';
 
@@ -12,8 +14,11 @@ interface IPostCardProps {
 export default function PostCard({ post, className = '' }: IPostCardProps) {
   return (
     <article className={className}>
-      <PostContent content={post.content} image={post.image} />
+      <Link href={`/post/${post.id}`} aria-label="게시글 상세 페이지로 이동">
+        <PostContent content={post.content} image={post.image} />
+      </Link>
       <PostReaction
+        id={post.id}
         hearted={post.hearted}
         heartCount={post.heartCount}
         commentCount={post.commentCount}

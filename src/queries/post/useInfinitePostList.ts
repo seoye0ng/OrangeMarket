@@ -6,7 +6,7 @@ import { postKeys } from '@/queries/post/postKeys';
 
 function useInfinitePostList(limit: number) {
   return useInfiniteQuery<IPostList>({
-    queryKey: postKeys.listAll({ limit }),
+    queryKey: postKeys.listAll(),
     queryFn: ({ pageParam = 0 }) => postList(limit, pageParam as number), // pageParam을 사용하여 skip 관리
     getNextPageParam: (lastPage, allPages) => {
       // 마지막 페이지에서 받은 게시물 수가 limit보다 작으면 다음 페이지가 없으므로 undefined 반환

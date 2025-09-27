@@ -6,7 +6,7 @@ import { postKeys } from '@/queries/post/postKeys';
 
 function useInfiniteUserPostList(accountName: string, limit: number) {
   return useInfiniteQuery<IPostList>({
-    queryKey: postKeys.list({ limit, accountName }),
+    queryKey: postKeys.list({ accountName }),
     queryFn: ({ pageParam = 0 }) =>
       userPostList(accountName, limit, pageParam as number),
     getNextPageParam: (lastPage, allPages) => {
