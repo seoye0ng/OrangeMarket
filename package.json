@@ -61,6 +61,9 @@
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.3"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "main": "index.js",
   "repository": "https://github.com/seoye0ng/OrangeMarket.git",
   "author": "seoye0ng <bsy0313@gmail.com>",
