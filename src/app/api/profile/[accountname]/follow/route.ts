@@ -3,14 +3,14 @@ import { NextResponse } from 'next/server';
 
 export async function POST(
   req: Request,
-  { params }: { params: Promise<{ accountName: string }> },
+  { params }: { params: Promise<{ accountname: string }> },
 ) {
-  const { accountName } = await params;
+  const { accountname } = await params;
 
   const token = cookies().get('token')?.value;
 
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/profile/${accountName}/follow`,
+    `${process.env.BACKEND_BASE_URL}/profile/${accountname}/follow`,
     {
       method: 'POST',
       headers: {

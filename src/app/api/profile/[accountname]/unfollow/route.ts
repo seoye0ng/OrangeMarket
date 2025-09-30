@@ -3,14 +3,14 @@ import { NextResponse } from 'next/server';
 
 export async function DELETE(
   req: Request,
-  { params }: { params: Promise<{ accountName: string }> },
+  { params }: { params: Promise<{ accountname: string }> },
 ) {
-  const { accountName } = await params;
+  const { accountname } = await params;
 
   const token = cookies().get('token')?.value;
 
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/profile/${accountName}/unfollow`,
+    `${process.env.BACKEND_BASE_URL}/profile/${accountname}/unfollow`,
     {
       method: 'DELETE',
       headers: {
