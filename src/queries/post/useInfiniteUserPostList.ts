@@ -10,9 +10,8 @@ function useInfiniteUserPostList(accountName: string, limit: number) {
     queryFn: ({ pageParam = 0 }) =>
       userPostList(accountName, limit, pageParam as number),
     getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.posts.length < limit) {
-        return undefined;
-      }
+      const posts = lastPage.posts ?? [];
+      if (posts.length < limit) return undefined;
       const nextPageParam = allPages.length * limit;
       return nextPageParam;
     },

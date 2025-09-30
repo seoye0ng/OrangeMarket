@@ -1,5 +1,4 @@
 import { IPostList } from '@/api/types/post';
-import EmptyState from '@/components/common/empty-state/EmptyState';
 import { PostContent } from '@/components/common/post-item/post-card';
 import PostItem from '@/components/common/post-item/PostItem';
 
@@ -10,22 +9,13 @@ interface PostViewProps {
 
 function PostView({ postList, postView }: PostViewProps) {
   const isListView = postView === 'list';
-
-  if (postList.posts.length === 0) {
-    const message = isListView
-      ? '포스트가 없습니다.'
-      : '이미지가 있는 포스트가 없습니다.';
-
-    return (
-      <EmptyState className="pb-20px px-4 text-center" description={message} />
-    );
-  }
+  const posts = postList.posts ?? [];
 
   return isListView ? (
-    postList.posts.map((post) => <PostItem key={post.id} post={post} />)
+    posts.map((post) => <PostItem key={post.id} post={post} />)
   ) : (
     <div className="grid grid-cols-3 gap-2 pb-2">
-      {postList.posts.map((post) => (
+      {posts.map((post) => (
         <PostContent key={post.id} image={post.image} isListType={isListView} />
       ))}
     </div>
