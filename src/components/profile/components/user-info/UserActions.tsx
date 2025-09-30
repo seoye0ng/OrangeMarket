@@ -29,7 +29,7 @@ export default function UserActions({
         <CustomButton
           size="m"
           color="white"
-          onClick={() => onNavigate('product')}
+          onClick={() => onNavigate('/product/upload')}
         >
           상품 등록
         </CustomButton>
