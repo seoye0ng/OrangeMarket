@@ -22,7 +22,7 @@ export default function UserActions({
         <CustomButton
           size="ml"
           color="white"
-          onClick={() => onNavigate('edit')}
+          onClick={() => onNavigate('/account/edit')}
         >
           프로필 수정
         </CustomButton>
