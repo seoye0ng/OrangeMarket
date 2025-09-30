@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery } from '@tanstack/react-query';
 
 import { commentList } from '@/api/apiRequests/comment';
 import { commentKeys } from '@/queries/comment/commentKeys';
 
-function useCommentList(
-  postId: string,
-  options?: { enabled?: boolean; initialData?: any },
-) {
+function useCommentList(postId: string, options?: { enabled?: boolean }) {
   return useQuery({
     queryKey: commentKeys.list(postId),
     queryFn: () => commentList(postId),
